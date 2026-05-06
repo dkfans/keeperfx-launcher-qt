@@ -105,7 +105,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         movie->start();
     } else {
         // Fallback to text
-        ui->spinnerLabel->setText("Loading...");
+        ui->spinnerLabel->setText(tr("Loading...", "Fallback text label"));
     }
 
     // Clear version update spinner label
