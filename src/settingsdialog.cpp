@@ -263,8 +263,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->comboBoxAtmoVolume->addItem(tr("High", "Atmosphere Volume Dropdown"), "HIGH");
 
     // Release dropdown
-    ui->comboBoxRelease->addItem(tr("Stable (Default)", "Game Release Build"), "STABLE");
-    ui->comboBoxRelease->addItem(tr("Alpha", "Game Release Build"), "ALPHA");
+    ui->comboBoxReleaseChannel->addItem(tr("Stable (Default)", "Game Release Channel"), "STABLE");
+    ui->comboBoxReleaseChannel->addItem(tr("Alpha", "Game Release Channel"), "ALPHA");
 
     // Load the settings
     loadSettings();
@@ -312,8 +312,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // Connect the game update checkbox
     connect(ui->checkBoxCheckForUpdates, &QCheckBox::checkStateChanged, this, [this]() {
         bool isChecked = ui->checkBoxCheckForUpdates->isChecked();
-        ui->labelRelease->setDisabled(!isChecked);
-        ui->comboBoxRelease->setDisabled(!isChecked);
         ui->checkBoxAutoUpdate->setDisabled(!isChecked);
         ui->checkBoxBackupSaves->setDisabled(!isChecked);
         ui->lineEditUpdateInterval->setDisabled(!isChecked);
@@ -761,9 +759,7 @@ void SettingsDialog::loadSettings()
     // Updates
     bool isUpdateCheckEnabled = Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool();
     ui->checkBoxCheckForUpdates->setChecked(isUpdateCheckEnabled);
-    ui->labelRelease->setDisabled(!isUpdateCheckEnabled);
-    ui->comboBoxRelease->setDisabled(!isUpdateCheckEnabled);
-    ui->comboBoxRelease->setCurrentIndex(ui->comboBoxRelease->findData(Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()));
+    ui->comboBoxReleaseChannel->setCurrentIndex(ui->comboBoxReleaseChannel->findData(Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()));
     ui->checkBoxAutoUpdate->setDisabled(!isUpdateCheckEnabled);
     ui->checkBoxAutoUpdate->setChecked(Settings::getLauncherSetting("AUTO_UPDATE") == true);
     ui->checkBoxBackupSaves->setDisabled(!isUpdateCheckEnabled);
@@ -997,7 +993,7 @@ void SettingsDialog::saveSettings()
 
     // Updates
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_ENABLED", ui->checkBoxCheckForUpdates->isChecked() == true);
-    Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", ui->comboBoxRelease->currentData().toString());
+    Settings::setLauncherSetting("CHECK_FOR_UPDATES_RELEASE", ui->comboBoxReleaseChannel->currentData().toString());
     Settings::setLauncherSetting("AUTO_UPDATE", ui->checkBoxAutoUpdate->isChecked() == true);
     Settings::setLauncherSetting("BACKUP_SAVES", ui->checkBoxBackupSaves->isChecked() == true);
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_INTERVAL_DAYS", ui->lineEditUpdateInterval->text());

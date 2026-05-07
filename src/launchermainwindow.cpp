@@ -623,13 +623,14 @@ void LauncherMainWindow::on_settingsButton_clicked() {
         }
     }
 
-    // Check for updates when settings are closed
-    if(Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool() == true && (
-            // Check for updates was disabled and has been enabled now
-            oldUpdateCheckEnabled == false ||
-            // Version has changed
-            oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()
-    )){
+    // Check if we need to check for updates when the settings dialog has closed.
+    // We'll check for updates if at least one of the following conditions is met:
+    // - If automatic update checks were disabled and have been enabled now
+    // - If the 'Game Release Channel' has changed (Ex.: Stable to Alpha)
+    if(
+        (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool() == true && oldUpdateCheckEnabled == false)
+        || oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()
+    ){
         qDebug() << "Settings regarding updates have been enabled or changed so asking for update";
         checkForKfxUpdate(true);
     }
