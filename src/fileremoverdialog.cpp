@@ -1,4 +1,5 @@
 #include "fileremoverdialog.h"
+#include "settings.h"
 #include "ui_fileremoverdialog.h"
 
 #include <QFile>
@@ -72,5 +73,12 @@ void FileRemoverDialog::on_removeButton_clicked()
 
     // Success
     QMessageBox::information(this, "KeeperFX", tr("Leftover files have been removed!", "MessageBox Text"));
+
+    // Check if the user wants to do this automatically
+    if(ui->checkBoxAutoRemoveLeftoverFiles->isChecked() == true){
+        Settings::setLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES", true);
+    }
+
+    // Close the dialog
     this->accept();
 }

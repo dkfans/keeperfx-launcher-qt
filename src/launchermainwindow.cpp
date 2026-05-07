@@ -90,6 +90,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
     ClickableLabel *clickableVersionLabel = new ClickableLabel(this);
     clickableVersionLabel->setBaseColor(QColor(0x99, 0x99, 0x99));
     clickableVersionLabel->setFont(ui->versionLabel->font());
+    clickableVersionLabel->setToolTip(tr("Click to check for updates", "Version label tooltip text"));
     connect(clickableVersionLabel, &ClickableLabel::clicked, this, &LauncherMainWindow::forceKfxUpdateCheck);
 
     // Replace version label with clickable one
@@ -105,7 +106,7 @@ LauncherMainWindow::LauncherMainWindow(QWidget *parent)
         movie->start();
     } else {
         // Fallback to text
-        ui->spinnerLabel->setText("Loading...");
+        ui->spinnerLabel->setText(tr("Loading...", "Fallback text label"));
     }
 
     // Clear version update spinner label
@@ -595,8 +596,9 @@ void LauncherMainWindow::on_settingsButton_clicked() {
     SettingsDialog settingsDialog(this);
     settingsDialog.exec();
 
-    // Refresh buttons
+    // Refresh buttons and version UI
     refreshInstallationAwareButtons();
+    refreshKfxVersionInGui(); // This also updates the window title
 
     // Check if launcher language has changed
     if(oldLauncherLanguage != Settings::getLauncherSetting("LAUNCHER_LANGUAGE").toString()){
@@ -621,13 +623,14 @@ void LauncherMainWindow::on_settingsButton_clicked() {
         }
     }
 
-    // Check for updates when settings are closed
-    if(Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool() == true && (
-            // Check for updates was disabled and has been enabled now
-            oldUpdateCheckEnabled == false ||
-            // Version has changed
-            oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()
-    )){
+    // Check if we need to check for updates when the settings dialog has closed.
+    // We'll check for updates if at least one of the following conditions is met:
+    // - If automatic update checks were disabled and have been enabled now
+    // - If the 'Game Release Channel' has changed (Ex.: Stable to Alpha)
+    if(
+        (Settings::getLauncherSetting("CHECK_FOR_UPDATES_ENABLED").toBool() == true && oldUpdateCheckEnabled == false)
+        || oldReleaseVersion != Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString()
+    ){
         qDebug() << "Settings regarding updates have been enabled or changed so asking for update";
         checkForKfxUpdate(true);
     }
@@ -930,6 +933,30 @@ void LauncherMainWindow::onFilesToRemoveFound(QStringList filesToRemove)
         return;
     }
 
+    // Check if user wants to remove leftover files automatically (silently)
+    if(Settings::getLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES") == true){
+        qDebug() << "Removing leftover files automatically without user interaction";
+
+        // Loop through the list of files
+        for (const QString &filePath : std::as_const(filesToRemove)) {
+
+            // Get the file
+            QFile file(QCoreApplication::applicationDirPath() + "/" + filePath);
+            if (file.exists()) {
+
+                // Remove the file
+                if (file.remove()) {
+                    qDebug() << "Removed leftover file:" << filePath;
+                } else {
+                    // There isn't really a need to tell the user here
+                    // If they get into trouble the logs will tell us there's a problem here
+                    qWarning() << "Failed to remove leftover file:" << filePath;
+                }
+            }
+        }
+        return;
+    }
+
     // Show file removal dialog
     FileRemoverDialog fileRemoverDialog(this, filesToRemove);
     fileRemoverDialog.exec();
@@ -1060,7 +1087,7 @@ void LauncherMainWindow::forceKfxUpdateCheck() {
     this->checkForKfxUpdate(true);
 }
 
-void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
+void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval, bool showMessageBox)
 {
     qDebug() << "Checking for KeeperFX update";
 
@@ -1114,7 +1141,7 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
 
     // Spawn a thread
     // We don't want any slow internet connections block our main thread
-    QThread::create([this]() {
+    QThread::create([this, showMessageBox]() {
 
         // Get release type
         QString typeString = Settings::getLauncherSetting("CHECK_FOR_UPDATES_RELEASE").toString();
@@ -1127,11 +1154,13 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
             return;
         }
 
-        // Show update icon
-        emit this->showUpdateIcon(true);
-
         // Get latest version for this release type
+        // Show update icon next to version while we are checking
+        emit this->showUpdateIcon(true);
         auto latestVersionInfo = KfxVersion::getLatestVersion(type);
+        emit this->showUpdateIcon(false);
+
+        // Check if the latest version was found
         if (latestVersionInfo) {
 
             // Check if type of release is different or version is newer
@@ -1146,11 +1175,26 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval)
 
             } else {
                 qDebug() << "No updates found";
+
+                if(showMessageBox && latestVersionInfo->version == KfxVersion::currentVersion.version){
+                    // Invoke so we can show the messagebox on the main GUI thread
+                    QMetaObject::invokeMethod(this, [this]() {
+                        QMessageBox::information(
+                            this, // or a valid parent widget if available
+                            tr("KeeperFX Update", "MessageBox Title"),
+                            tr("You are already on the latest version!", "MessageBox Text")
+                        );
+                    }, Qt::QueuedConnection);
+                }
+            }
+        } else {
+            if(showMessageBox) {
+                QMessageBox::warning(this,
+                    tr("KeeperFX Update", "MessageBox Title"),
+                    tr("Unable to grab latest KeeperFX version from the website. Try again later.\n\n"
+                        "If the issue persists, check your internet connection and firewall settings.", "MessageBox Text"));
             }
         }
-
-        // Hide update icon
-        emit this->showUpdateIcon(false);
 
         // Check if there are any files that should be removed
         checkForFileRemoval();
@@ -1264,7 +1308,14 @@ void LauncherMainWindow::refreshKfxVersionInGui()
 {
     qInfo() << "KeeperFX version:" << KfxVersion::currentVersion.fullString;
     ui->versionLabel->setText("v" + KfxVersion::currentVersion.fullString);
-    this->setWindowTitle(tr("KeeperFX Launcher", "Window Title") + " - v" + KfxVersion::currentVersion.fullString);
+
+    QString windowTitle = tr("KeeperFX Launcher", "Window Title") + " - v" + KfxVersion::currentVersion.fullString;
+
+    if(Settings::getLauncherSetting("SHOW_DIR_NAME_IN_WINDOW_TITLE") == true){
+        windowTitle.prepend("[ " + QDir(QCoreApplication::applicationDirPath()).dirName() + " ] - ");
+    }
+
+    this->setWindowTitle(windowTitle);
 }
 
 void LauncherMainWindow::on_openFolderButton_clicked()
@@ -1336,5 +1387,21 @@ void LauncherMainWindow::on_websiteButton_clicked()
     QUrl url("https://keeperfx.net");
     QDesktopServices::openUrl(url);
 
+}
+
+
+void LauncherMainWindow::on_checkForUpdatesButton_clicked()
+{
+    // Disable the update button for 5 seconds
+    this->ui->checkForUpdatesButton->setEnabled(false);
+    QTimer::singleShot(5000, this, [this]() {
+        // Invoke so it runs on the main GUI thread
+        QMetaObject::invokeMethod(this, [this]() {
+            this->ui->checkForUpdatesButton->setEnabled(true);
+        }, Qt::QueuedConnection);
+    });
+
+    // Check for updates
+    checkForKfxUpdate(true, true);
 }
 

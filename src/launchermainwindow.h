@@ -51,6 +51,7 @@ private slots:
 
     void on_discordButton_clicked();
     void on_websiteButton_clicked();
+    void on_checkForUpdatesButton_clicked();
 
 private:
     Ui::LauncherMainWindow *ui;
@@ -81,7 +82,7 @@ private:
     void checkForFileRemoval();
 
     void forceKfxUpdateCheck();
-    void checkForKfxUpdate(bool ignoreInterval = false);
+    void checkForKfxUpdate(bool ignoreInterval = false, bool showMessageBox = false);
 
     void verifyBinaryCertificates();
 

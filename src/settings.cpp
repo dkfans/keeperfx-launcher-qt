@@ -32,6 +32,8 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"GAME_HEAVY_LOG_ENABLED", false},
     {"PLAY_BUTTON_THEME", "dk-orange"},
     {"LAUNCHER_LANGUAGE", QLocale(QLocale::system().uiLanguages().value(0, QLocale::system().name())).name().left(2)}, // Get 2 letter language identifier
+    {"SHOW_DIR_NAME_IN_WINDOW_TITLE", false},
+    {"AUTO_REMOVE_LEFTOVER_FILES", false},
 
     // Stuff to remember
     {"SUPPRESS_ORIGINAL_DK_FOUND_MESSAGEBOX", false},

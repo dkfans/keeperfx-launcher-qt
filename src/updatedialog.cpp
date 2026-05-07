@@ -624,11 +624,35 @@ void UpdateDialog::onFileDownloadProgress()
             }
 
             // Move file
-            if (srcFile.rename(destFilePath) == false) {
-                emit setUpdateFailed(tr("Failed to move file (%1): %2", "Failure Message").arg(srcFile.errorString(), filePath));
-                return;
-            } else {
+            if (srcFile.rename(destFilePath) == true) {
                 emit appendLog(QString("File moved: %1").arg(filePath));
+            } else {
+
+                // Check if we tried moving a binary file while others have already been succesfully moved.
+                // We do this because if a binary file fails to move while non binaries don't,
+                // it most likely means an antivirus or similar protection blocked it.
+                // We can't check if the file is a binary by opening it because even that may be blocked,
+                // so we just check for known file extensions here.
+                if(copiedFiles > 0 && (
+                    #ifdef Q_OS_WINDOWS
+                        filePath.toLower().endsWith(".exe") ||
+                        filePath.toLower().endsWith(".dll")
+                    #else
+                        filePath.contains(".") == false ||
+                        filePath.toLower().endsWith(".so")
+                    #endif
+                )) {
+                    // We'll show the same message as below but also add an antivirus warning
+                    emit setUpdateFailed(
+                        tr("Failed to move file (%1): %2", "Failure Message").arg(srcFile.errorString(), filePath)
+                        + QString("\n\n")
+                        + tr("It is possible an antivirus is causing this problem. Try disabling it and try again.", "Failure Message").arg(srcFile.errorString(), filePath)
+                    );
+                } else {
+                    emit setUpdateFailed(tr("Failed to move file (%1): %2", "Failure Message").arg(srcFile.errorString(), filePath));
+                }
+
+                return;
             }
 
             emit updateProgress(++copiedFiles);

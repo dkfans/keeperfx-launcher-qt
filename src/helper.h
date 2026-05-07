@@ -13,6 +13,7 @@
 #endif
 
 #include <LIEF/PE.hpp>
+#include <LIEF/logging.hpp>
 
 class Helper
 {
@@ -37,6 +38,45 @@ public:
         }
 
         return count;
+    }
+
+    static bool isBinaryFile(const QString &filePath)
+    {
+        // Make sure file exists before continueing
+        QFile file(filePath);
+        if(file.exists() == false){
+            return false;
+        }
+
+        // Save current logging state
+        const auto previousLevel = LIEF::logging::get_level();
+
+        // Disable logging temporarily (only if not already disabled)
+        const bool wasEnabled = (previousLevel != LIEF::logging::LEVEL::OFF);
+        if (wasEnabled) {
+            LIEF::logging::disable();
+        }
+
+        try {
+            std::unique_ptr<LIEF::Binary> bin{
+                LIEF::Parser::parse(filePath.toStdString())
+            };
+
+            // Restore logging
+            if (wasEnabled) {
+                LIEF::logging::set_level(previousLevel);
+            }
+
+            return bin != nullptr;
+        } catch (...) {
+
+            // Restore logging
+            if (wasEnabled) {
+                LIEF::logging::set_level(previousLevel);
+            }
+
+            return false;
+        }
     }
 
     static bool is64BitDLL(const std::string &dllPath)

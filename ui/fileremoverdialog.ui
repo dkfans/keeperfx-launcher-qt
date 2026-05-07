@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string comment="Window Title">Remove unwanted files</string>
+   <string comment="Window Title">Remove leftover files</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../resources.qrc">
@@ -89,6 +89,13 @@
      </property>
      <property name="selectionMode">
       <enum>QAbstractItemView::SelectionMode::NoSelection</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkBoxAutoRemoveLeftoverFiles">
+     <property name="text">
+      <string>Always remove leftover files automatically</string>
      </property>
     </widget>
    </item>
