@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 13:05+0100\n"
+"POT-Creation-Date: 2026-05-07 14:37+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: Qt default
 msgid "OK"
@@ -112,17 +112,14 @@ msgstr "保存（&S）"
 msgid "Restore Defaults"
 msgstr "既定に戻す"
 
-#: ../ui/copydkfilesdialog.ui:14
 msgctxt "CopyDkFilesDialog|Window Title"
 msgid "Copy DK Files"
 msgstr "DKファイルのコピー"
 
-#: ../ui/copydkfilesdialog.ui:36
 msgctxt "CopyDkFilesDialog|Header"
 msgid "Copy Dungeon Keeper Files"
 msgstr "ダンジョンキーパーのファイルをコピー"
 
-#: ../ui/copydkfilesdialog.ui:65
 msgctxt "CopyDkFilesDialog|Information"
 msgid ""
 "KeeperFX requires the original Dungeon Keeper files for copyright reasons.\n"
@@ -138,37 +135,30 @@ msgstr ""
 "オリジナルCD、またはGOG、Steam、EAのデジタル版をご利用いただけます。\n"
 "デジタル版を使用する場合は、最初にインストールする必要があります。"
 
-#: ../ui/copydkfilesdialog.ui:101
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Browse"
 msgstr "ブラウズ"
 
-#: ../ui/copydkfilesdialog.ui:138
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../ui/copydkfilesdialog.ui:163
 msgctxt "CopyDkFilesDialog|Button"
 msgid "Copy"
 msgstr "コピー"
 
-#: ../src/copydkfilesdialog.cpp:44
 msgctxt "CopyDkFilesDialog|Label"
 msgid "A suitable DK installation has been automatically detected."
 msgstr "ダンジョンキーパーの適切なインストールが自動的に検出されました。"
 
-#: ../src/copydkfilesdialog.cpp:57
 msgctxt "CopyDkFilesDialog|Directory Browse Dialog"
 msgid "Select Directory containing Dungeon Keeper files"
 msgstr "ダンジョンキーパーのファイルを含むフォルダーを選択"
 
-#: ../src/copydkfilesdialog.cpp:66 ../src/copydkfilesdialog.cpp:87
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Original DK files not found"
 msgstr "オリジナルDKファイルが見つかりません"
 
-#: ../src/copydkfilesdialog.cpp:67 ../src/copydkfilesdialog.cpp:88
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The chosen directory does not contain all of the required files. Please "
@@ -177,38 +167,31 @@ msgstr ""
 "選択したフォルダーに必要なファイルがすべて含まれていません。オリジナルダン"
 "ジョンキーパーのインストールフォルダーを選択してください。"
 
-#: ../src/copydkfilesdialog.cpp:78
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Select a directory"
 msgstr "フォルダー選択"
 
-#: ../src/copydkfilesdialog.cpp:78
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Please select an original Dungeon Keeper installation location."
 msgstr ""
 "オリジナルダンジョンキーパーのインストールフォルダーを選択してください。"
 
-#: ../src/copydkfilesdialog.cpp:95 ../src/copydkfilesdialog.cpp:101
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Failed to copy files"
 msgstr "ファイルコピー失敗"
 
-#: ../src/copydkfilesdialog.cpp:95
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "The current directory is not writable."
 msgstr "現在のフォルダーに書き込みができません。"
 
-#: ../src/copydkfilesdialog.cpp:101
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid "Something went wrong while copying the files."
 msgstr "ファイルのコピー中に問題が発生しました。"
 
-#: ../src/copydkfilesdialog.cpp:113
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "DK files copied!"
 msgstr "DKファイルのコピー完了！"
 
-#: ../src/copydkfilesdialog.cpp:114
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "The required Dungeon Keeper files have been copied.\n"
@@ -218,12 +201,10 @@ msgstr ""
 "ダンジョンキーパーの必要なファイルがコピーされました。KeeperFXがプレイできま"
 "す！"
 
-#: ../src/copydkfilesdialog.cpp:127
 msgctxt "CopyDkFilesDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "確認"
 
-#: ../src/copydkfilesdialog.cpp:128
 msgctxt "CopyDkFilesDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -234,17 +215,14 @@ msgstr ""
 "\n"
 "KeeperFXはこれらのファイルがないと正しく機能しません。"
 
-#: ../ui/crashdialog.ui:14
 msgctxt "CrashDialog|Window Title"
 msgid "KeeperFX Crash Report"
 msgstr "KeeperFXのクラッシュ報告"
 
-#: ../ui/crashdialog.ui:74
 msgctxt "CrashDialog|Header"
 msgid "KeeperFX has crashed"
 msgstr "KeeperFXのクラッシュ"
 
-#: ../ui/crashdialog.ui:131
 msgctxt "CrashDialog|Information Label"
 msgid ""
 "It seems that KeeperFX has crashed and is unable to recover. If you wish to "
@@ -258,18 +236,15 @@ msgstr ""
 "い。連絡先を追加していただければ、後ほどご連絡いたします。KeeperFXのログファ"
 "イルや設定などの追加情報も送信されます。"
 
-#: ../ui/crashdialog.ui:152
 #, qt-format
 msgctxt "CrashDialog|Information Label"
 msgid "You can also raise an issue on Github: %1"
-msgstr "GitHubで問題を提起することもできます: %1"
+msgstr "GitHubでissueを作成することもできます: %1"
 
-#: ../ui/crashdialog.ui:168
 msgctxt "CrashDialog|Input box title"
 msgid "Information (Optional)"
 msgstr "情報（任意）"
 
-#: ../ui/crashdialog.ui:200
 msgctxt "CrashDialog|Textarea Placeholder"
 msgid ""
 "Please explain what happened, and if possible the steps to reproduce this "
@@ -278,69 +253,56 @@ msgstr ""
 "状況をご説明いただき、可能であればこのクラッシュを再現する手順をご記入くださ"
 "い。"
 
-#: ../ui/crashdialog.ui:210
 msgctxt "CrashDialog|Input box title"
 msgid "Savefile (Optional)"
 msgstr "セーブデータ（任意）"
 
-#: ../ui/crashdialog.ui:232
 msgctxt "CrashDialog|Dropdown Placeholder Text"
 msgid ""
 "If you have a game save that could provide us with more information. You can "
 "add it here."
 msgstr "より多くの情報を含むゲームセーブをお持ちの場合は、ここに追加できます。"
 
-#: ../ui/crashdialog.ui:242
 msgctxt "CrashDialog|Input box title"
 msgid "Contact Information (Optional)"
 msgstr "連絡詳細（任意）"
 
-#: ../ui/crashdialog.ui:258
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Discord handle"
 msgstr "Discordでのユーザー名"
 
-#: ../ui/crashdialog.ui:265
 msgctxt "CrashDialog|Input Placeholder"
 msgid "KeeperFX.net username"
 msgstr "KeeperFX.netでのユーザー名"
 
-#: ../ui/crashdialog.ui:272
 msgctxt "CrashDialog|Input Placeholder"
 msgid "Email Address"
 msgstr "Ｅメールアドレス"
 
-#: ../ui/crashdialog.ui:306
 msgctxt "CrashDialog|Button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../ui/crashdialog.ui:331
 msgctxt "CrashDialog|Button"
 msgid "Send"
 msgstr "送信"
 
-#: ../src/crashdialog.cpp:27
 msgctxt "CrashDialog|Menu Placeholder"
 msgid "No saves found"
 msgstr "セーブデータが見つかりません"
 
-#: ../src/crashdialog.cpp:29
 msgctxt "CrashDialog|Default Savefile"
 msgid "None"
 msgstr "なし"
 
-#: ../src/crashdialog.cpp:183 ../src/crashdialog.cpp:191
 msgctxt "CrashDialog|MessageBox Title"
 msgid "Crash Report"
 msgstr "クラッシュ報告"
 
-#: ../src/crashdialog.cpp:183
 msgctxt "CrashDialog|MessageBox Text"
 msgid "Failed to submit crash report."
 msgstr "クラッシュ報告を提出に失敗しました。"
 
-#: ../src/crashdialog.cpp:192
 #, qt-format
 msgctxt "CrashDialog|MessageBox Text"
 msgid ""
@@ -358,17 +320,14 @@ msgstr ""
 "\n"
 "報告の識別番号： %1"
 
-#: ../ui/directconnectdialog.ui:14
 msgctxt "DirectConnectDialog|Window Title"
 msgid "Direct Connect"
 msgstr "直接接続"
 
-#: ../ui/directconnectdialog.ui:33
 msgctxt "DirectConnectDialog|Header"
 msgid "Direct Connect"
 msgstr "直接接続"
 
-#: ../ui/directconnectdialog.ui:51
 msgctxt "DirectConnectDialog|Information Label"
 msgid ""
 "Directly connect to an open ENET lobby. Enter the IP address of the host. "
@@ -377,52 +336,42 @@ msgstr ""
 "開いているENETロビーに直接接続します。ホストのIPアドレスを入力してください。 "
 "対応しているのはENETのみです。"
 
-#: ../ui/directconnectdialog.ui:76
 msgctxt "DirectConnectDialog|Input Placeholder"
 msgid "IP Address"
 msgstr "IPアドレス"
 
-#: ../ui/directconnectdialog.ui:92
 msgctxt "DirectConnectDialog|Input Placeholder"
 msgid "Port"
 msgstr "ポート"
 
-#: ../ui/directconnectdialog.ui:126
 msgctxt "DirectConnectDialog|Button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../ui/directconnectdialog.ui:151
 msgctxt "DirectConnectDialog|Button"
 msgid "Connect"
 msgstr "接続"
 
-#: ../src/directconnectdialog.cpp:56 ../src/directconnectdialog.cpp:63
 msgctxt "DirectConnectDialog|MessageBox Title"
 msgid "Direct Connect"
 msgstr "直接接続"
 
-#: ../src/directconnectdialog.cpp:56
 msgctxt "DirectConnectDialog|MessageBox Text"
 msgid "Invalid IP address"
 msgstr "無効なIPアドレス"
 
-#: ../src/directconnectdialog.cpp:63
 msgctxt "DirectConnectDialog|MessageBox Text"
 msgid "IPv6 addresses are not supported."
 msgstr "IPv6アドレスは対応されていません。"
 
-#: ../ui/downloadmusicdialog.ui:14
 msgctxt "DownloadMusicDialog|Dialog Title"
 msgid "KeeperFX Background Music"
 msgstr "KeeperFXのBGM"
 
-#: ../ui/downloadmusicdialog.ui:36
 msgctxt "DownloadMusicDialog|Header"
 msgid "Download Music Files"
 msgstr "音楽ファイルをダウンロード"
 
-#: ../ui/downloadmusicdialog.ui:65
 msgctxt "DownloadMusicDialog|Information"
 msgid ""
 "It seems the background music files were not found. This might happen when "
@@ -444,64 +393,52 @@ msgstr ""
 "音楽ファイルをダウンロードしない場合は、BGMを聞くためにオリジナルゲームのCDが"
 "ディスクドライブに入っている必要があります。"
 
-#: ../ui/downloadmusicdialog.ui:138
 msgctxt "DownloadMusicDialog|Button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../ui/downloadmusicdialog.ui:163
 msgctxt "DownloadMusicDialog|Button"
 msgid "Download"
 msgstr "ダウンロード"
 
-#: ../src/downloadmusicdialog.cpp:81
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to get download URL for music archive"
 msgstr "音楽アーカイブのダウンロードURLの取得に失敗しました"
 
-#: ../src/downloadmusicdialog.cpp:91
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Invalid music archive file extension. It must be a 7zip archive."
 msgstr ""
 "音楽アーカイブファイルの拡張子が無効です。 7zipアーカイブである必要がありま"
 "す。"
 
-#: ../src/downloadmusicdialog.cpp:109
 msgctxt "DownloadMusicDialog|Failure Message"
 msgid "Failed to download music archive"
 msgstr "音楽アーカイブのダウンロードに失敗しました"
 
-#: ../src/downloadmusicdialog.cpp:131
 msgctxt "DownloadMusicDialog|Failure message"
 msgid "Music archive test failed. It may be corrupted."
 msgstr "音楽アーカイブテストに失敗しました。破損している可能性があります。"
 
-#: ../src/downloadmusicdialog.cpp:143
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "抽出中：%p%"
 
-#: ../src/downloadmusicdialog.cpp:175
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid "The KeeperFX background music has been successfully downloaded!"
 msgstr "KeeperFXのBGMが正常にダウンロードされました！"
 
-#: ../src/downloadmusicdialog.cpp:184
 msgctxt "DownloadMusicDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "ダウンロード中：%p% (%vMiB)"
 
-#: ../src/downloadmusicdialog.cpp:225
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Download failed"
 msgstr "ダウンロード失敗"
 
-#: ../src/downloadmusicdialog.cpp:232
 msgctxt "DownloadMusicDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "確認"
 
-#: ../src/downloadmusicdialog.cpp:233
 msgctxt "DownloadMusicDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -513,17 +450,14 @@ msgstr ""
 "\n"
 "ゲームのCDがディスクドライブに入っていないと、BGMを聞くことはできません。"
 
-#: ../ui/enetservertestdialog.ui:14
 msgctxt "EnetServerTestDialog|Window Title"
 msgid "Test internet lobby"
 msgstr "インターネットロビーをテスト"
 
-#: ../ui/enetservertestdialog.ui:30
 msgctxt "EnetServerTestDialog|Header"
 msgid "Multiplayer Lobby Portforwarding Test"
 msgstr "マルチプレイロビーのポート転送テスト"
 
-#: ../ui/enetservertestdialog.ui:60
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "This tool checks if your KeeperFX multiplayer lobby can be reached from the "
@@ -534,7 +468,6 @@ msgstr ""
 "どうかを確認します。 ローカルゲームは、すでにネットワーク内でアクセス可能なた"
 "め、本機能を使用する必要はありません。"
 
-#: ../ui/enetservertestdialog.ui:78
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "To host a game online, you must open port 5556 in your router. How to do "
@@ -545,7 +478,6 @@ msgstr ""
 "この方法はルーターやインターネットプロバイダによって異なるので、オンラインで"
 "手順を確認するか、プロバイダに問い合わせてください。"
 
-#: ../ui/enetservertestdialog.ui:99
 msgctxt "EnetServerTestDialog|Information Label"
 msgid ""
 "KeeperFX only works with IPv4. If you don't have an IPv4 address or you are "
@@ -557,129 +489,125 @@ msgstr ""
 "インターネットプロバイダにIPv4アドレスを取得できるかどうか問い合わせてくださ"
 "い。"
 
-#: ../ui/enetservertestdialog.ui:187
 msgctxt "EnetServerTestDialog|Button"
 msgid "Close"
 msgstr "閉じる"
 
-#: ../ui/enetservertestdialog.ui:212
 msgctxt "EnetServerTestDialog|Button"
 msgid "Test"
 msgstr "テスト"
 
-#: ../src/enetservertestdialog.cpp:62 ../src/enetservertestdialog.cpp:78
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "IPv6 Detected"
 msgstr "IPv6が検出されました"
 
-#: ../src/enetservertestdialog.cpp:62
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to retrieve public IP address."
 msgstr "グローバルIPアドレスの取得に失敗しました。"
 
-#: ../src/enetservertestdialog.cpp:78
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "This tool only works with IPv4."
 msgstr "このツールはIPv4にのみ対応しています。"
 
-#: ../src/enetservertestdialog.cpp:97 ../src/enetservertestdialog.cpp:162
-#: ../src/enetservertestdialog.cpp:173 ../src/enetservertestdialog.cpp:176
 msgctxt "EnetServerTestDialog|MessageBox Title"
 msgid "Portforwarding tool"
 msgstr "ポート転送ツール"
 
-#: ../src/enetservertestdialog.cpp:97
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to start ENET server."
 msgstr "ENETサーバーの起動に失敗しました。"
 
-#: ../src/enetservertestdialog.cpp:162
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to contact KeeperFX.net"
 msgstr "KeeperFX.netとの通信に失敗しました"
 
-#: ../src/enetservertestdialog.cpp:173
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Your router is correctly port forwarded!"
 msgstr "ルーターのポート転送は正しく設定されています！"
 
-#: ../src/enetservertestdialog.cpp:176
 msgctxt "EnetServerTestDialog|MessageBox Text"
 msgid "Failed to connect to local ENET server."
 msgstr "ローカルENETサーバーへの接続に失敗しました。"
 
-#: ../ui/fileremoverdialog.ui:14
 msgctxt "FileRemoverDialog|Window Title"
-msgid "Remove unwanted files"
-msgstr "不要なファイルを削除"
+msgid "Remove leftover files"
+msgstr "残留ファイルを削除"
 
-#: ../ui/fileremoverdialog.ui:39
 msgctxt "FileRemoverDialog|Header"
 msgid "Remove leftover files"
-msgstr "残りのファイルを削除"
+msgstr "残留ファイルを削除"
 
-#: ../ui/fileremoverdialog.ui:63
 msgctxt "FileRemoverDialog|Information Label"
 msgid ""
-"The KeeperFX launcher has found files that were left over after KeeperFX "
-"updates. These files might cause issues and should be removed.\n"
-"\n"
-"This list is maintained by the KeeperFX team, and the files are considered "
-"safe to remove. You can review the files that will be removed before "
-"proceeding."
+"The KeeperFX launcher has found files that were left over after KeeperFX was "
+"updated. These files might cause issues and should be removed."
 msgstr ""
-"KeeperFXアップデート後に残ったファイルを発見しました。これらのファイルは問題"
-"を引き起こす可能性があるため、削除を推奨します。\n"
-"\n"
-"このリストはKeeperFXチームによって管理されており、削除しても安全であると判断"
-"されています。削除されるファイルを確認してから、続行してください。"
+"アップデート後の残留ファイルが検出されました。不具合の原因となる可能性がある"
+"ため、削除を推奨します。"
 
-#: ../ui/fileremoverdialog.ui:115
+msgctxt "FileRemoverDialog|Checkbox Toggle"
+msgid "Always remove leftover files automatically"
+msgstr "残留ファイルを常時自動削除"
+
 msgctxt "FileRemoverDialog|Button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../ui/fileremoverdialog.ui:140
 msgctxt "FileRemoverDialog|Button"
 msgid "Remove All"
 msgstr "全てを削除"
 
-#: ../src/fileremoverdialog.cpp:42
 msgctxt "FileRemoverDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "確認"
 
-#: ../src/fileremoverdialog.cpp:43
 msgctxt "FileRemoverDialog|MessageBox Text"
 msgid ""
-"Are you sure?\n"
+"KeeperFX might not function correctly if these files are present.\n"
 "\n"
-"KeeperFX might not function correctly with these files."
+"Are you sure you want to keep them?"
 msgstr ""
-"よろしいですか？KeeperFXはこれらのファイルでは正しく機能しないかもしれませ"
-"ん。"
+"これらのファイルが存在すると、KeeperFXが正常に動作しない可能性があります。\n"
+"\n"
+"本当に残しますか？"
 
-#: ../src/fileremoverdialog.cpp:67
 msgctxt "FileRemoverDialog|MessageBox Text"
-msgid "Something went wrong while removing unwanted files."
-msgstr "不要なファイル削除中に何か問題が発生しました。"
+msgid "Something went wrong while removing leftover files."
+msgstr "残留ファイル削除中に何か問題が発生しました。"
 
-#: ../src/fileremoverdialog.cpp:74
 msgctxt "FileRemoverDialog|MessageBox Text"
-msgid "Unwanted files have been removed!"
-msgstr "不要なファイルが削除されました！"
+msgid "Leftover files have been removed!"
+msgstr "残留ファイルが削除されました！"
 
-#: ../ui/installkfxdialog.ui:14
+msgctxt "Game|MessageBox Title"
+msgid "KeeperFX has crashed"
+msgstr "KeeperFXのクラッシュ"
+
+msgctxt "Game|MessageBox Text"
+msgid ""
+"It seems that KeeperFX has crashed and is unable to recover.\n"
+"\n"
+"Crash reporting is disabled because you are using the heavylog option.\n"
+"\n"
+"If you require assistance, please create an issue on Github or contact us on "
+"the Keeper Klan Discord."
+msgstr ""
+"KeeperFXがクラッシュし、復旧できない状態のようです。\n"
+"\n"
+"「heavylog」オプションを使用しているため、クラッシュ報告の機能は無効化されて"
+"います。\n"
+"\n"
+"サポートが必要な場合は、GitHubでissueを作成するか、Keeper KlanのDiscordにてお"
+"問い合わせください。"
+
 msgctxt "InstallKfxDialog|Window Title"
 msgid "Install KeeperFX"
 msgstr "KeeperFXのインストール"
 
-#: ../ui/installkfxdialog.ui:30
 msgctxt "InstallKfxDialog|Header"
 msgid "Download and Install KeeperFX"
 msgstr "KeeperFXをダウンロードしてインストール"
 
-#: ../ui/installkfxdialog.ui:45
 msgctxt "InstallKfxDialog|Information Label"
 msgid ""
 "Select your version, and this installer will download and install KeeperFX.\n"
@@ -693,89 +621,72 @@ msgstr ""
 "信頼性のために通常版リリースを選択するか、テストに協力いただける場合はアル"
 "ファ版を選択してください。"
 
-#: ../ui/installkfxdialog.ui:74
 msgctxt "InstallKfxDialog|Label"
 msgid "Release version:"
 msgstr "リリース版数："
 
-#: ../ui/installkfxdialog.ui:146
 msgctxt "InstallKfxDialog|Button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../ui/installkfxdialog.ui:171
 msgctxt "InstallKfxDialog|Button"
 msgid "Install"
 msgstr "インストール"
 
-#: ../src/installkfxdialog.cpp:49
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Stable (Default)"
 msgstr "通常版（初期）"
 
-#: ../src/installkfxdialog.cpp:50
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Alpha"
 msgstr "アルファ"
 
-#: ../src/installkfxdialog.cpp:120
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to get download URL for stable release"
 msgstr "通常版のダウンロードURLの取得に失敗しました"
 
-#: ../src/installkfxdialog.cpp:140
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Failed to download stable release"
 msgstr "通常版をダウンロードに失敗しました"
 
-#: ../src/installkfxdialog.cpp:162
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Stable release archive test failed. It may be corrupted."
 msgstr ""
 "通常版リリースアーカイブテストに失敗しました。破損しているかもしれません。"
 
-#: ../src/installkfxdialog.cpp:175 ../src/installkfxdialog.cpp:274
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "抽出中：%p%"
 
-#: ../src/installkfxdialog.cpp:210 ../src/installkfxdialog.cpp:309
-msgctxt "InstallKfxDialog|MessageBox Text"
-msgid "KeeperFX has been successfully installed!"
-msgstr "KeeperFXが正常にインストールされました！"
+msgctxt "InstallKfxDialog|Failure message"
+msgid "Failed to create temp directory"
+msgstr "一時フォルダーの作成に失敗しました"
 
-#: ../src/installkfxdialog.cpp:222
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Failed to get download URL for alpha patch"
 msgstr "アルファ版のダウンロードURLを取得に失敗しました"
 
-#: ../src/installkfxdialog.cpp:242
 msgctxt "InstallKfxDialog|Failure message"
 msgid "Alpha patch download failed."
 msgstr "アルファパッチをダウンロードに失敗しました。"
 
-#: ../src/installkfxdialog.cpp:263
 msgctxt "InstallKfxDialog|Failure Message"
 msgid "Alpha patch archive test failed. It may be corrupted."
 msgstr ""
 "アルファパッチアーカイブテストに失敗しました。破損しているかもしれません。"
 
-#: ../src/installkfxdialog.cpp:318
 msgctxt "InstallKfxDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "ダウンロード中：%p% (%vMiB)"
 
-#: ../src/installkfxdialog.cpp:359
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Installation failed"
 msgstr "インストール失敗"
 
-#: ../src/installkfxdialog.cpp:366
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "KeeperFX Alpha builds"
 msgstr "KeeperFXのアルファ版"
 
-#: ../src/installkfxdialog.cpp:367
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Alpha patches may contain new features and changes, but often contain bugs "
@@ -790,12 +701,10 @@ msgstr ""
 "\n"
 "アルファパッチの使用を継続しますか？"
 
-#: ../src/installkfxdialog.cpp:402
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Uninstall KeeperFX"
 msgstr "KeeperFXをアンインストール"
 
-#: ../src/installkfxdialog.cpp:403
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Do you want to uninstall KeeperFX?\n"
@@ -806,12 +715,10 @@ msgstr ""
 "\n"
 "これで残ったファイルが削除されます。"
 
-#: ../src/installkfxdialog.cpp:416
 msgctxt "InstallKfxDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "確認"
 
-#: ../src/installkfxdialog.cpp:416
 msgctxt "InstallKfxDialog|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -822,59 +729,91 @@ msgstr ""
 "\n"
 "KeeperFXがプレイできなくなります。"
 
-#: ../ui/launchermainwindow.ui:29
+msgctxt "InstallKfxDialog|Progress bar"
+msgid "Copying: %p%"
+msgstr "コピー中：%p%"
+
+#, qt-format
+msgctxt "InstallKfxDialog|Failure Message"
+msgid "Failed to create destination directory: %1"
+msgstr "移動先フォルダーの作成に失敗しました：%1"
+
+#, qt-format
+msgctxt "InstallKfxDialog|"
+msgid "Failed to move file: %1"
+msgstr "ファイルの移動に失敗しました：%1"
+
+msgctxt "InstallKfxDialog|MessageBox Text"
+msgid "KeeperFX has been successfully installed!"
+msgstr "KeeperFXが正常にインストールされました！"
+
 msgctxt "LauncherMainWindow|"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFXのランチャー"
 
-#: ../ui/launchermainwindow.ui:126
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest workshop items"
 msgstr "ワークショップの最新アイテム"
 
-#: ../ui/launchermainwindow.ui:212
 msgctxt "LauncherMainWindow|Header"
 msgid "Latest News"
 msgstr "最新ニュース"
 
-#: ../ui/launchermainwindow.ui:297
 msgctxt "LauncherMainWindow|Button"
 msgid "Settings"
 msgstr "設定"
 
-#: ../ui/launchermainwindow.ui:310
 msgctxt "LauncherMainWindow|Button"
 msgid "Mods"
 msgstr "MOD"
 
-#: ../ui/launchermainwindow.ui:326
 msgctxt "LauncherMainWindow|Button"
 msgid "Workshop"
 msgstr "ワークショップ"
 
-#: ../ui/launchermainwindow.ui:358
-msgctxt "LauncherMainWindow|Button"
-msgid "Logfile"
-msgstr "ログファイル"
+msgctxt "LauncherMainWindow|Button tooltip text"
+msgid "Check for updates"
+msgstr "アップデートを確認"
 
-#: ../ui/launchermainwindow.ui:371
-msgctxt "LauncherMainWindow|Button"
-msgid "Open Folder"
-msgstr "フォルダーを開く"
+msgctxt "LauncherMainWindow|Button tooltip text"
+msgid "Open log file"
+msgstr "ログファイルを開く"
 
-#: ../ui/launchermainwindow.ui:474
+msgctxt "LauncherMainWindow|Button tooltip text"
+msgid "Open game folder"
+msgstr "ゲームのフォルダーを開く"
+
+msgctxt "LauncherMainWindow|Social button tooltip text"
+msgid "Discord - Keeper Klan (English)"
+msgstr "Discord - Keeper Klan （英語）"
+
 msgctxt "LauncherMainWindow|Button"
 msgid "Play"
 msgstr "実行"
 
-#: ../src/launchermainwindow.cpp:152 ../src/launchermainwindow.cpp:237
-#: ../src/launchermainwindow.cpp:258 ../src/launchermainwindow.cpp:1079
-#: ../src/launchermainwindow.cpp:1085
+msgctxt "LauncherMainWindow|Version label tooltip text"
+msgid "Click to check for updates"
+msgstr "クリックでアップデートを確認"
+
+msgctxt "LauncherMainWindow|Fallback text label"
+msgid "Loading..."
+msgstr "ロード中…"
+
+msgctxt "LauncherMainWindow|MessageBox Title"
+msgid "KeeperFX Launcher"
+msgstr "KeeperFXのランチャー"
+
+msgctxt "LauncherMainWindow|MessageBox Text"
+msgid ""
+"This launcher version is a prototype and should only be used for testing."
+msgstr ""
+"このランチャーバージョンはプロトタイプであり、テスト目的でのみ使用してくださ"
+"い。"
+
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Error"
 msgstr "KeeperFXエラー"
 
-#: ../src/launchermainwindow.cpp:153
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has detected that it might have been installed in the original "
@@ -890,25 +829,22 @@ msgstr ""
 "KeeperFXはスタンドアロンゲームですので、専用のフォルダーにインストールしてく"
 "ださい。"
 
-#: ../src/launchermainwindow.cpp:163
 msgctxt "LauncherMainWindow|Messagebox Checkbox label"
 msgid "Don't show this again"
 msgstr "再表示しない"
 
-#: ../src/launchermainwindow.cpp:238
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
-"The launcher failed to grab the version of KeeperFX. It's possible your "
-"installation is corrupted.\n"
+"The launcher failed to determine the version of KeeperFX. Your installation "
+"may be corrupted or outdated.\n"
 "\n"
-"Do you want to automatically reinstall KeeperFX?"
+"Would you like to reinstall KeeperFX?"
 msgstr ""
-"ランチャーがKeeperFXの版数を取得できませんでした。インストールが破損している"
-"かもしれません。\n"
+"KeeperFXのバージョンを確認できませんでした。インストールが破損しているか、"
+"バージョンが古い可能性があります。\n"
 "\n"
-"KeeperFXを自動的に再インストールしますか？"
+"KeeperFXを再インストールしますか？"
 
-#: ../src/launchermainwindow.cpp:259
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher failed to grab the version of KeeperFX. Please report this "
@@ -917,52 +853,46 @@ msgstr ""
 "ランチャーがKeeperFXの版数を取得できませんでした。このエラーをKeeperFXチーム"
 "に届け出てください。"
 
-#: ../src/launchermainwindow.cpp:350
 msgctxt "LauncherMainWindow|Menu"
 msgid "Play campaign"
 msgstr "キャンペーンをプレイ"
 
-#: ../src/launchermainwindow.cpp:358
 msgctxt "LauncherMainWindow|Menu"
 msgid "Load save game"
 msgstr "セーブデータをロード"
 
-#: ../src/launchermainwindow.cpp:365
 msgctxt "LauncherMainWindow|Menu"
 msgid "Direct connect (MP)"
 msgstr "直接接続（マルチプレイヤー）"
 
-#: ../src/launchermainwindow.cpp:376
 msgctxt "LauncherMainWindow|Menu"
 msgid "Scan local network (MP)"
 msgstr "ネットワークを検査（マルチプレイヤー）"
 
-#: ../src/launchermainwindow.cpp:387
 msgctxt "LauncherMainWindow|Menu"
 msgid "Test internet lobby (MP)"
 msgstr "インターネットロビーをテスト（マルチプレイヤー）"
 
-#: ../src/launchermainwindow.cpp:395
 msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "パケット再生"
 
-#: ../src/launchermainwindow.cpp:409
+msgctxt "LauncherMainWindow|Menu"
+msgid "Start without mods"
+msgstr "MODなしで実行"
+
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
-msgstr "追加の作譜"
+msgstr "Heavylog"
 
-#: ../src/launchermainwindow.cpp:416 ../src/launchermainwindow.cpp:420
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
-msgstr "実行（追加の作譜）"
+msgstr "実行（heavylog）"
 
-#: ../src/launchermainwindow.cpp:416 ../src/launchermainwindow.cpp:420
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play"
 msgstr "実行"
 
-#: ../src/launchermainwindow.cpp:547
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher is unable to find 'keeperfx.exe'.\n"
@@ -973,12 +903,10 @@ msgstr ""
 "\n"
 "KeeperFXをダウンロードしてインストールしますか？"
 
-#: ../src/launchermainwindow.cpp:553
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Confirmation"
 msgstr "確認"
 
-#: ../src/launchermainwindow.cpp:553
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "Are you sure?\n"
@@ -989,12 +917,10 @@ msgstr ""
 "\n"
 "KeeperFXがプレイできなくなります。"
 
-#: ../src/launchermainwindow.cpp:586
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "Language has changed"
 msgstr "言語が変更されました"
 
-#: ../src/launchermainwindow.cpp:587
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
@@ -1003,12 +929,30 @@ msgstr ""
 "ランチャーが言語設定を変更するには、ランチャーを再起動する必要があります。今"
 "すぐ再起動しますか？"
 
-#: ../src/launchermainwindow.cpp:1045
+msgctxt "LauncherMainWindow|MessageBox Title"
+msgid "KeeperFX Update"
+msgstr "KeeperFXのアップデート"
+
+msgctxt "LauncherMainWindow|MessageBox Text"
+msgid "You are already on the latest version!"
+msgstr "最新バージョンをすでにお使いです！"
+
+msgctxt "LauncherMainWindow|MessageBox Text"
+msgid ""
+"Unable to grab latest KeeperFX version from the website. Try again later.\n"
+"\n"
+"If the issue persists, check your internet connection and firewall settings."
+msgstr ""
+"ウェブサイトから最新のKeeperFXバージョンを取得できませんでした。後ほど再度お"
+"試しください。\n"
+"\n"
+"問題が解決しない場合は、インターネット接続とファイアウォールの設定を確認して"
+"ください。"
+
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
 msgstr "KeeperFX検証エラー"
 
-#: ../src/launchermainwindow.cpp:1046
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1022,7 +966,6 @@ msgstr ""
 "%1\n"
 "KeeperFXのオフィシャルなファイルのみを使用することを強くお勧めします。"
 
-#: ../src/launchermainwindow.cpp:1080
 #, qt-format
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -1036,37 +979,30 @@ msgstr ""
 "エラー：\n"
 "%1"
 
-#: ../src/launchermainwindow.cpp:1085
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "Failed to start KeeperFX. Unknown error."
 msgstr "KeeperFXの実行に失敗しました。不明なエラーが発生した。"
 
-#: ../src/launchermainwindow.cpp:1109
 msgctxt "LauncherMainWindow|Window Title"
 msgid "KeeperFX Launcher"
 msgstr "KeeperFXのランチャー"
 
-#: ../ui/modmanagerdialog.ui:17
 msgctxt "ModManagerDialog|"
 msgid "KeeperFX Mod Manager"
 msgstr "KeeperFXのMOD管理"
 
-#: ../ui/modmanagerdialog.ui:42
 msgctxt "ModManagerDialog|Header"
 msgid "Mod Manager"
 msgstr "MOD管理"
 
-#: ../ui/runpacketfiledialog.ui:14
 msgctxt "RunPacketFileDialog|Dialog Title"
 msgid "Run Packetfile"
 msgstr "パケット再生"
 
-#: ../ui/runpacketfiledialog.ui:30
 msgctxt "RunPacketFileDialog|Header"
 msgid "Run Packetfile"
 msgstr "パケット再生"
 
-#: ../ui/runpacketfiledialog.ui:48
 msgctxt "RunPacketFileDialog|Information Label"
 msgid ""
 "Select a packetfile to replay. KeeperFX will be started and the packetfile "
@@ -1075,32 +1011,26 @@ msgstr ""
 "再生するパケットファイルを選択してください。KeeperFXが起動し、パケットファイ"
 "ルを自動的に再生します。"
 
-#: ../ui/runpacketfiledialog.ui:69
 msgctxt "RunPacketFileDialog|Notice Label"
 msgid "Packetsave will be disabled when loading a packetfile."
 msgstr "パケットセーブは、パケットファイルをロードすると無効になります。"
 
-#: ../ui/runpacketfiledialog.ui:124
 msgctxt "RunPacketFileDialog|Button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../ui/runpacketfiledialog.ui:149
 msgctxt "RunPacketFileDialog|Button"
 msgid "Start"
 msgstr "再生"
 
-#: ../ui/scannetworkdialog.ui:14
 msgctxt "ScanNetworkDialog|Window Title"
 msgid "Scan Network"
 msgstr "ネットワークを検査"
 
-#: ../ui/scannetworkdialog.ui:30
 msgctxt "ScanNetworkDialog|Header"
 msgid "Scan Network"
 msgstr "ネットワークを検査"
 
-#: ../ui/scannetworkdialog.ui:45
 msgctxt "ScanNetworkDialog|Information Label"
 msgid ""
 "Scan your local network (LAN) for open ENET lobbies. The other person should "
@@ -1113,87 +1043,70 @@ msgstr ""
 "ルチプレイ -> ENET -> ゲームを作成する)。相手がロビーを開いている場合、この"
 "ツールは相手のIPアドレスを見つけることができるはずです。"
 
-#: ../ui/scannetworkdialog.ui:88
 msgctxt "ScanNetworkDialog|Button"
 msgid "Close"
 msgstr "閉じる"
 
-#: ../ui/scannetworkdialog.ui:113
 msgctxt "ScanNetworkDialog|Button"
 msgid "Scan"
 msgstr "検査"
 
-#: ../ui/scannetworkdialog.ui:141
 msgctxt "ScanNetworkDialog|Button"
 msgid "Connect"
 msgstr "接続"
 
-#: ../src/scannetworkdialog.cpp:20
 msgctxt "ScanNetworkDialog|Table Header"
 msgid "IP Address"
 msgstr "IPアドレス"
 
-#: ../src/scannetworkdialog.cpp:20
 msgctxt "ScanNetworkDialog|Table Header"
 msgid "Hostname"
 msgstr "ホスト名"
 
-#: ../src/scannetworkdialog.cpp:73
 msgctxt "ScanNetworkDialog|Button text"
 msgid "Stop Scan"
 msgstr "検査を停止"
 
-#: ../src/scannetworkdialog.cpp:83
 msgctxt "ScanNetworkDialog|Progress bar"
 msgid "Scanning..."
-msgstr "検査中..."
+msgstr "検査中…"
 
-#: ../src/scannetworkdialog.cpp:96 ../src/scannetworkdialog.cpp:138
 msgctxt "ScanNetworkDialog|Button text"
 msgid "Scan"
 msgstr "検査"
 
-#: ../src/scannetworkdialog.cpp:126
 msgctxt "ScanNetworkDialog|Progress bar"
 msgid "Scanning: %p% (%v/%m)"
 msgstr "検査中：%p% (%v/%m)"
 
-#: ../ui/settingsdialog.ui:14
 msgctxt "SettingsDialog|Window Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFXの設定"
 
-#: ../ui/settingsdialog.ui:41
 msgctxt "SettingsDialog|Tab Title"
 msgid "Game"
 msgstr "ゲーム"
 
-#: ../ui/settingsdialog.ui:73
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Game language"
 msgstr "ゲームの言語"
 
-#: ../ui/settingsdialog.ui:91
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display Intro"
 msgstr "イントロを表示"
 
-#: ../ui/settingsdialog.ui:109
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Cheats"
 msgstr "チート有効化"
 
-#: ../ui/settingsdialog.ui:127
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Censorship"
 msgstr "検閲"
 
-#: ../ui/settingsdialog.ui:160
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Screenshot type"
 msgstr "スクリーンショット形式"
 
-#: ../ui/settingsdialog.ui:178
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
 "Gameturns per second\n"
@@ -1202,636 +1115,653 @@ msgstr ""
 "毎秒ターン数\n"
 "(既定値: 20)"
 
-#: ../ui/settingsdialog.ui:215
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Command character"
 msgstr "コマンドため文字"
 
-#: ../ui/settingsdialog.ui:248
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display splash screens"
 msgstr "スプラッシュスクリーン"
 
-#: ../ui/settingsdialog.ui:266
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable delta time"
 msgstr "デルタタイム"
 
-#: ../ui/settingsdialog.ui:284
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Freeze game when not focused"
 msgstr "非アクティブ時に一時停止"
 
-#: ../ui/settingsdialog.ui:302
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Human Player"
-msgstr "人間のプレイヤー"
-
-#: ../ui/settingsdialog.ui:330
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Packetsave filename"
 msgstr "パケットセーブのファイル名"
 
-#: ../ui/settingsdialog.ui:343
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Packetsave"
 msgstr "パケットセーブ"
 
-#: ../ui/settingsdialog.ui:376
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Exit on LUA error"
 msgstr "LUAエラーでアプリ終了"
 
-#: ../ui/settingsdialog.ui:394
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically enable flee"
 msgstr "既定で逃走を有効"
 
-#: ../ui/settingsdialog.ui:412
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically enable imprison"
 msgstr "既定で生け捕りを有効"
 
-#: ../ui/settingsdialog.ui:418
 msgctxt "SettingsDialog|Tab Title"
 msgid "Graphics"
 msgstr "グラフィックス"
 
-#: ../ui/settingsdialog.ui:430
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Smoothen video"
+msgid "Smoothen edges"
 msgstr "画面スムージング"
 
-#: ../ui/settingsdialog.ui:448 ../ui/settingsdialog.ui:809
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resolution"
 msgstr "解像度"
 
-#: ../ui/settingsdialog.ui:496 ../ui/settingsdialog.ui:956
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display mode"
 msgstr "表示モード"
 
-#: ../ui/settingsdialog.ui:529
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Display monitor"
 msgstr "表示モニター"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:547
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 1"
 msgstr "第１モード"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:565
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 2"
 msgstr "第２モード"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:583
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 3"
 msgstr "第３モード"
 
 #. This is shown under the views configuration
-#: ../ui/settingsdialog.ui:659
 msgctxt "SettingsDialog|Information Label"
 msgid ""
 "<i>Switch between in-game views by pressing <strong>Alt + R</strong></i>"
 msgstr ""
 "（ゲーム内モードを切り替えるには、<strong>Alt + R</strong> を押します）"
 
-#: ../ui/settingsdialog.ui:677
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resize Movies"
 msgstr "動画の調整"
 
-#: ../ui/settingsdialog.ui:710
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Creature flower size (px)"
 msgstr "クリーチャーシンボルの寸法（px）"
 
-#: ../ui/settingsdialog.ui:743
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Hand size %"
 msgstr "手の寸法　%"
 
-#: ../ui/settingsdialog.ui:791
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Select box line size %"
 msgstr "選択枠の太さ　%"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:887
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Menu"
 msgstr "メニュー"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:920
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Failsafe"
 msgstr "駄目場合"
 
 #. Should be kept very short
-#: ../ui/settingsdialog.ui:938
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Movies"
 msgstr "動画"
 
-#: ../ui/settingsdialog.ui:977
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Max. FPS (0 = unlimited)"
+msgstr "最大FPS（0 = 無制限）"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid ""
+"GUI blink rate\n"
+"(default = 1)"
+msgstr ""
+"GUIの点滅速度\n"
+"（既定値: 1）"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid ""
+"Neutral flash rate\n"
+"(default = 1)"
+msgstr ""
+"中立部屋の点滅速度\n"
+"（既定値: 1）"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically determine max. FPS"
+msgstr "最大FPSを自動的に設定"
+
 msgctxt "SettingsDialog|Tab Title"
 msgid "Sound"
 msgstr "サウンド"
 
-#: ../ui/settingsdialog.ui:994
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable sound"
 msgstr "サウンド"
 
-#: ../ui/settingsdialog.ui:1012
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Use CD music instead of local files"
 msgstr "音楽をCDから再生"
 
-#: ../ui/settingsdialog.ui:1030
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
 msgstr "ポーズ時に音楽も一時停止"
 
-#: ../ui/settingsdialog.ui:1048
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable atmospheric sounds"
 msgstr "背景音"
 
-#: ../ui/settingsdialog.ui:1071
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Frequency"
 msgstr "頻度"
 
-#: ../ui/settingsdialog.ui:1094
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Volume"
 msgstr "音量"
 
-#: ../ui/settingsdialog.ui:1112
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Mute audio when game is not focused"
 msgstr "バックグラウンドでオーディオをミュート"
 
-#: ../ui/settingsdialog.ui:1118
 msgctxt "SettingsDialog|Tab Title"
 msgid "Input"
 msgstr "入力"
 
-#: ../ui/settingsdialog.ui:1135
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Lock cursor in possession"
 msgstr "「支配」中はカーソルをロック"
 
-#: ../ui/settingsdialog.ui:1153
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor when game is paused"
 msgstr "ポーズ中はカーソルをアンロック"
 
 #. "Alternative Input"
-#: ../ui/settingsdialog.ui:1171
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Unlock cursor from game window"
 msgstr "カーソルをウィンドウに固定しない"
 
-#: ../ui/settingsdialog.ui:1189
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Screen edge camera panning"
 msgstr "画面端カメラ移動"
 
-#: ../ui/settingsdialog.ui:1207
 msgctxt "SettingsDialog|Slider Title Label"
 msgid "Mouse sensitivity"
 msgstr "マウスの感性"
 
-#: ../ui/settingsdialog.ui:1271
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Raw mouse input"
 msgstr "マウス生入力"
 
-#: ../ui/settingsdialog.ui:1284
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Default tag mode"
 msgstr "既定のマークモード"
 
-#: ../ui/settingsdialog.ui:1302
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable tag mode toggle (Right-click)"
 msgstr "右クリックでマークモード間の切り替え"
 
-#: ../ui/settingsdialog.ui:1318
 msgctxt "SettingsDialog|Tab Title"
 msgid "Multiplayer"
 msgstr "マルチプレイヤ"
 
-#: ../ui/settingsdialog.ui:1345
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Masterserver"
 msgstr "マスターサーバー"
 
-#: ../ui/settingsdialog.ui:1351
 msgctxt "SettingsDialog|Tab Title"
 msgid "Launcher"
 msgstr "ランチャー"
 
-#: ../ui/settingsdialog.ui:1363
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Check for KeeperFX updates"
-msgstr "KeeperFXアップデートを確認"
+msgid "Automatically check for KeeperFX updates"
+msgstr "KeeperFXアップデートを自動で確認"
 
-#: ../ui/settingsdialog.ui:1386
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable crash reporting"
 msgstr "クラッシュ報告"
 
-#: ../ui/settingsdialog.ui:1399
 msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Release"
-msgstr "リリース"
+msgid "KeeperFX Release Channel"
+msgstr "KeeperFXのリリースチャンネル"
 
-#: ../ui/settingsdialog.ui:1412
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable website integration"
 msgstr "ウェブサイト統合"
 
-#: ../ui/settingsdialog.ui:1425
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Open on same screen as game"
 msgstr "ゲームと同じ画面で開く"
 
-#: ../ui/settingsdialog.ui:1438
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Launcher language"
 msgstr "ランチャーの言語"
 
-#: ../ui/settingsdialog.ui:1466
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Update automatically"
 msgstr "自動アップデート"
 
-#: ../ui/settingsdialog.ui:1479
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Backup savefiles during update"
 msgstr "アップデート時にセーブデータをバックアップ"
 
-#: ../ui/settingsdialog.ui:1507
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Play button theme"
 msgstr "プレイボタンのテーマ"
 
-#: ../ui/settingsdialog.ui:1513
+msgctxt "SettingsDialog|Button"
+msgid "Show launcher command line options"
+msgstr "ランチャーのコマンドラインオプションを表示"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid ""
+"Update check interval in days\n"
+"(0 = always check)"
+msgstr ""
+"アップデートの確認間隔（日）\n"
+"（0 = 常に確認）"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Show directory name in window title"
+msgstr "ウィンドウのタイトルにフォルダー名を表示"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically remove leftover files"
+msgstr "残留ファイルを自動削除"
+
 msgctxt "SettingsDialog|Tab Title"
 msgid "API"
 msgstr "API"
 
-#: ../ui/settingsdialog.ui:1530
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable API"
 msgstr "API"
 
-#: ../ui/settingsdialog.ui:1566
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "API port"
 msgstr "APIポート"
 
-#: ../ui/settingsdialog.ui:1572
 msgctxt "SettingsDialog|Tab Title"
 msgid "About"
 msgstr "について"
 
-#: ../src/settingsdialog.cpp:55
 msgctxt "SettingsDialog|Dialog Button"
 msgid "Open config file"
 msgstr "設定ファイルを開く"
 
-#: ../src/settingsdialog.cpp:95
-msgctxt "SettingsDialog|Player Color Dropdown"
-msgid "0: Red (Default)"
-msgstr "赤色（既定）"
-
-#: ../src/settingsdialog.cpp:96
-msgctxt "SettingsDialog|Player Color Dropdown"
-msgid "1: Blue"
-msgstr "青色"
-
-#: ../src/settingsdialog.cpp:97
-msgctxt "SettingsDialog|Player Color Dropdown"
-msgid "2: Green"
-msgstr "緑色"
-
-#: ../src/settingsdialog.cpp:98
-msgctxt "SettingsDialog|Player Color Dropdown"
-msgid "3: Yellow"
-msgstr "黄色"
-
-#: ../src/settingsdialog.cpp:99
-msgctxt "SettingsDialog|Player Color Dropdown"
-msgid "4: White / Heroes"
-msgstr "白色"
-
-#: ../src/settingsdialog.cpp:104
-msgctxt "SettingsDialog|Player Color Dropdown"
-msgid "6: Purple"
-msgstr "紫色"
-
-#: ../src/settingsdialog.cpp:105
-msgctxt "SettingsDialog|Player Color Dropdown"
-msgid "7: Black"
-msgstr "黒色"
-
-#: ../src/settingsdialog.cpp:106
-msgctxt "SettingsDialog|Player Color Dropdown"
-msgid "8: Orange"
-msgstr "橙色"
-
-#: ../src/settingsdialog.cpp:123
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Single"
 msgstr "単一選択"
 
-#: ../src/settingsdialog.cpp:124
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Drag"
 msgstr "ドラッグ選択"
 
-#: ../src/settingsdialog.cpp:125
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Remember Last"
 msgstr "前回設定"
 
-#: ../src/settingsdialog.cpp:169
 msgctxt "SettingsDialog|Play Button Theme Dropdown"
 msgid "Qt Fusion Dark"
 msgstr "Qt Fusion ダーク"
 
-#: ../src/settingsdialog.cpp:170
 msgctxt "SettingsDialog|Play Button Theme Dropdown"
 msgid "DK Orange (default)"
 msgstr "DK橙色（既定）"
 
-#: ../src/settingsdialog.cpp:179
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Fit (default)"
 msgstr "画面に合わせる（既定）"
 
-#: ../src/settingsdialog.cpp:180
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Off"
 msgstr "オフ"
 
-#: ../src/settingsdialog.cpp:181
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Stretch"
 msgstr "引き伸ばし"
 
-#: ../src/settingsdialog.cpp:182
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Crop"
 msgstr "切り取り"
 
-#: ../src/settingsdialog.cpp:183
 msgctxt "SettingsDialog|Resize Movies Dropdown"
 msgid "Pixel perfect"
 msgstr "ピクセルパーフェクト"
 
-#: ../src/settingsdialog.cpp:189
 msgctxt "SettingsDialog|Resolution Dropdown"
 msgid "Match desktop"
 msgstr "デスクトップに同期"
 
-#: ../src/settingsdialog.cpp:226
+msgctxt "SettingsDialog|Resolution Dropdown"
+msgid "Custom..."
+msgstr "カスタム…"
+
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
 msgstr "全画面"
 
-#: ../src/settingsdialog.cpp:227
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
 msgstr "ウィンドウ"
 
-#: ../src/settingsdialog.cpp:243
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Low"
 msgstr "少"
 
-#: ../src/settingsdialog.cpp:244
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "Medium"
 msgstr "中"
 
-#: ../src/settingsdialog.cpp:245
 msgctxt "SettingsDialog|Atmosphere Frequency Dropdown"
 msgid "High"
 msgstr "高"
 
-#: ../src/settingsdialog.cpp:248
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Low"
 msgstr "低"
 
-#: ../src/settingsdialog.cpp:249
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "Medium"
 msgstr "中"
 
-#: ../src/settingsdialog.cpp:250
 msgctxt "SettingsDialog|Atmosphere Volume Dropdown"
 msgid "High"
 msgstr "高"
 
-#: ../src/settingsdialog.cpp:253
-msgctxt "SettingsDialog|Game Release Build"
+msgctxt "SettingsDialog|Game Release Channel"
 msgid "Stable (Default)"
-msgstr "通常版（初期）"
+msgstr "安定版 (標準)"
 
-#: ../src/settingsdialog.cpp:254
-msgctxt "SettingsDialog|Game Release Build"
+msgctxt "SettingsDialog|Game Release Channel"
 msgid "Alpha"
 msgstr "アルファ"
 
-#: ../src/settingsdialog.cpp:343
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX v%1"
 msgstr "KeeperFX バージョン %1"
 
-#: ../src/settingsdialog.cpp:348
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "KeeperFX Launcher v%1"
 msgstr "KeeperFXのランチャー バージョン %1"
 
-#: ../src/settingsdialog.cpp:350
 msgctxt "SettingsDialog|About Label"
 msgid "Launcher Libraries:"
 msgstr "ランチャーのライブラリ："
 
-#: ../src/settingsdialog.cpp:355
 #, qt-format
 msgctxt "SettingsDialog|About Label"
 msgid "Join us on Discord: %1"
 msgstr "Discordに参加：%1"
 
-#: ../src/settingsdialog.cpp:379
 #, qt-format
 msgctxt "SettingsDialog|Label Contributor List"
 msgid "KeeperFX Contributors: %1"
 msgstr "KeeperFXの貢献者：%1"
 
-#: ../src/settingsdialog.cpp:918
+#, qt-format
+msgctxt "SettingsDialog|Label Translator List"
+msgid "KeeperFX Launcher Translators: %1"
+msgstr "KeeperFXランチャーの翻訳者：%1"
+
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
 msgstr "KeeperFXの設定"
 
-#: ../src/settingsdialog.cpp:919
+msgctxt "SettingsDialog|MessageBox Text"
+msgid ""
+"Do you want to restore the default settings?\n"
+"\n"
+"All your custom settings will be lost."
+msgstr ""
+"既定の設定に戻しますか？\n"
+"\n"
+"すべてのカスタム設定が失われます。"
+
+msgctxt "SettingsDialog|MessageBox Text"
+msgid "The default settings have been restored."
+msgstr "既定の設定に戻しました。"
+
 msgctxt "SettingsDialog|MessageBox Text"
 msgid ""
 "One or more settings have been changed. Are you sure you want to return "
 "without saving?"
 msgstr "設定が変更されました。本当に保存せずに戻りますか？"
 
-#: ../ui/updatedialog.ui:14
+msgctxt "SettingsDialog|MessageBox Title"
+msgid "Launcher command line options"
+msgstr "ランチャーのコマンドラインオプション"
+
+msgctxt "SettingsDialog|Custom resoltuion dialog title"
+msgid "Custom resolution"
+msgstr "カスタムの解像度"
+
+msgctxt "SettingsDialog|Custom resolution dialog label"
+msgid "Width:"
+msgstr "幅："
+
+msgctxt "SettingsDialog|Custom resolution dialog label"
+msgid "Height:"
+msgstr "高さ："
+
+#, qt-format
+msgctxt "SettingsDialog|Resolution Dropdown"
+msgid "%1 x %2 (Custom)"
+msgstr "%1 x %2 (カスタム)"
+
 msgctxt "UpdateDialog|Window Title"
 msgid "KeeperFX Update"
 msgstr "KeeperFXのアップデート"
 
-#: ../ui/updatedialog.ui:30
 msgctxt "UpdateDialog|Header"
 msgid "New KeeperFX version found!"
 msgstr "新しいKeeperFX版！"
 
-#: ../ui/updatedialog.ui:135
 msgctxt "UpdateDialog|Button"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../ui/updatedialog.ui:160
 msgctxt "UpdateDialog|Button"
 msgid "Update"
 msgstr "アップデート"
 
-#: ../src/updatedialog.cpp:46 ../src/updatedialog.cpp:52
 msgctxt "UpdateDialog|Appended to version string"
 msgid "Alpha"
 msgstr "アルファ"
 
-#: ../src/updatedialog.cpp:57
 msgctxt "UpdateDialog|Label"
 msgid "Current version:"
 msgstr "現在の版："
 
-#: ../src/updatedialog.cpp:57
 msgctxt "UpdateDialog|Label"
 msgid "New version:"
 msgstr "新しい版："
 
-#: ../src/updatedialog.cpp:118
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p% (%vMiB)"
 msgstr "ダウンロード中：%p% (%vMiB)"
 
-#: ../src/updatedialog.cpp:135
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Update failed"
 msgstr "アップデート失敗"
 
-#: ../src/updatedialog.cpp:153
+msgctxt "UpdateDialog|Failure Message"
+msgid ""
+"The updater failed to grab the latest stable version which is required for "
+"this alpha."
+msgstr "このアルファ版に必要な最新の安定版を取得できませんでした。"
+
 msgctxt "UpdateDialog|Title label"
 msgid "Updating..."
-msgstr "アップデート中..."
+msgstr "アップデート中…"
 
-#: ../src/updatedialog.cpp:192
 msgctxt "UpdateDialog|Progress bar (%p=percentage)"
 msgid "Comparing: %p%"
 msgstr "比較中：%p%"
 
-#: ../src/updatedialog.cpp:220
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to open file: %1"
 msgstr "ファイルを開くに失敗しました：%1"
 
-#: ../src/updatedialog.cpp:306
 msgctxt "UpdateDialog|Failure Message"
 msgid "Archive download failed."
 msgstr "アーカイブをダウンロードに失敗しました。"
 
-#: ../src/updatedialog.cpp:334
 msgctxt "UpdateDialog|Progress bar"
 msgid "Extracting: %p%"
 msgstr "抽出中：%p%"
 
-#: ../src/updatedialog.cpp:347 ../src/updatedialog.cpp:549
 msgctxt "UpdateDialog|Title label"
 msgid "Update complete!"
 msgstr "アップデートが完了しました！"
 
-#: ../src/updatedialog.cpp:368 ../src/updatedialog.cpp:562
 #, qt-format
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "KeeperFX has been successfully updated to version %1!"
 msgstr "KeeperFXが版数%1に正常にアップデートされました！"
 
-#: ../src/updatedialog.cpp:391
 msgctxt "UpdateDialog|MessageBox Title"
 msgid "Confirmation"
 msgstr "確認"
 
-#: ../src/updatedialog.cpp:391
 msgctxt "UpdateDialog|MessageBox Text"
 msgid "Are you sure you want to cancel the update?"
 msgstr "本当にアップデートをキャンセルしますか？"
 
-#: ../src/updatedialog.cpp:414
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to create temp directory"
 msgstr "一時フォルダーの作成に失敗しました"
 
-#: ../src/updatedialog.cpp:420
 msgctxt "UpdateDialog|Progress bar"
 msgid "Downloading: %p%"
 msgstr "ダウンロード中：%p%"
 
-#: ../src/updatedialog.cpp:482
 msgctxt "UpdateDialog|Failure Message"
 msgid "The temporary directory does not exist"
 msgstr "一時フォルダーが存在しません"
 
-#: ../src/updatedialog.cpp:493
 msgctxt "UpdateDialog|Progress bar"
 msgid "Copying: %p%"
 msgstr "コピー中：%p%"
 
-#: ../src/updatedialog.cpp:508
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
 msgid "File does not exist: %1"
 msgstr "ファイルが存在しません：%1"
 
-#: ../src/updatedialog.cpp:525
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
 msgid "Failed to create destination directory: %1"
 msgstr "移動先フォルダーの作成に失敗しました：%1"
 
-#: ../src/updatedialog.cpp:540
 #, qt-format
 msgctxt "UpdateDialog|Failure Message"
-msgid "Failed to move file: %1"
-msgstr "ファイルを移動するに失しました：%1"
+msgid "Failed to remove file (%1): %2"
+msgstr "ファイル（%1）の削除に失敗しました：%2"
 
-#: ../src/updatedialog.cpp:579
+#, qt-format
+msgctxt "UpdateDialog|Failure Message"
+msgid "Failed to move file (%1): %2"
+msgstr "ファイル（%1）の移動に失敗しました：%2"
+
+msgctxt "UpdateDialog|Failure Message"
+msgid ""
+"It is possible an antivirus is causing this problem. Try disabling it and "
+"try again."
+msgstr ""
+"この問題は、ウイルス対策ソフトが原因である可能性があります。一度無効にして、"
+"再度お試しください。"
+
 msgctxt "UpdateDialog|Failure message"
 msgid "Failed to move all downloaded files"
 msgstr "全てのダウンロードしたファイルを移動に失敗しました"
+
+msgctxt "main|MessageBox Title"
+msgid "KeeperFX Error"
+msgstr "KeeperFXエラー"
+
+msgctxt "main|MessageBox Text"
+msgid ""
+"Failed to determine the KeeperFX version. This is required to submit a crash "
+"report."
+msgstr ""
+"KeeperFXのバージョンを特定できませんでした。クラッシュ報告を送信するにはこれ"
+"が必要です。"
+
+#~ msgctxt "FileRemoverDialog|Window Title"
+#~ msgid "Remove unwanted files"
+#~ msgstr "不要なファイルを削除"
+
+#~ msgctxt "SettingsDialog|Dropdown Title Label"
+#~ msgid "Release"
+#~ msgstr "リリース"
+
+#~ msgctxt "SettingsDialog|Game Release Build"
+#~ msgid "Stable (Default)"
+#~ msgstr "安定版（初期）"
+
+#~ msgctxt "SettingsDialog|Game Release Build"
+#~ msgid "Alpha"
+#~ msgstr "アルファ"
+
+#~ msgctxt "LauncherMainWindow|Button"
+#~ msgid "Logfile"
+#~ msgstr "ログファイル"
+
+#~ msgctxt "SettingsDialog|Dropdown Title Label"
+#~ msgid "Human Player"
+#~ msgstr "人間のプレイヤー"
+
+#~ msgctxt "SettingsDialog|Player Color Dropdown"
+#~ msgid "0: Red (Default)"
+#~ msgstr "赤色（既定）"
+
+#~ msgctxt "SettingsDialog|Player Color Dropdown"
+#~ msgid "1: Blue"
+#~ msgstr "青色"
+
+#~ msgctxt "SettingsDialog|Player Color Dropdown"
+#~ msgid "2: Green"
+#~ msgstr "緑色"
+
+#~ msgctxt "SettingsDialog|Player Color Dropdown"
+#~ msgid "3: Yellow"
+#~ msgstr "黄色"
+
+#~ msgctxt "SettingsDialog|Player Color Dropdown"
+#~ msgid "4: White / Heroes"
+#~ msgstr "白色"
+
+#~ msgctxt "SettingsDialog|Player Color Dropdown"
+#~ msgid "6: Purple"
+#~ msgstr "紫色"
+
+#~ msgctxt "SettingsDialog|Player Color Dropdown"
+#~ msgid "7: Black"
+#~ msgstr "黒色"
+
+#~ msgctxt "SettingsDialog|Player Color Dropdown"
+#~ msgid "8: Orange"
+#~ msgstr "橙色"
 
 #~ msgctxt "SettingsDialog|Checkbox Toggle"
 #~ msgid "Alternative Input"
@@ -1934,13 +1864,13 @@ msgstr "全てのダウンロードしたファイルを移動に失敗しまし
 
 #~ msgctxt "InstallKfxDialog|Log Message"
 #~ msgid "Getting download URL for stable release"
-#~ msgstr "通常版リリースのダウンロードURLを取得している"
+#~ msgstr "安定版リリースのダウンロードURLを取得している"
 
 #, fuzzy
 #~| msgid "Testing archive..."
 #~ msgctxt "InstallKfxDialog|Log Message"
 #~ msgid "Testing stable release archive..."
-#~ msgstr "アーカイブをテスト中..."
+#~ msgstr "安定版のアーカイブをテスト中..."
 
 #~ msgctxt "InstallKfxDialog|Log Message"
 #~ msgid "Extracting..."
