@@ -119,8 +119,8 @@ msgid "Restore Defaults"
 msgstr "Ripristina le impostazioni predefinite"
 
 msgctxt "CDN|Download Server"
-msgid "KeeperFX.net (Official, Germany)"
-msgstr "KeeperFX.net (Ufficciale, Germania)"
+msgid "KeeperFX.net (Default, Germany)"
+msgstr "KeeperFX.net (Germania, predef.)"
 
 msgctxt "CDN|Download Server"
 msgid "Cloudflare CDN (Worldwide)"
