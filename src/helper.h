@@ -26,6 +26,22 @@ public:
         return (keeperFxBin.exists());
     }
 
+    static void removeLeftoverNewLauncher()
+    {
+#ifdef Q_OS_WINDOWS
+        QString newLauncherPathString(QCoreApplication::applicationDirPath()
+                                    + "/keeperfx-launcher-qt.exe");
+#else
+        QString newLauncherPathString(QCoreApplication::applicationDirPath()
+                                    + "/keeperfx-launcher-qt");
+#endif
+
+        QFile newLauncherFile(newLauncherPathString);
+        if (newLauncherFile.exists()) {
+            newLauncherFile.remove();
+        }
+    }
+
     static int countFilesRecursive(const QDir &dir) {
 
         int count = 0;

@@ -6,6 +6,7 @@
 #include "savefile.h"
 #include "settings.h"
 #include "extractor.h"
+#include "helper.h"
 
 #include <QCloseEvent>
 #include <QDir>
@@ -195,6 +196,9 @@ void UpdateDialog::update()
     // Update GUI to show we are updating
     ui->progressBar->setTextVisible(true);
     ui->titleLabel->setText(tr("Updating...", "Title label"));
+
+    // If for some reason a '-new' launcher exists we'll remove it
+    Helper::removeLeftoverNewLauncher();
 
     // Tell user we start the installation
     emit appendLog(QString("Updating to version %1").arg(currentUpdateVersionInfo.fullString));

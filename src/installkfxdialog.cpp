@@ -82,6 +82,9 @@ void InstallKfxDialog::on_installButton_clicked()
     Settings::resetKfxSettings();
     Settings::resetLauncherSettings();
 
+    // If for some reason a '-new' launcher exists we'll remove it
+    Helper::removeLeftoverNewLauncher();
+
     // Get release type to install
     // Also remember that we want this release version for later updates
     if (ui->versionComboBox->currentData() == "STABLE") {
