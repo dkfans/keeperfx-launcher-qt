@@ -243,7 +243,7 @@ height: 35px;
         <rect>
          <x>670</x>
          <y>230</y>
-         <width>121</width>
+         <width>141</width>
          <height>25</height>
         </rect>
        </property>
@@ -285,6 +285,29 @@ height: 35px;
        </property>
        <property name="text">
         <string comment="Checkbox Toggle">Automatically enable imprison</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEditLaunchOptions">
+       <property name="geometry">
+        <rect>
+         <x>670</x>
+         <y>400</y>
+         <width>141</width>
+         <height>25</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="labelLaunchOptions">
+       <property name="geometry">
+        <rect>
+         <x>430</x>
+         <y>403</y>
+         <width>241</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Textinput Title Label">Game launch options</string>
        </property>
       </widget>
      </widget>

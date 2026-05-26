@@ -496,6 +496,8 @@ void SettingsDialog::loadSettings()
     ui->checkBoxAutoEnableFlee->setChecked(Settings::getKfxSetting("FLEE_BUTTON_DEFAULT") == true);
     ui->checkBoxAutoEnableImprison->setChecked(Settings::getKfxSetting("IMPRISON_BUTTON_DEFAULT") == true);
 
+    ui->lineEditLaunchOptions->setText(Settings::getLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS").toString());
+
     // ============================================================================
     // ================================ GRAPHICS ==================================
     // ============================================================================
@@ -837,6 +839,8 @@ void SettingsDialog::saveSettings()
         packetSaveFileName = packetSaveFileName + ".pck";
     }
     Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME", packetSaveFileName);
+
+    Settings::setLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS", ui->lineEditLaunchOptions->text());
 
     // ============================================================================
     // ================================ GRAPHICS ==================================

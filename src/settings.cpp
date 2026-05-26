@@ -35,6 +35,7 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"SHOW_DIR_NAME_IN_WINDOW_TITLE", false},
     {"AUTO_REMOVE_LEFTOVER_FILES", false},
     {"CDN_ENDPOINT", "keeperfx.net"},
+    {"EXTRA_GAME_LAUNCH_OPTIONS", ""},
 
     // Stuff to remember
     {"SUPPRESS_ORIGINAL_DK_FOUND_MESSAGEBOX", false},
@@ -314,6 +315,16 @@ QStringList Settings::getGameSettingsParameters()
         QString packetSaveFileName = Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME").toString();
         if (packetSaveFileName.isEmpty() == false) {
             paramList << "-packetsave" << packetSaveFileName;
+        }
+    }
+
+    // Add custom launch options
+    QString extraGameLaunchOptions = Settings::getLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS").toString();
+    if(extraGameLaunchOptions.isEmpty() == false){
+        for(const QString &part : extraGameLaunchOptions.split(" ")){
+            if(part.isEmpty() == false){
+                paramList << part;
+            }
         }
     }
 
