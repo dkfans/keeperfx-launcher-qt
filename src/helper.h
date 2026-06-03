@@ -7,6 +7,7 @@
 #include <QString>
 #include <QVariant>
 #include <QDirIterator>
+#include <QUuid>
 
 #ifdef Q_OS_WINDOWS
     #include <windows.h>
@@ -108,6 +109,43 @@ public:
 
     static bool is64BitDll(QString dllPath) {
         return Helper::is64BitDLL(dllPath.toStdString());
+    }
+
+    static bool checkForWritePermissionInDir(const QDir dir) {
+
+        // Generate a random filename to test write permissions
+        // Ex: ".write-permission-testfile-a90g7f2i.tmp"
+        // The dot at the start means a hidden file on linux
+        const QString fileName =
+            ".write-permission-testfile-" +
+            QUuid::createUuid().toString().remove('{').remove('}').remove('-').left(8) +
+            ".tmp";
+
+        QString filePath = dir.absoluteFilePath(fileName);
+        qDebug() << "Testing file write permission:" << filePath;
+
+        QFile file(filePath);
+
+        // If for some magic reason this file already exists
+        if(file.exists()){
+            qWarning() << "Write permission file already exists:" << filePath;
+            if(file.remove() == false){
+                qWarning() << "Failed to remove existing write permission file:" << filePath;
+                return false;
+            }
+        }
+
+        // Check if we can write this file
+        // This should also create the file
+        if (file.open(QIODevice::WriteOnly)) {
+            if(file.remove() == false) {
+                qWarning() << "Failed to remove write permission test file:" << filePath;
+            }
+            return true;
+        }
+
+        qDebug() << "Directory not writable:" << filePath;
+        return false;
     }
 
     static QFile getUnearthBinary()
