@@ -58,6 +58,7 @@ QMap<QString, QString> Settings::gameSettingsParameterMap = {
     {"GAME_PARAM_USE_CD_MUSIC", "-cd"},
     {"GAME_PARAM_ALEX", "-alex"},
     {"GAME_PARAM_VID_SMOOTH", "-vidsmooth"},
+    {"GAME_PARAM_ALT_INPUT", "-altinput"},
     // {"GAME_PARAM_FPS", "-fps %d"}, // Hardcoded
     // {"GAME_PARAM_HUMAN_PLAYER", "-human %d"}, // Hardcoded
     // {"GAME_PARAM_PACKET_SAVE_FILE_NAME", "-packetsave %s"}, // Hardcoded
