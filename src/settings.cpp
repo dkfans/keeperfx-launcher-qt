@@ -34,6 +34,8 @@ QMap<QString, QVariant> Settings::defaultLauncherSettingsMap = {
     {"LAUNCHER_LANGUAGE", QLocale(QLocale::system().uiLanguages().value(0, QLocale::system().name())).name().left(2)}, // Get 2 letter language identifier
     {"SHOW_DIR_NAME_IN_WINDOW_TITLE", false},
     {"AUTO_REMOVE_LEFTOVER_FILES", false},
+    {"CDN_ENDPOINT", "keeperfx.net"},
+    {"EXTRA_GAME_LAUNCH_OPTIONS", ""},
 
     // Stuff to remember
     {"SUPPRESS_ORIGINAL_DK_FOUND_MESSAGEBOX", false},
@@ -56,6 +58,7 @@ QMap<QString, QString> Settings::gameSettingsParameterMap = {
     {"GAME_PARAM_USE_CD_MUSIC", "-cd"},
     {"GAME_PARAM_ALEX", "-alex"},
     {"GAME_PARAM_VID_SMOOTH", "-vidsmooth"},
+    {"GAME_PARAM_ALT_INPUT", "-altinput"},
     // {"GAME_PARAM_FPS", "-fps %d"}, // Hardcoded
     // {"GAME_PARAM_HUMAN_PLAYER", "-human %d"}, // Hardcoded
     // {"GAME_PARAM_PACKET_SAVE_FILE_NAME", "-packetsave %s"}, // Hardcoded
@@ -313,6 +316,16 @@ QStringList Settings::getGameSettingsParameters()
         QString packetSaveFileName = Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME").toString();
         if (packetSaveFileName.isEmpty() == false) {
             paramList << "-packetsave" << packetSaveFileName;
+        }
+    }
+
+    // Add custom launch options
+    QString extraGameLaunchOptions = Settings::getLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS").toString();
+    if(extraGameLaunchOptions.isEmpty() == false){
+        for(const QString &part : extraGameLaunchOptions.split(" ")){
+            if(part.isEmpty() == false){
+                paramList << part;
+            }
         }
     }
 

@@ -1,10 +1,12 @@
 #include "updatedialog.h"
 #include "archiver.h"
+#include "cdn.h"
 #include "downloader.h"
 #include "launcheroptions.h"
 #include "savefile.h"
 #include "settings.h"
 #include "extractor.h"
+#include "helper.h"
 
 #include <QCloseEvent>
 #include <QDir>
@@ -20,7 +22,6 @@
 
 #include <zlib.h>
 
-#define GAME_FILE_BASE_URL "https://keeperfx.net/game-files"
 #define AUTO_UPDATE_MESSAGEBOX_TIMER 2500
 
 UpdateDialog::UpdateDialog(QWidget *parent, KfxVersion::VersionInfo versionInfo, bool autoUpdate)
@@ -159,6 +160,57 @@ void UpdateDialog::on_updateButton_clicked()
     // Disable update button
     ui->updateButton->setDisabled(true);
 
+    // Make sure we have write permissions in the main application directory
+    if(Helper::checkForWritePermissionInDir(QCoreApplication::applicationDirPath()) == false){
+
+        ui->updateButton->setDisabled(false);
+        onAppendLog("No write permission in application directory");
+
+        QMessageBox::warning(this,
+            tr("Update failed", "MessageBox Title"),
+            tr("It seems the launcher does not have permission to write files in the application directory.", "Failure Message")
+            #if defined(Q_OS_WIN)
+                + "\n\n" + tr("You might have to start the launcher with administrator rights.", "Failure Message")
+            #endif
+        );
+        return;
+    }
+
+#if defined(Q_OS_WIN)
+    // Check for locked KeeperFX binaries on Windows
+    QFile fileKfx(QCoreApplication::applicationDirPath() + "/keeperfx.exe");
+    QFile fileKfxHvlog(QCoreApplication::applicationDirPath() + "/keeperfx_hvlog.exe");
+    if (
+        (fileKfx.exists() && fileKfx.open(QIODevice::WriteOnly) == false) ||
+        fileKfxHvlog.exists() && fileKfxHvlog.open(QIODevice::WriteOnly) == false
+    ) {
+        onAppendLog("KeeperFX binary seems to have a file lock");
+        QMessageBox::warning(this,
+            tr("Update failed", "MessageBox Title"),
+            tr("It seems that KeeperFX is currently running. "
+               "The updater cannot replace the game files while it is open.\n\n"
+               "Please close KeeperFX before trying again.\n\n"
+               "If the issue persists, restart your PC and retry the update.",
+                "Failure Message"));
+        ui->updateButton->setDisabled(false);
+        return;
+    }
+
+    // Check for locked legacy launcher binary on Windows
+    QFile fileLegacyLauncher(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-legacy.exe");
+    if (fileLegacyLauncher.exists() && fileLegacyLauncher.open(QIODevice::WriteOnly) == false) {
+        onAppendLog("Legacy launcher binary seems to have a file lock");
+        QMessageBox::warning(this,
+            tr("Update failed", "MessageBox Title"),
+            tr("It seems that the legacy KeeperFX launcher is currently running.\n\n"
+               "Please close it before trying again.\n\n"
+               "If the issue persists, restart your PC and retry the update.",
+                "Failure Message"));
+        ui->updateButton->setDisabled(false);
+        return;
+    }
+#endif
+
     // Backup saves if enabled
     if (Settings::getLauncherSetting("BACKUP_SAVES") == true) {
         QList<SaveFile *> saveFiles = SaveFile::getAll();
@@ -195,6 +247,9 @@ void UpdateDialog::update()
     // Update GUI to show we are updating
     ui->progressBar->setTextVisible(true);
     ui->titleLabel->setText(tr("Updating...", "Title label"));
+
+    // If for some reason a '-new' launcher exists we'll remove it
+    Helper::removeLeftoverNewLauncher();
 
     // Tell user we start the installation
     emit appendLog(QString("Updating to version %1").arg(currentUpdateVersionInfo.fullString));
@@ -347,8 +402,8 @@ void UpdateDialog::updateUsingFilemap(QMap<QString, QString> fileMap)
     }
 
     // Get download base URL
-    QString baseUrl = QString(GAME_FILE_BASE_URL) + "/" + typeString + "/"
-                      + currentUpdateVersionInfo.version;
+    QString baseUrl = CDN::getEndpoint() + "/game-files/download/" + typeString + "/" + currentUpdateVersionInfo.version;
+    emit appendLog("Download base URL: " + baseUrl);
 
     // Start downloading files
     downloadFiles(baseUrl);

@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QFile>
 #include <QMap>
+#include <QRegularExpression>
 #include <QString>
 #include <QTextDocument>
 
@@ -56,17 +57,21 @@ bool Translator::loadPoFile(const QString &poFilePath)
     while (!in.atEnd()) {
         line = in.readLine().trimmed();
 
-        if (line.startsWith("msgctxt")) {
-            if (!msgid.isEmpty() && !msgstr.isEmpty()) {
-                if(msgctxt.isEmpty() == false){
-                    msgid.prepend(msgctxt + (msgctxt.endsWith('|') ? "" : "|"));
-                }
-                translations[msgid] = msgstr;
-                translationsLoaded++;
-                msgctxt.clear();
-                msgid.clear();
-                msgstr.clear();
+        if (
+            (line.startsWith("msgctxt") || line.startsWith("msgid")) &&
+            !msgid.isEmpty() && !msgstr.isEmpty()
+        ) {
+            if(msgctxt.isEmpty() == false){
+                msgid.prepend(msgctxt + (msgctxt.endsWith('|') ? "" : "|"));
             }
+            translations[msgid] = msgstr;
+            translationsLoaded++;
+            msgctxt.clear();
+            msgid.clear();
+            msgstr.clear();
+        }
+
+        if (line.startsWith("msgctxt")) {
             msgctxt = line.mid(9).chopped(1);
         } else if (line.startsWith("msgid")) {
             msgid = line.mid(7).chopped(1);
@@ -127,7 +132,7 @@ QString Translator::translate(const char *context, const char *sourceText, const
         sourceId.prepend(contextString + (contextString.endsWith('|') ? "" : "|"));
     }
 
-    // Check if this source has a translation
+    // Check if this source ID has a translation
     if (translations.contains(sourceId)) {
         QString output(translations.value(sourceId));
         if (output.isEmpty() == false) {
@@ -135,7 +140,7 @@ QString Translator::translate(const char *context, const char *sourceText, const
         }
     }
 
-    // Check if this source has a translation that is HTML escaped
+    // Check if this source ID has a translation that is HTML escaped
     if (translations.contains(sourceId.toHtmlEscaped())) {
         QString output(translations.value(sourceId.toHtmlEscaped()));
         if (output.isEmpty() == false) {
@@ -145,9 +150,36 @@ QString Translator::translate(const char *context, const char *sourceText, const
         }
     }
 
+    // Check if the source string itself has a translation
+    if (translations.contains(sourceString)) {
+        QString output(translations.value(sourceString));
+        if (output.isEmpty() == false) {
+            return output;
+        }
+    }
+
+    // Check if the source string itself has a translation that is HTML escaped
+    if (translations.contains(sourceString.toHtmlEscaped())) {
+        QString output(translations.value(sourceString.toHtmlEscaped()));
+        if (output.isEmpty() == false) {
+            QTextDocument outputDoc;
+            outputDoc.setHtml(output);
+            return outputDoc.toPlainText();
+        }
+    }
+
     // Log missing translation
-    if (LauncherOptions::isSet("log-missing-translations") == true) {
+    if (LauncherOptions::isSet("log-missing-translations") &&
+        QRegularExpression("^Q[A-Z][a-zA-Z]*\\|").match(sourceId).hasMatch() == false
+    ) {
         qWarning() << "Translation not found:" << sourceId;
+    }
+
+    // Log missing Qt core translation
+    if (LauncherOptions::isSet("log-missing-qt-translations") &&
+        QRegularExpression("^Q[A-Z][a-zA-Z]*\\|").match(sourceId).hasMatch()
+    ) {
+        qWarning() << "Qt translation not found:" << sourceId;
     }
 
     return sourceString;

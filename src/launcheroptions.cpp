@@ -44,6 +44,7 @@ void LauncherOptions::processApp(QApplication &app)
         {"install",                     "Start the KeeperFX install procedure"},
         {"skip-launcher-update",        "Do not update the launcher itself"},
         {"log-missing-translations",    "Log missing translations to debug"},
+        {"log-missing-qt-translations", "Log missing Qt core translations to debug"},
         {"no-image-cache",              "Bypass image caching"},
         {"download-music",              "Start the music download procedure"},
         {"skip-file-removal",           "Do not ask for the removal of leftover files"},

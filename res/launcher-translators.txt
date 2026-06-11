@@ -1,6 +1,7 @@
 Yani,https://github.com/yani
 kammerer,https://github.com/Kammerer001
 AncientWay
+Thorgal,https://github.com/Thorgal93
 Alniarez,https://github.com/alniarez
 Aqua
 Dofi

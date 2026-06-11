@@ -6,6 +6,7 @@
 #include "popupsignalcombobox.h"
 #include "settings.h"
 #include "launcheroptions.h"
+#include "cdn.h"
 
 #include <QDesktopServices>
 #include <QEvent>
@@ -175,6 +176,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->comboBoxPlayButtonTheme->addItem(tr("Qt Fusion Dark", "Play Button Theme Dropdown"), "qt-fusion-dark");
     ui->comboBoxPlayButtonTheme->addItem(tr("DK Orange (default)", "Play Button Theme Dropdown"), "dk-orange");
 
+    // Launcher Download server
+    for (auto [key, info] : CDN::getEndpointList()) {
+        ui->comboBoxCDN->addItem(info.name, key);
+    }
+
     // Screenshot type dropdown
     ui->comboBoxScreenshots->addItem("PNG (Portable Network Graphics)", "PNG");
     ui->comboBoxScreenshots->addItem("BMP (Windows bitmap)", "BMP");
@@ -265,6 +271,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // Release dropdown
     ui->comboBoxReleaseChannel->addItem(tr("Stable (Default)", "Game Release Channel"), "STABLE");
     ui->comboBoxReleaseChannel->addItem(tr("Alpha", "Game Release Channel"), "ALPHA");
+
+    // Check if we need to allow bigger mouse sensitivity
+    if (KfxVersion::hasFunctionality("mouse_sensitivity_no_multiplier") == true) {
+        ui->horizontalSliderMouseSens->setMaximum(1000);
+    }
 
     // Load the settings
     loadSettings();
@@ -489,6 +500,8 @@ void SettingsDialog::loadSettings()
 
     ui->checkBoxAutoEnableFlee->setChecked(Settings::getKfxSetting("FLEE_BUTTON_DEFAULT") == true);
     ui->checkBoxAutoEnableImprison->setChecked(Settings::getKfxSetting("IMPRISON_BUTTON_DEFAULT") == true);
+
+    ui->lineEditLaunchOptions->setText(Settings::getLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS").toString());
 
     // ============================================================================
     // ================================ GRAPHICS ==================================
@@ -769,6 +782,8 @@ void SettingsDialog::loadSettings()
     ui->labelUpdateInterval->setDisabled(!isUpdateCheckEnabled);
 
     ui->checkBoxAutoRemoveLeftoverFiles->setChecked(Settings::getLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES") == true);
+
+    ui->comboBoxCDN->setCurrentIndex(ui->comboBoxCDN->findData(Settings::getLauncherSetting("CDN_ENDPOINT").toString()));
 }
 
 void SettingsDialog::saveSettings()
@@ -829,6 +844,8 @@ void SettingsDialog::saveSettings()
         packetSaveFileName = packetSaveFileName + ".pck";
     }
     Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME", packetSaveFileName);
+
+    Settings::setLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS", ui->lineEditLaunchOptions->text());
 
     // ============================================================================
     // ================================ GRAPHICS ==================================
@@ -999,6 +1016,8 @@ void SettingsDialog::saveSettings()
     Settings::setLauncherSetting("CHECK_FOR_UPDATES_INTERVAL_DAYS", ui->lineEditUpdateInterval->text());
 
     Settings::setLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES", ui->checkBoxAutoRemoveLeftoverFiles->isChecked() == true);
+
+    Settings::setLauncherSetting("CDN_ENDPOINT", ui->comboBoxCDN->currentData().toString());
 
     // Close the settings screen
     this->close();

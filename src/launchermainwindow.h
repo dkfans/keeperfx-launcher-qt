@@ -79,6 +79,7 @@ private:
     void loadLatestFromKfxNet();
     void clearLatestFromKfxNet();
 
+    void checkForNewLauncher();
     void checkForFileRemoval();
 
     void forceKfxUpdateCheck();
