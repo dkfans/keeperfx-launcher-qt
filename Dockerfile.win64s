@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:26.04
 
 # MXE binary path
 ENV PATH="${PATH}:/opt/mxe/usr/bin"
@@ -7,27 +7,27 @@ ENV PATH="${PATH}:/opt/mxe/usr/bin"
 ARG CROSS_TRIPLE="x86_64-w64-mingw32.static"
 
 # CMake version to download
-ARG CMAKE_VERSION=3.31.5
+ARG CMAKE_VERSION=4.3.4
 
 # Create normal user
-ARG USER_ID=1000
-ARG GROUP_ID=1000
-RUN groupadd -g ${GROUP_ID} builduser && \
-    useradd -u ${USER_ID} -g builduser -m -s /bin/bash builduser
+#ARG USER_ID=1000
+#ARG GROUP_ID=1000
+#RUN groupadd -g ${GROUP_ID} builduser && \
+#    useradd -u ${USER_ID} -g builduser -m -s /bin/bash builduser
 
 # Download packages
 RUN set -eux && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt -y update && \
     apt -y upgrade && \
-    apt -y install \
+    apt -y install --no-install-recommends \
     autoconf automake autopoint bash bison build-essential bzip2 flex \
     g++ g++-multilib gettext git gperf intltool iputils-ping libc6-dev-i386 \
-    libffi-dev libgdk-pixbuf2.0-dev libltdl-dev libssl-dev libtool-bin \
+    libffi-dev libgdk-pixbuf-xlib-2.0-dev libltdl-dev libssl-dev libtool-bin \
     libxml-parser-perl lzip make nano openssl p7zip-full patch perl \
     pkg-config ruby scons sed unzip wget xz-utils libgl-dev \
     python3 python3-mako python3-pkg-resources python3-setuptools python-is-python3 \
-    libz-dev ninja-build upx \
+    libz-dev ninja-build upx ca-certificates \
     && \
     apt -y autoremove && \
     apt -y autoclean && \
@@ -46,19 +46,16 @@ RUN cd /opt && \
 
 # Build qt6-qtbase using mxe
 RUN cd /opt/mxe && \
-    make --jobs=$(nproc) JOBS=$(nproc) MXE_TARGETS=$CROSS_TRIPLE qt6-qtbase
-
-# Clone and build libLIEF
-RUN cd /opt && \
-    git clone https://github.com/lief-project/LIEF.git && \
-    cd /opt/LIEF && \
-    $CROSS_TRIPLE-cmake . -DLIEF_STATIC_LIB=ON -DLIEF_EXAMPLES=OFF && \
-    make && \
-    make install
+    make --jobs=$(nproc) JOBS=$(nproc) MXE_TARGETS=$CROSS_TRIPLE qt6-qtbase && \
+    make clean-junk && \
+    rm -rf pkg/* log/*
 
 # Ensure the user can access /opt
-RUN chown -R builduser:builduser /opt
+#RUN chown -R builduser:builduser /opt
+RUN chown -R 1000:1000 /opt
 
 # Switch to the created user
-USER builduser
+#USER builduser
+USER 1000
+
 WORKDIR /project

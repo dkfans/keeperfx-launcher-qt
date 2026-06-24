@@ -75,12 +75,13 @@ echo "Launcher Version: $VERSION"
 # Build Docker image if it does not exist
 if [[ "$(docker images -q kfx-launcher-win64-compiler 2> /dev/null)" == "" ]]; then
     echo "Docker image kfx-launcher-win64-compiler does not exist. Building the image..."
-    docker build --build-arg USER_ID=$USER_ID --build-arg GROUP_ID=$GROUP_ID -t kfx-launcher-win64-compiler -f Dockerfile.win64s .
+    #docker build --build-arg USER_ID=$USER_ID --build-arg GROUP_ID=$GROUP_ID -t kfx-launcher-win64-compiler -f Dockerfile.win64s .
+    docker build -t kfx-launcher-win64-compiler -f Dockerfile.win64s .
 else
     echo "Docker image 'kfx-launcher-win64-compiler' already exists. No need to build again."
 fi
 
-# Make sure Docker image exists
+# Make sure Docker image exists after possible build
 if [[ "$(docker images -q kfx-launcher-win64-compiler 2> /dev/null)" == "" ]]; then
     echo "Docker image 'kfx-launcher-win64-compiler' does not exist"
     exit 1
