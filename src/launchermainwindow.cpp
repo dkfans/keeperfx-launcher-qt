@@ -400,7 +400,7 @@ void LauncherMainWindow::setupPlayExtraMenu()
     }
 
     // Scan local network (MP)
-    menu->addAction(tr("Scan local network (MP)", "Menu"), [this]() {
+    /*menu->addAction(tr("Scan local network (MP)", "Menu"), [this]() {
         qDebug() << "Scan local network (MP) selected!";
         // Open the scan dialog
         ScanNetworkDialog dialog(this);
@@ -408,15 +408,15 @@ void LauncherMainWindow::setupPlayExtraMenu()
             // Start the game
             startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
         }
-    });
+    });*/
 
-    // Scan local network (MP)
-    menu->addAction(tr("Test internet lobby (MP)", "Menu"), [this]() {
+    // Test internet lobby (MP)
+    /*menu->addAction(tr("Test internet lobby (MP)", "Menu"), [this]() {
         qDebug() << "Test internet lobby (MP) selected!";
         // Open the dialog
         EnetServerTestDialog dialog(this);
         dialog.exec();
-    });
+    });*/
 
     // Run packetsave action
     menu->addAction(tr("Run packetfile", "Menu"), [this]() {
