@@ -388,16 +388,14 @@ void LauncherMainWindow::setupPlayExtraMenu()
     }
 
     // Direct connect (MP) action
-    if (KfxVersion::hasFunctionality("direct_enet_connect") == true) {
-        menu->addAction(tr("Direct connect (MP)", "Menu"), [this]() {
-            qDebug() << "Direct connect (MP) selected!";
-            // Open the dialog
-            DirectConnectDialog dialog(this);
-            if (dialog.exec() == QDialog::Accepted) {
-                startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
-            }
-        });
-    }
+    menu->addAction(tr("Direct connect (MP)", "Menu"), [this]() {
+        qDebug() << "Direct connect (MP) selected!";
+        // Open the dialog
+        DirectConnectDialog dialog(this);
+        if (dialog.exec() == QDialog::Accepted) {
+            startGame(Game::StartType::DIRECT_CONNECT, dialog.getIp(), dialog.getPort());
+        }
+    });
 
     // Scan local network (MP)
     /*menu->addAction(tr("Scan local network (MP)", "Menu"), [this]() {
