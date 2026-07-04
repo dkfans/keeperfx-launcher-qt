@@ -9,40 +9,47 @@
 
 #define MIN_VERSION_NEW_CONFIG
 
-const QMap<QString, QString> KfxVersion::versionFunctionaltyMap = {
+const QMap<QString, QPair<QString, QString>> KfxVersion::versionFunctionaltyMap = {
 
-    // In KFX already
-    {"direct_enet_connect", "1.0.0"}, // '-connect' parameter
-    {"splash_screen_ordering", "1.2.0.4427"},
-    {"ukrainian_game_language", "1.2.0.4471"},
-    {"portuguese_game_language", "1.2.0.4625"},
-    {"player_colors_purple_orange_black", "1.0.0.3729"},
-    {"startup_config_option", "1.2.0.4427"},
-    {"mod_support", "1.2.0.4658"},
-    {"tag_mode", "1.2.0.4714"},
-    {"exit_on_lua_error", "1.2.0.4479"},
-    {"flee_imprison_defaults", "1.2.0.4681"},
-    {"max_frames_per_second", "1.2.0.4653"},
-    {"start_without_mods_param", "1.2.0.4753"},
-    {"gui_and_neutral_blink_speed", "1.2.0.4529"},
-    {"auto_determine_monitor_refresh_rate", "1.3.0.4793"},
-    {"enet_ipv6_support", "1.3.1.4877"},
-    {"save_file_struct_lua", "1.2.0.4479"},
-    {"save_file_struct_30_char_name", "1.3.1.4881"},
-    {"mouse_sensitivity_no_multiplier", "1.3.2.5120"},
-    {"zoom_towards_mouse", "1.3.2.5134"},
+    // 1.1
+    {"player_colors_purple_orange_black",       {"1.1.0", "1.0.0.3729"}},
+
+    // 1.3 (build >= 4144)
+    {"splash_screen_ordering",                  {"1.3.0", "1.2.0.4427"}},
+    {"startup_config_option",                   {"1.3.0", "1.2.0.4427"}},
+    {"ukrainian_game_language",                 {"1.3.0", "1.2.0.4471"}},
+    {"exit_on_lua_error",                       {"1.3.0", "1.2.0.4479"}},
+    {"save_file_struct_lua",                    {"1.3.0", "1.2.0.4479"}},
+    {"portuguese_game_language",                {"1.3.0", "1.2.0.4625"}},
+    {"max_frames_per_second",                   {"1.3.0", "1.2.0.4653"}},
+    {"mod_support",                             {"1.3.0", "1.2.0.4658"}},
+    {"flee_imprison_defaults",                  {"1.3.0", "1.2.0.4681"}},
+    {"tag_mode",                                {"1.3.0", "1.2.0.4714"}},
+    {"gui_and_neutral_blink_speed",             {"1.3.0", "1.2.0.4529"}},
+    {"start_without_mods_param",                {"1.3.0", "1.2.0.4753"}},
+
+    // 1.4 (build >= 4771)
+    {"auto_determine_monitor_refresh_rate",     {"1.4.0", "1.3.0.4793"}},
+    {"enet_ipv6_support",                       {"1.4.0", "1.3.1.4877"}},
+    {"save_file_struct_30_char_name",           {"1.4.0", "1.3.1.4881"}},
+    {"mouse_sensitivity_no_multiplier",         {"1.4.0", "1.3.2.5120"}},
+
+    // 1.5 (build >= 5127)
+    {"zoom_towards_mouse",                      {"",      "1.3.2.5134"}},
+
+
 
     // Absolute Config path is temporary disabled because we still want support for multiple KFX installations
-    {"absolute_config_path", "999.999.999"}, // '-config' absolute path was added in 1.2.0.4408
+    {"absolute_config_path", {"", ""}}, // '-config' absolute path was added in 1.2.0.4408
 
     // Not yet supported
-    {"start_campaign_directly", "999.999.999"},     // https://github.com/dkfans/keeperfx/issues/3924
-    {"load_save_directly", "999.999.999"},          // TODO: https://github.com/dkfans/keeperfx/issues/3481
-    {"packetsave_while_packetload", "999.999.999"}, // TODO
+    {"start_campaign_directly", {"", ""}},     // https://github.com/dkfans/keeperfx/issues/3924
+    {"load_save_directly", {"", ""}},          // TODO: https://github.com/dkfans/keeperfx/issues/3481
+    {"packetsave_while_packetload", {"", ""}}, // TODO
 
     // Use configuration files in the user appdata
     // Temporary disabled until KeeperFX can also handle this
-    {"use_appdata_configs", "999.999.999"}, // TODO
+    {"use_appdata_configs", {"", ""}}, // TODO
 };
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;
@@ -337,9 +344,28 @@ std::optional<QMap<QString, QString>> KfxVersion::getGameFileMap(KfxVersion::Rel
 
 bool KfxVersion::hasFunctionality(QString functionalityString)
 {
+    // If type is UNKNOWN or PROTOTYPE, always return true
+    if (currentVersion.type != ReleaseType::STABLE && currentVersion.type != ReleaseType::ALPHA) {
+        return true;
+    }
+
+    if (!versionFunctionaltyMap.contains(functionalityString)) {
+        qWarning() << "Invalid functionality check:" << functionalityString;
+        return false; // Feature not in map
+    }
+
+    // Get the version from the functionality map based on release type
+    auto versions = versionFunctionaltyMap.value(functionalityString);
+    QString targetVersion = (currentVersion.type == STABLE) ? versions.first : versions.second;
+
+    // Make sure the functionality is available for this release type
+    if(targetVersion.isEmpty()){
+        return false;
+    }
+
     // Get version parts
     QStringList version1Parts = currentVersion.version.split(".");
-    QStringList version2Parts = versionFunctionaltyMap.value(functionalityString).split(".");
+    QStringList version2Parts = targetVersion.split(".");
 
     // Normalize version parts to equal sizes
     int maxLength = qMax(version1Parts.size(), version2Parts.size());

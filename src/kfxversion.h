@@ -32,7 +32,7 @@ public:
         QString downloadUrl = QString();
     };
 
-    static const QMap<QString, QString> versionFunctionaltyMap;
+    static const QMap<QString, QPair<QString, QString>> versionFunctionaltyMap;
     static bool hasFunctionality(QString functionalityString);
 
     static VersionInfo currentVersion;
