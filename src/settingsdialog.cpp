@@ -1133,6 +1133,15 @@ void SettingsDialog::addSettingsChangedHandler()
         });
     }
 
+    // Find all QSlider
+    QList<QSlider *> sliders = ui->tabWidget->findChildren<QSlider *>();
+    for (QSlider *slider : std::as_const(sliders)) {
+        connect(slider, &QSlider::sliderMoved, this, [this]() {
+            this->settingHasChanged = true;
+            ui->buttonBox->button(QDialogButtonBox::Save)->setDisabled(false);
+        });
+    }
+
     // Find all PopupSignalComboBox
     QList<PopupSignalComboBox *> popupComboBoxes = ui->tabWidget->findChildren<PopupSignalComboBox *>();
     for (PopupSignalComboBox *popupComboBox : std::as_const(popupComboBoxes)) {
