@@ -10,14 +10,30 @@ Codename: **CutieLauncher**
 
 You can download it from the KeeperFX workshop: https://keeperfx.net/workshop/item/739/cutielauncher-alpha
 
-## Building
+## Development
 
 - Get QT Creator
 - Setup a local build kit (Qt6+)
 - Load the project (by opening CMakeLists.txt)
-- Build it
 
-The CMake files still need to be fixed for Windows building.
+## Building a Release version
+
+```bash
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Building a Release version
 

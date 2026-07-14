@@ -15,8 +15,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# MinGW/GCC Release flags
-if(CMAKE_BUILD_TYPE STREQUAL "Release")
+# MinGW/GCC Release flags for Windows static builds
+if(WIN32 AND CMAKE_BUILD_TYPE STREQUAL "Release")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -static -Os -s")
 endif()
 
@@ -54,13 +54,14 @@ CPMFindPackage(
 CPMAddPackage(
     NAME LIEF
     GITHUB_REPOSITORY lief-project/LIEF
-    GIT_TAG 0.17.6
+    GIT_TAG 1.0.0
     OPTIONS
         "BUILD_SHARED_LIBS OFF"
         "LIEF_DOC OFF"
         "LIEF_PYTHON_API OFF"
         "LIEF_EXAMPLES OFF"
         "LIEF_TESTS OFF"
+        "LIEF_VERSION_BUMP OFF" # stop dynamic version regeneration
         "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS}"
         "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS}"
 )
@@ -198,14 +199,6 @@ set_target_properties(keeperfx-launcher-qt PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-# Installation settings
-#include(GNUInstallDirs)
-#install(TARGETS keeperfx-launcher-qt
-#    BUNDLE DESTINATION .
-#    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-#    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-#)
-
 # Finalize executable
 qt_finalize_executable(keeperfx-launcher-qt)
 
@@ -221,3 +214,13 @@ foreach(LIB ${COMPILED_LIBS})
         VERBATIM
     )
 endforeach()
+
+# Linux Installation settings
+if (UNIX)
+    include(GNUInstallDirs)
+    install(TARGETS keeperfx-launcher-qt
+        BUNDLE DESTINATION .
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    )
+endif()

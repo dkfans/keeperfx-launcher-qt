@@ -1,0 +1,41 @@
+FROM ubuntu:26.04
+
+# CMake version to download
+ARG CMAKE_VERSION=4.3.4
+
+# Create normal user
+#ARG USER_ID=1000
+#ARG GROUP_ID=1000
+#RUN groupadd -g ${GROUP_ID} builduser && \
+#    useradd -u ${USER_ID} -g builduser -m -s /bin/bash builduser
+
+# Download packages
+RUN set -eux && \
+    export DEBIAN_FRONTEND=noninteractive && \
+    apt -y update && \
+    apt -y upgrade && \
+    apt -y install --no-install-recommends \
+    autoconf automake autopoint bash bison build-essential bzip2 flex \
+    g++ g++-multilib gettext git gperf intltool iputils-ping libc6-dev-i386 \
+    libffi-dev libgdk-pixbuf-xlib-2.0-dev libltdl-dev libssl-dev libtool-bin \
+    libxml-parser-perl lzip make nano openssl p7zip-full patch perl \
+    pkg-config ruby scons sed unzip wget xz-utils libgl-dev \
+    python3 python3-mako python3-pkg-resources python3-setuptools python-is-python3 \
+    libz-dev ninja-build upx ca-certificates \
+    && \
+    apt -y autoremove && \
+    apt -y autoclean && \
+    apt -y clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Download and install CMake
+RUN wget https://github.com/Kitware/CMake/releases/download/v$CMAKE_VERSION/cmake-$CMAKE_VERSION-linux-x86_64.sh && \
+    chmod +x cmake-$CMAKE_VERSION-linux-x86_64.sh && \
+    ./cmake-$CMAKE_VERSION-linux-x86_64.sh --skip-license --prefix=/usr/local && \
+    rm cmake-$CMAKE_VERSION-linux-x86_64.sh
+
+# Ensure the user can access /opt
+#RUN chown -R builduser:builduser /opt
+RUN chown -R 1000:1000 /opt
+
+WORKDIR /project
