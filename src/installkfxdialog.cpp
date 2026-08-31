@@ -84,7 +84,7 @@ void InstallKfxDialog::loadSuggestedCdn()
     // Get the JSON response
     QJsonDocument jsonDoc = ApiClient::getJsonResponse(url);
     if (!jsonDoc.isObject()) {
-        emit appendLog(QString("Failed to get suggested CDN. Using default: %s").arg(CDN_DEFAULT_ENDPOINT));
+        emit appendLog(QString("Failed to get suggested CDN. Using default: %1").arg(CDN_DEFAULT_ENDPOINT));
         return;
     }
 
@@ -94,21 +94,21 @@ void InstallKfxDialog::loadSuggestedCdn()
     // Get the suggested endpoint key (e.g., "_self" or "kfx")
     QString suggestedEndpoint = jsonObj["suggested_endpoint"].toString();
     if (suggestedEndpoint.isEmpty()) {
-        emit appendLog(QString("Failed to get suggested CDN. Using default: %s").arg(CDN_DEFAULT_ENDPOINT));
+        emit appendLog(QString("Failed to get suggested CDN. Using default: %1").arg(CDN_DEFAULT_ENDPOINT));
         return;
     }
 
     // "endpoints" is a QJsonObject, not a QJsonArray
     QJsonObject endpointsObj = jsonObj["endpoints"].toObject();
     if (endpointsObj.isEmpty()) {
-        emit appendLog(QString("Website has no configured endpoints. Using default: %s").arg(CDN_DEFAULT_ENDPOINT));
+        emit appendLog(QString("Website has no configured endpoints. Using default: %1").arg(CDN_DEFAULT_ENDPOINT));
         return;
     }
 
     // Extract the specific endpoint object using the suggested key
     QJsonObject endpoint = endpointsObj[suggestedEndpoint].toObject();
     if (endpoint.isEmpty()) {
-        emit appendLog(QString("Invalid suggested endpoint configuration. Using default: %s").arg(CDN_DEFAULT_ENDPOINT));
+        emit appendLog(QString("Invalid suggested endpoint configuration. Using default: %1").arg(CDN_DEFAULT_ENDPOINT));
         return;
     }
 
@@ -634,7 +634,7 @@ void InstallKfxDialog::completeInstall()
     Settings::autoSetGameLanguageToLocaleLanguage();
 
     // Set CDN endpoint
-    emit appendLog(QString("Setting CDN to: %s").arg(this->cdnUrl));
+    emit appendLog(QString("Setting CDN to: %1").arg(this->cdnUrl));
     Settings::setLauncherSetting("CDN_ENDPOINT", this->cdnUrl);
 
     // Set max fps
