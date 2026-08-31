@@ -112,14 +112,17 @@ void InstallKfxDialog::loadSuggestedCdn()
         return;
     }
 
-    // Variables
-    QJsonObject location = endpoint["location"].toObject();
+    // CDN variables
     QString cdnName = endpoint["name"].toString();
+    this->cdnUrl = endpoint["url"].toString();
+
+    // CDN location variables
+    QJsonObject location = endpoint["location"].toObject();
     QString locationName = location["name"].toString();
     QString locationCode = location["code"].toString();
 
-    // Save the CDN URL string
-    this->cdnUrl = endpoint["url"].toString();
+    // Set the CDN endpoint
+    CDN::setEndpoint(this->cdnUrl);
 
     // Show CDN location
     // Shows the URL when the location is unknown (local dev for example)
@@ -633,7 +636,6 @@ void InstallKfxDialog::completeInstall()
     // Set CDN endpoint
     emit appendLog(QString("Setting CDN to: %s").arg(this->cdnUrl));
     Settings::setLauncherSetting("CDN_ENDPOINT", this->cdnUrl);
-    CDN::setEndpoint(this->cdnUrl);
 
     // Set max fps
     if (KfxVersion::hasFunctionality("max_frames_per_second") == true) {
