@@ -17,6 +17,7 @@
 #include "translator.h"
 #include "extractor.h"
 #include "helper.h"
+#include "cdn.h"
 
 InstallKfxDialog::InstallKfxDialog(QWidget *parent)
     : QDialog(parent)
@@ -69,11 +70,74 @@ InstallKfxDialog::~InstallKfxDialog()
     delete ui;
 }
 
+void InstallKfxDialog::loadSuggestedCdn()
+{
+    // Load the default CDN endpoint as fallback
+    this->cdnUrl = CDN_DEFAULT_ENDPOINT;
+
+    // Tell user we are going to load the suggested CDN
+    emit appendLog("Loading suggested CDN...");
+
+    // URL of the API endpoint
+    QUrl url("v1/cdn/endpoints");
+
+    // Get the JSON response
+    QJsonDocument jsonDoc = ApiClient::getJsonResponse(url);
+    if (!jsonDoc.isObject()) {
+        emit appendLog(QString("Failed to get suggested CDN. Using default: %s").arg(CDN_DEFAULT_ENDPOINT));
+        return;
+    }
+
+    // Convert response to root object
+    QJsonObject jsonObj = jsonDoc.object();
+
+    // Get the suggested endpoint key (e.g., "_self" or "kfx")
+    QString suggestedEndpoint = jsonObj["suggested_endpoint"].toString();
+    if (suggestedEndpoint.isEmpty()) {
+        emit appendLog(QString("Failed to get suggested CDN. Using default: %s").arg(CDN_DEFAULT_ENDPOINT));
+        return;
+    }
+
+    // "endpoints" is a QJsonObject, not a QJsonArray
+    QJsonObject endpointsObj = jsonObj["endpoints"].toObject();
+    if (endpointsObj.isEmpty()) {
+        emit appendLog(QString("Website has no configured endpoints. Using default: %s").arg(CDN_DEFAULT_ENDPOINT));
+        return;
+    }
+
+    // Extract the specific endpoint object using the suggested key
+    QJsonObject endpoint = endpointsObj[suggestedEndpoint].toObject();
+    if (endpoint.isEmpty()) {
+        emit appendLog(QString("Invalid suggested endpoint configuration. Using default: %s").arg(CDN_DEFAULT_ENDPOINT));
+        return;
+    }
+
+    // Variables
+    QJsonObject location = endpoint["location"].toObject();
+    QString cdnName = endpoint["name"].toString();
+    QString locationName = location["name"].toString();
+    QString locationCode = location["code"].toString();
+
+    // Save the CDN URL string
+    this->cdnUrl = endpoint["url"].toString();
+
+    // Show CDN location
+    // Shows the URL when the location is unknown (local dev for example)
+    if (locationCode == "XX") {
+        emit appendLog(QString("CDN: %1").arg(this->cdnUrl));
+    } else {
+        emit appendLog(QString("CDN: %1 (%2)").arg(cdnName, locationName));
+    }
+}
+
 void InstallKfxDialog::on_installButton_clicked()
 {
     // Change GUI
     ui->installButton->setDisabled(true);
     ui->progressBar->setTextVisible(true);
+
+    // Load the suggested CDN as suggested by the CDN endpoint
+    this->loadSuggestedCdn();
 
     // Tell user we start the installation
     emit appendLog("Installation started");
@@ -565,6 +629,11 @@ void InstallKfxDialog::completeInstall()
     // Set game language
     emit appendLog("Setting game language to system language");
     Settings::autoSetGameLanguageToLocaleLanguage();
+
+    // Set CDN endpoint
+    emit appendLog(QString("Setting CDN to: %s").arg(this->cdnUrl));
+    Settings::setLauncherSetting("CDN_ENDPOINT", this->cdnUrl);
+    CDN::setEndpoint(this->cdnUrl);
 
     // Set max fps
     if (KfxVersion::hasFunctionality("max_frames_per_second") == true) {

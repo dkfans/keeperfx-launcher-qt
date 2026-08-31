@@ -67,4 +67,7 @@ private:
     bool moveTempFilesToAppDir(QDir sourceDir);
 
     void completeInstall();
+
+    QString cdnUrl;
+    void loadSuggestedCdn();
 };
