@@ -18,22 +18,33 @@ QList<std::pair<QString, CDN::EndpointInfo>> CDN::getEndpointList()
 
 QString CDN::getEndpoint()
 {
-    if (CDN::endPoint.isEmpty()) {
+    // Check if endpoint is already loaded
+    if (CDN::endPoint.isEmpty() == false) {
+        return CDN::endPoint;
+    }
 
-        CDN::endPoint = "https://keeperfx.net";
-        QString savedKey = Settings::getLauncherSetting("CDN_ENDPOINT").toString();
+    // Load the default endpoint as fallback
+    CDN::endPoint = CDN_DEFAULT_ENDPOINT;
 
-        for (const auto& [key, info] : CDN::getEndpointList()) {
-            if (key == savedKey) {
-                CDN::endPoint = info.url;
-                break;
-            }
-        }
+    // Get the user chosen CDN endpoint
+    QString savedKey = Settings::getLauncherSetting("CDN_ENDPOINT").toString();
 
-        if(CDN::endPoint.endsWith("/")){
-            CDN::endPoint.chop(1);
+    // Look if user chosen CDN endpoint exists and load it
+    for (const auto& [key, info] : CDN::getEndpointList()) {
+        if (key == savedKey) {
+            CDN::endPoint = info.url;
+            break;
         }
     }
 
+    // Make sure there is no trailing slash
+    if(CDN::endPoint.endsWith("/")){
+        CDN::endPoint.chop(1);
+    }
+
     return CDN::endPoint;
+}
+
+void CDN::setEndpoint(QString url) {
+    CDN::endPoint = url;
 }

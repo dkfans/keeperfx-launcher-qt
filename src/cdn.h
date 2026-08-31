@@ -4,6 +4,8 @@
 #include <QMap>
 #include <QString>
 
+#define CDN_DEFAULT_ENDPOINT "https://keeperfx.net"
+
 class CDN {
 
     Q_DECLARE_TR_FUNCTIONS(CDN);
@@ -17,6 +19,7 @@ public:
 
     static QList<std::pair<QString, EndpointInfo>> getEndpointList();
     static QString getEndpoint();
+    static void setEndpoint(QString url);
 
 private:
 
