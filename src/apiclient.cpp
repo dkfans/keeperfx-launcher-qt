@@ -1,6 +1,7 @@
 #include "apiclient.h"
 
 #include "launcheroptions.h"
+#include "cdn.h"
 
 #include <QEventLoop>
 #include <QImage>
@@ -134,8 +135,15 @@ QUrl ApiClient::getDownloadUrlAlpha()
         return QUrl();
     }
 
-    // Get download URL
+    // Get the default download URL
     QString downloadUrlString = releaseObj["download_url"].toString();
+
+    // Check if there is a CDN download URL
+    if(releaseObj.contains("download_url_cdn")){
+        downloadUrlString = CDN::getEndpoint() + releaseObj["download_url_cdn"].toString();
+    }
+
+    // Log download URL
     qDebug() << "Alpha Download URL:" << downloadUrlString;
 
     // Return
