@@ -87,6 +87,9 @@ QMap<QString, QString> Settings::localeToGameLanguageMap = {
     {"zh-Hant", "CHT"}, // Traditional Chinese
 };
 
+// A list of string that are truthy or falsy.
+// We use these lists to typecast a boolean config value to an actual C++ boolean.
+// This makes it easier to handle within the launcher codebase.
 QStringList Settings::trueStrings = { "TRUE", "ON", "YES", "ENABLED", "ALWAYS" };
 QStringList Settings::falseStrings = { "FALSE", "OFF", "NO", "DISABLED", "NEVER" };
 
