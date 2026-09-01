@@ -35,7 +35,7 @@ const QMap<QString, QPair<QString, QString>> KfxVersion::versionFunctionaltyMap 
     {"mouse_sensitivity_no_multiplier",         {"1.4.0", "1.3.2.5120"}},
 
     // 1.5 (build >= 5127)
-    {"zoom_towards_mouse",                      {"",      "1.3.2.5134"}},
+    {"zoom_towards_mouse",                      {"",      "1.4.0.4323"}},
 
 
 

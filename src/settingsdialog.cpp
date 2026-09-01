@@ -128,9 +128,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // Zoom towards cursor
     if (KfxVersion::hasFunctionality("zoom_towards_mouse") == true) {
         // Add cursor zoom dropdown options
+        ui->comboBoxZoomToMouse->addItem(tr("Never", "Zoom To Cursor Dropdown"), "OFF");
         ui->comboBoxZoomToMouse->addItem(tr("Mousewheel only", "Zoom To Cursor Dropdown"), "WHEEL");
-        ui->comboBoxZoomToMouse->addItem(tr("Never", "Zoom To Cursor Dropdown"), "NEVER");
-        ui->comboBoxZoomToMouse->addItem(tr("Mousewheel & Keyboard", "Zoom To Cursor Dropdown"), "ALWAYS");
+        ui->comboBoxZoomToMouse->addItem(tr("Mousewheel & Keyboard", "Zoom To Cursor Dropdown"), "ON");
     } else {
         // Disable
         // ZOOM_TO_MOUSE
