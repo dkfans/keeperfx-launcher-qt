@@ -101,6 +101,12 @@ QVariant Settings::getKfxSetting(QAnyStringView key)
         return valueString;
     }
 
+    // Fix for 'ZOOM_TO_MOUSE' and 'ROTATE_AROUND_MOUSE'
+    // They use "ON" and "OFF" which should be string here instead of booleans
+    if (key.toString() == "ZOOM_TO_MOUSE" || key.toString() == "ROTATE_AROUND_MOUSE") {
+        return valueString;
+    }
+
     // True strings
     if (valueString == "ON" || valueString == "YES" || valueString == "TRUE") {
         return true;
