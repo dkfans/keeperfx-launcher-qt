@@ -87,33 +87,39 @@ QMap<QString, QString> Settings::localeToGameLanguageMap = {
     {"zh-Hant", "CHT"}, // Traditional Chinese
 };
 
+QStringList Settings::trueStrings = { "TRUE", "ON", "YES", "ENABLED", "ALWAYS" };
+QStringList Settings::falseStrings = { "FALSE", "OFF", "NO", "DISABLED", "NEVER" };
+
+// This is a list of KFX settings where we will force a string instead of doing boolean typecasting.
+// Sometimes a KFX setting uses strings but also has one of the boolean strings as an option.
+QStringList Settings::forceStringKfxSettings =
+{
+    "RESIZE_MOVIES",
+    "ZOOM_TO_MOUSE",
+    "ROTATE_AROUND_MOUSE",
+};
+
 QVariant Settings::getKfxSetting(QAnyStringView key)
 {
     // Get value as a string
     QVariant value = kfxSettings->value(key);
     QString valueString = value.toString();
 
-    // Fix for 'RESIZE_MOVIES' KeeperFX setting
-    // This setting is set to "ON" by default which would make this a boolean
-    // However, ON should be a string here and is treated different than all the rest
-    // Therefor we simply return the value as a string
-    if (key.toString() == "RESIZE_MOVIES") {
+    // Fix for specific KeeperFX settings that use "ON"/"OFF" but should remain strings
+    if (Settings::forceStringKfxSettings.contains(key)) {
         return valueString;
     }
 
-    // Fix for 'ZOOM_TO_MOUSE' and 'ROTATE_AROUND_MOUSE'
-    // They use "ON" and "OFF" which should be string here instead of booleans
-    if (key.toString() == "ZOOM_TO_MOUSE" || key.toString() == "ROTATE_AROUND_MOUSE") {
-        return valueString;
-    }
+    // Convert to upper case for boolean comparison
+    QString checkString = valueString.toUpper();
 
     // True strings
-    if (valueString == "ON" || valueString == "YES" || valueString == "TRUE") {
+    if (Settings::trueStrings.contains(checkString)) {
         return true;
     }
 
     // False strings
-    if (valueString == "OFF" || valueString == "NO" || valueString == "FALSE") {
+    if (Settings::falseStrings.contains(checkString)) {
         return false;
     }
 
