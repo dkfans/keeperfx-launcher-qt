@@ -344,14 +344,10 @@ std::optional<QMap<QString, QString>> KfxVersion::getGameFileMap(KfxVersion::Rel
 
 bool KfxVersion::hasFunctionality(QString functionalityString)
 {
-    // If type is UNKNOWN or PROTOTYPE, always return true
-    if (currentVersion.type != ReleaseType::STABLE && currentVersion.type != ReleaseType::ALPHA) {
-        return true;
-    }
-
+    // Make sure the feature is in the map
     if (!versionFunctionaltyMap.contains(functionalityString)) {
         qWarning() << "Invalid functionality check:" << functionalityString;
-        return false; // Feature not in map
+        return false;
     }
 
     // Get the version from the functionality map based on release type
@@ -361,6 +357,11 @@ bool KfxVersion::hasFunctionality(QString functionalityString)
     // Make sure the functionality is available for this release type
     if(targetVersion.isEmpty()){
         return false;
+    }
+
+    // If release type is UNKNOWN or PROTOTYPE at this point, return true
+    if (currentVersion.type != ReleaseType::STABLE && currentVersion.type != ReleaseType::ALPHA) {
+        return true;
     }
 
     // Get version parts
