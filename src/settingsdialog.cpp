@@ -190,9 +190,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->comboBoxPlayButtonTheme->addItem(tr("Qt Fusion Dark", "Play Button Theme Dropdown"), "qt-fusion-dark");
     ui->comboBoxPlayButtonTheme->addItem(tr("DK Orange (default)", "Play Button Theme Dropdown"), "dk-orange");
 
-    // Launcher Download server
-    for (auto [key, info] : CDN::getEndpointList()) {
-        ui->comboBoxCDN->addItem(info.name, key);
+    // Launcher Download server (CDN)
+    for (const auto &[key, displayText] : CDN::getEndpointList().asKeyValueRange()) {
+        ui->comboBoxCDN->addItem(displayText, key);
     }
 
     // Screenshot type dropdown
@@ -799,7 +799,13 @@ void SettingsDialog::loadSettings()
 
     ui->checkBoxAutoRemoveLeftoverFiles->setChecked(Settings::getLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES") == true);
 
-    ui->comboBoxCDN->setCurrentIndex(ui->comboBoxCDN->findData(Settings::getLauncherSetting("CDN_ENDPOINT").toString()));
+    // CDN + fallback
+    QString savedKey = Settings::getLauncherSetting("CDN_ENDPOINT").toString();
+    int index = ui->comboBoxCDN->findData(savedKey);
+    if (index == -1) {
+        index = ui->comboBoxCDN->findData("keeperfx.net");
+    }
+    ui->comboBoxCDN->setCurrentIndex(index);
 }
 
 void SettingsDialog::saveSettings()
@@ -1034,7 +1040,8 @@ void SettingsDialog::saveSettings()
 
     Settings::setLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES", ui->checkBoxAutoRemoveLeftoverFiles->isChecked() == true);
 
-    Settings::setLauncherSetting("CDN_ENDPOINT", ui->comboBoxCDN->currentData().toString());
+    // CDN
+    CDN::saveEndpoint(ui->comboBoxCDN->currentData().toString());
 
     // Close the settings screen
     this->close();

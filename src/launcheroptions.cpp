@@ -54,6 +54,7 @@ void LauncherOptions::processApp(QApplication &app)
 
         // Parameters
         {"api-endpoint",                "Specify the API endpoint",                    "url"},
+        {"cdn-endpoint",                "Specify the CDN endpoint",                    "url"},
         {"translation-file",            "Force a PO translation file to be loaded",    "filepath"},
         {"language-file",               "Force a PO translation file to be loaded",    "filepath"}, // same as 'translation-file'
         {"language",                    "Force a language to be loaded",               "language code"},

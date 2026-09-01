@@ -68,6 +68,5 @@ private:
 
     void completeInstall();
 
-    QString cdnUrl;
-    void loadSuggestedCdn();
+    void loadCdnListAndSelectSuggested();
 };
