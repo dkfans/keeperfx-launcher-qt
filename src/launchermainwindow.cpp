@@ -1012,8 +1012,13 @@ void LauncherMainWindow::onFilesToRemoveFound(QStringList filesToRemove)
         return;
     }
 
-    // Check if user wants to remove leftover files automatically (silently)
-    if(Settings::getLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES") == true){
+    // Check if we need to remove leftover files automatically (silently)
+    // - If the user has configured the files to be automatically removed
+    // - If the user is still installing KeeperFX
+    if(
+        Settings::getLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES") == true
+        || LauncherOptions::isSet("install")
+    ){
         qDebug() << "Removing leftover files automatically without user interaction";
 
         // Loop through the list of files
