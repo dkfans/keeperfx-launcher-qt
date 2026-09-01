@@ -1101,6 +1101,29 @@ height: 35px;
         </rect>
        </property>
       </widget>
+      <widget class="QLabel" name="labelRotateAroundMouse">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>360</y>
+         <width>251</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string comment="Dropdown Title Label">Rotate around cursor</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="comboBoxRotateAroundMouse">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>356</y>
+         <width>161</width>
+         <height>25</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tab5_mp">
       <attribute name="title">

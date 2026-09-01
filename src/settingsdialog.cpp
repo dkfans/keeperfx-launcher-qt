@@ -124,7 +124,6 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->lineEditNeutralFlashRate->setDisabled(true);
     }
 
-
     // Zoom towards cursor
     if (KfxVersion::hasFunctionality("zoom_towards_mouse") == true) {
         // Add cursor zoom dropdown options
@@ -133,9 +132,21 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->comboBoxZoomToMouse->addItem(tr("Mousewheel & Keyboard", "Zoom To Cursor Dropdown"), "ON");
     } else {
         // Disable
-        // ZOOM_TO_MOUSE
         ui->comboBoxZoomToMouse->setDisabled(true);
         ui->labelZoomToMouse->setDisabled(true);
+    }
+
+    // Rotate around cursor
+    if (KfxVersion::hasFunctionality("rotate_around_mouse") == true) {
+        // Add cursor rotate dropdown options
+        ui->comboBoxRotateAroundMouse->addItem(tr("Never", "Rotate Around Cursor Dropdown"), "OFF");
+        ui->comboBoxRotateAroundMouse->addItem(tr("Always", "Rotate Around Cursor Dropdown"), "ON");
+        ui->comboBoxRotateAroundMouse->addItem(tr("Movement Keys Only (While holding Ctrl)", "Rotate Around Cursor Dropdown"), "ON MOVEMENT_KEYS");
+        ui->comboBoxRotateAroundMouse->addItem(tr("Rotation Keys Only", "Rotate Around Cursor Dropdown"), "ON ROTATION_KEYS");
+    } else {
+        // Disable
+        ui->comboBoxRotateAroundMouse->setDisabled(true);
+        ui->labelRotateAroundMouse->setDisabled(true);
     }
 
     // Tag Mode
@@ -753,6 +764,7 @@ void SettingsDialog::loadSettings()
     ui->checkBoxLockCursorPossession->setEnabled(Settings::getLauncherSetting("GAME_PARAM_ALT_INPUT") == true); // When alt input is ENABLED
 
     ui->comboBoxZoomToMouse->setCurrentIndex(ui->comboBoxZoomToMouse->findData(Settings::getKfxSetting("ZOOM_TO_MOUSE").toString()));
+    ui->comboBoxRotateAroundMouse->setCurrentIndex(ui->comboBoxRotateAroundMouse->findData(Settings::getKfxSetting("ROTATE_AROUND_MOUSE").toString()));
 
     ui->checkBoxEnableTagModeToggle->setChecked(Settings::getKfxSetting("TAG_MODE_TOGGLING") == true);
     ui->comboBoxDefaultTagMode->setCurrentIndex(ui->comboBoxDefaultTagMode->findData(Settings::getKfxSetting("DEFAULT_TAG_MODE").toString()));
@@ -1003,6 +1015,7 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("LOCK_CURSOR_IN_POSSESSION", ui->checkBoxLockCursorPossession->isChecked() == true);
     Settings::setKfxSetting("CURSOR_EDGE_CAMERA_PANNING", ui->checkBoxScreenEdgePanning->isChecked() == true);
     Settings::setKfxSetting("ZOOM_TO_MOUSE", ui->comboBoxZoomToMouse->currentData().toString());
+    Settings::setKfxSetting("ROTATE_AROUND_MOUSE", ui->comboBoxRotateAroundMouse->currentData().toString());
 
     Settings::setKfxSetting("TAG_MODE_TOGGLING", ui->checkBoxEnableTagModeToggle->isChecked() == true);
     Settings::setKfxSetting("DEFAULT_TAG_MODE", ui->comboBoxDefaultTagMode->currentData().toString());
