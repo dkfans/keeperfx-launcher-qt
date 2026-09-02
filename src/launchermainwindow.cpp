@@ -994,6 +994,16 @@ void LauncherMainWindow::checkForFileRemoval()
 
             } else {
                 qDebug() << "No files to remove found.";
+
+                // Remove the 'install.tmp' file if it exists
+                QFile installTmpFile(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-qt.install.tmp");
+                if(installTmpFile.exists()) {
+                    if(installTmpFile.remove() == false) {
+                        qWarning() << "Failed to remove 'install.tmp' file";
+                    } else {
+                        qDebug() << "install.tmp file removed";
+                    }
+                }
             }
         } else {
             qInfo() << "File-removal file not found:" << fileRemovalFilename;
@@ -1014,11 +1024,24 @@ void LauncherMainWindow::onFilesToRemoveFound(QStringList filesToRemove)
 
     // Check if we need to remove leftover files automatically (silently)
     // - If the user has configured the files to be automatically removed
-    // - If the user is still installing KeeperFX
+    // - If the '--install' param is present (user is still installing KeeperFX)
+    // - If the 'install.tmp' file is present (user is still installing KeeperFX)
+    QFile installTmpFile(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-qt.install.tmp");
     if(
         Settings::getLauncherSetting("AUTO_REMOVE_LEFTOVER_FILES") == true
         || LauncherOptions::isSet("install")
+        || installTmpFile.exists()
     ){
+        // Remove the 'install.tmp' file if it exists
+        if(installTmpFile.exists()) {
+            if(installTmpFile.remove() == false) {
+                qWarning() << "Failed to remove 'install.tmp' file";
+            } else {
+                qDebug() << "install.tmp file removed";
+            }
+        }
+
+        // Log that we're removing files without interaction
         qDebug() << "Removing leftover files automatically without user interaction";
 
         // Loop through the list of files

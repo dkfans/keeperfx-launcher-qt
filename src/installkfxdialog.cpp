@@ -601,6 +601,16 @@ void InstallKfxDialog::completeInstall()
         }
     }
 
+    // Drop a file that allows us to know that we just installed the game.
+    // We need this because the automatic file removal might want to remove some files and
+    // we don't want to bug the user right after installing.
+    QString installTmpFilePath = QCoreApplication::applicationDirPath() + "/keeperfx-launcher-qt.install.tmp";
+    QFile installTmpFile(installTmpFilePath);
+    if (installTmpFile.open(QIODevice::WriteOnly)) {
+        qDebug() << "Written install.tmp file:" << installTmpFilePath;
+    }
+    installTmpFile.close();
+
     // Done!
     emit appendLog("Done!");
     QMessageBox::information(this, "KeeperFX", tr("KeeperFX has been successfully installed!", "MessageBox Text"));
