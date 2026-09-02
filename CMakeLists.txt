@@ -64,8 +64,8 @@ CPMFindPackage(
     GIT_TAG v1.3.2
     OPTIONS
         "BUILD_SHARED_LIBS OFF"
-        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS}"
-        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS}"
+        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS} -w"
+        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS} -w"
 )
 
 # Library: bit7z
@@ -78,8 +78,8 @@ CPMFindPackage(
         "BUILD_SHARED_LIBS OFF"
         "BIT7Z_BUILD_TESTS OFF"
         "BIT7Z_BUILD_DOCS OFF"
-        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS}"
-        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS}"
+        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS} -w"
+        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS} -w"
 )
 
 # Library: libLIEF
@@ -94,8 +94,15 @@ CPMAddPackage(
         "LIEF_EXAMPLES OFF"
         "LIEF_TESTS OFF"
         "LIEF_VERSION_BUMP OFF" # stop dynamic version regeneration
-        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS}"
-        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS}"
+        "LIEF_PE ON" # Portable Executable format, required for Windows binaries
+        "LIEF_ELF OFF" # Executable and Linkable Format, required for Unix binaries
+        "LIEF_COFF ON" # Common Object File Format, required for PE
+        "LIEF_MACHO OFF" # Mach-O, Mach-object, required for macOS binaries
+        "LIEF_DEX OFF" # Dalvid Executable format (Android)
+        "LIEF_ART OFF"
+        "LIEF_USE_MELKOR OFF" # ELF File Format Fuzzer
+        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS} -w"
+        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS} -w"
 )
 
 # Set custom UI directory
