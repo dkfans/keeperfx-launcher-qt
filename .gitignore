@@ -21,6 +21,7 @@ Makefile*
 Thumbs.db
 /.qmake.cache
 /.qmake.stash
+/.ccache
 
 # IDE files
 *.pro.user*

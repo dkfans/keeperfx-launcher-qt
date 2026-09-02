@@ -28,7 +28,35 @@ else()
     set(DEP_CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -w")
 endif()
 
+# Enable ccache if available
+find_program(CCACHE_PATH ccache)
+if(CCACHE_PATH)
+    set(CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE_PATH}")
+    set(CMAKE_C_COMPILER_LAUNCHER "${CCACHE_PATH}")
+    message(STATUS "ccache found and enabled")
+endif()
+
+# For GCC/Clang + GNU ld (Linux)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+
+    # Check for Mold linker and use it if available
+    find_program(MOLD_PATH mold)
+    if(MOLD_PATH)
+        message(STATUS "Mold linker found at: ${MOLD_PATH}")
+        add_link_options("-fuse-ld=mold")
+    endif()
+
+    # Discard unused sections
+    add_link_options(-Wl,--gc-sections) # requires -ffunction-sections/-fdata-sections
+    add_compile_options(-ffunction-sections -fdata-sections) # Enable for --gc-sections
+
+endif()
+
+# Include package manager CPM
+# https://github.com/cpm-cmake/CPM.cmake
 include("cmake/CPM.cmake")
+
+# Library: zlib
 CPMFindPackage(
     NAME zlib
     VERSION 1.3.2
@@ -39,6 +67,8 @@ CPMFindPackage(
         "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS}"
         "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS}"
 )
+
+# Library: bit7z
 CPMFindPackage(
     NAME bit7z
     VERSION 4.1.0
@@ -51,6 +81,8 @@ CPMFindPackage(
         "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS}"
         "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS}"
 )
+
+# Library: libLIEF
 CPMAddPackage(
     NAME LIEF
     GITHUB_REPOSITORY lief-project/LIEF
@@ -141,7 +173,7 @@ file(GLOB UI_FILES ui/*.ui)
 
 if(WIN32)
     qt_add_executable(keeperfx-launcher-qt
-        MANUAL_FINALIZATION
+        # MANUAL_FINALIZATION
         WIN32
         ${PROJECT_SOURCES}
         ${UI_FILES}
@@ -150,7 +182,7 @@ if(WIN32)
     )
 else()
     qt_add_executable(keeperfx-launcher-qt
-        MANUAL_FINALIZATION
+        # MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         ${UI_FILES}
         resources.qrc
@@ -200,7 +232,7 @@ set_target_properties(keeperfx-launcher-qt PROPERTIES
 )
 
 # Finalize executable
-qt_finalize_executable(keeperfx-launcher-qt)
+# qt_finalize_executable(keeperfx-launcher-qt)
 
 # Copy pre-compiled libraries
 if (UNIX)

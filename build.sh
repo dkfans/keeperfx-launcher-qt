@@ -132,9 +132,9 @@ fi
 echo "Compiling $TARGET $CMAKE_BUILD_TYPE build..."
 
 if [ "$TARGET" = "win64s" ]; then
-    docker run --rm -v "$(pwd)":/project -u $USER_ID:$GROUP_ID kfx-launcher-qt-build-win64s bash -c "
+    docker run --rm -v "$(pwd)":/project -u $USER_ID:$GROUP_ID -e CCACHE_DIR=/project/.ccache kfx-launcher-qt-build-win64s bash -c "
         cd /project &&
-        x86_64-w64-mingw32.static-cmake -Bbuild/mingw-win64 -H. -DWINDOWS=TRUE -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$BUILD_SHARED_LIBS -Wno-dev &&
+        x86_64-w64-mingw32.static-cmake -G Ninja -Bbuild/mingw-win64 -H. -DWINDOWS=TRUE -DCMAKE_BUILD_TYPE=$CMAKE_BUILD_TYPE -DBUILD_SHARED_LIBS=$BUILD_SHARED_LIBS -Wno-dev &&
         x86_64-w64-mingw32.static-cmake --build build/mingw-win64 --config $CMAKE_BUILD_TYPE $VERBOSE
     "
 
