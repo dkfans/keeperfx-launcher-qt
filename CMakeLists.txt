@@ -183,7 +183,7 @@ if(WIN32)
         # MANUAL_FINALIZATION
         WIN32
         ${PROJECT_SOURCES}
-        ${UI_FILES}
+        # ${UI_FILES}
         resources.qrc
         app.rc
     )
@@ -191,7 +191,7 @@ else()
     qt_add_executable(keeperfx-launcher-qt
         # MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        ${UI_FILES}
+        # ${UI_FILES}
         resources.qrc
     )
 endif()
