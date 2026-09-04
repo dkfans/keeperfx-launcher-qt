@@ -24,9 +24,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->setupUi(this);
 
     // Disable resizing and remove maximize button
-    setFixedSize(size());
+    /*setFixedSize(size());
     setWindowFlag(Qt::WindowMaximizeButtonHint, false);
-    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);
+    setWindowFlag(Qt::MSWindowsFixedSizeDialogHint);*/
 
     // Hide 'Multiplayer' tab until a future update requires it
     ui->tabWidget->tabBar()->setTabVisible(4, false);
@@ -470,6 +470,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     } else {
         ui->labelLauncherTranslators->setText(""); // Hide
     }
+
+    // Fake a resize event to trigger the initial layout update
+    QResizeEvent *fakeResizeEvent = new QResizeEvent(size(), size());
+    resizeEvent(fakeResizeEvent);
+    delete fakeResizeEvent;
 }
 
 SettingsDialog::~SettingsDialog()
@@ -1475,5 +1480,97 @@ void SettingsDialog::addCustomResolution(int width, int height, QComboBox *sourc
             sourceCombo->setCurrentIndex(index);
             sourceCombo->setProperty("previousIndex", index);
         }
+    }
+}
+
+void SettingsDialog::switchScrollAreaLayout(QScrollArea *scrollArea, bool useHorizontal) {
+    // Get the container widget inside the scroll area
+    QWidget *container = scrollArea->widget();
+    if (!container) return; // Skip if no widget
+
+    // Store all widgets in the current layout
+    QList<QWidget*> widgets;
+    QLayoutItem *child;
+    QLayout *oldLayout = container->layout();
+    if (oldLayout) {
+        while ((child = oldLayout->takeAt(0)) != nullptr) {
+            if (child->widget()) {
+                widgets.append(child->widget());
+            }
+            delete child; // Delete layout item, NOT the widget
+        }
+        delete oldLayout; // Delete the old layout
+    }
+
+    // Create new layout
+    QBoxLayout *newLayout;
+    if (useHorizontal) {
+        newLayout = new QHBoxLayout(container);
+    } else {
+        newLayout = new QVBoxLayout(container);
+    }
+
+    // Add widgets
+    for (QWidget *widget : widgets) {
+        newLayout->addWidget(widget);
+
+        if (useHorizontal) {
+            // Always show all frames in horizontal mode
+            widget->setVisible(true);
+        } else {
+            // In vertical mode, check if the widget's layout has real content
+            bool hasRealContent = false;
+            QLayout *wLayout = widget->layout();
+
+            if (wLayout) {
+                for (int i = 0; i < wLayout->count(); ++i) {
+                    QLayoutItem *item = wLayout->itemAt(i);
+                    // If we find a widget or a nested layout, it's not just a spacer
+                    if (item->widget() || item->layout()) {
+                        hasRealContent = true;
+                        break;
+                    }
+                }
+            } else {
+                // If there's no layout but the widget itself is something, count it as content
+                hasRealContent = true;
+            }
+
+            // Hide the widget if it only contained spacers (or was completely empty)
+            widget->setVisible(hasRealContent);
+        }
+    }
+}
+
+void SettingsDialog::resizeEvent(QResizeEvent *event) {
+    QDialog::resizeEvent(event);
+
+    // Loop through all tabs
+    for (int i = 0; i < ui->tabWidget->count(); ++i) {
+
+        // Get the contents of the tab
+        QWidget *tabContent = ui->tabWidget->widget(i);
+        if (!tabContent) continue;
+
+        // Make sure tab has a width
+        if(tabContent->width() < 1) continue;
+
+        // Find the first QScrollArea
+        QScrollArea *scrollArea = nullptr;
+        for (QObject *child : tabContent->children()) {
+            if (child->isWidgetType() && qobject_cast<QScrollArea*>(child)) {
+                scrollArea = qobject_cast<QScrollArea*>(child);
+                break;
+            }
+        }
+
+        // Make sure a scroll area was found
+        if (!scrollArea) {
+            continue;
+        }
+
+        // Switch layout based on current width
+        bool useHorizontal = (width() >= 800);
+        switchScrollAreaLayout(scrollArea, useHorizontal);
     }
 }

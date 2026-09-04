@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QScrollArea>
 
 #include "popupsignalcombobox.h"
 
@@ -20,6 +21,9 @@ private slots:
     void onOpenConfigButtonClicked();
     void onResolutionChanged(int index);
     void on_pushButtonShowLauncherParams_clicked();
+
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
     Ui::SettingsDialog *ui;
@@ -46,4 +50,7 @@ private:
 
     void showCustomResolutionDialog(QComboBox *sourceCombo);
     void addCustomResolution(int width, int height, QComboBox *sourceCombo);
+
+    void switchScrollAreaLayout(QScrollArea *scrollArea, bool useHorizontal);
+
 };
