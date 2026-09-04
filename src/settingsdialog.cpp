@@ -1483,26 +1483,28 @@ void SettingsDialog::addCustomResolution(int width, int height, QComboBox *sourc
     }
 }
 
-void SettingsDialog::switchScrollAreaLayout(QScrollArea *scrollArea, bool useHorizontal) {
-    // Get the container widget inside the scroll area
-    QWidget *container = scrollArea->widget();
-    if (!container) return; // Skip if no widget
+void SettingsDialog::switchContainerLayout(QWidget *container, bool useHorizontal) {
 
-    // Store all widgets in the current layout
+    // Make sure container exists
+    if (!container) return;
+
+    // Variables
     QList<QWidget*> widgets;
     QLayoutItem *child;
     QLayout *oldLayout = container->layout();
+
+    // Store widgets and delete the old layout
     if (oldLayout) {
         while ((child = oldLayout->takeAt(0)) != nullptr) {
             if (child->widget()) {
                 widgets.append(child->widget());
             }
-            delete child; // Delete layout item, NOT the widget
+            delete child;
         }
-        delete oldLayout; // Delete the old layout
+        delete oldLayout;
     }
 
-    // Create new layout
+    // Create the new layout
     QBoxLayout *newLayout;
     if (useHorizontal) {
         newLayout = new QHBoxLayout(container);
@@ -1510,67 +1512,53 @@ void SettingsDialog::switchScrollAreaLayout(QScrollArea *scrollArea, bool useHor
         newLayout = new QVBoxLayout(container);
     }
 
-    // Add widgets
+    // Keep margins clean so it doesn't look bloated when wrapped
+    // newLayout->setContentsMargins(0, 0, 0, 0);
+
+    // Add widgets back
     for (QWidget *widget : widgets) {
+
         newLayout->addWidget(widget);
 
         if (useHorizontal) {
-            // Always show all frames in horizontal mode
             widget->setVisible(true);
         } else {
-            // In vertical mode, check if the widget's layout has real content
             bool hasRealContent = false;
             QLayout *wLayout = widget->layout();
 
             if (wLayout) {
                 for (int i = 0; i < wLayout->count(); ++i) {
                     QLayoutItem *item = wLayout->itemAt(i);
-                    // If we find a widget or a nested layout, it's not just a spacer
                     if (item->widget() || item->layout()) {
                         hasRealContent = true;
                         break;
                     }
                 }
             } else {
-                // If there's no layout but the widget itself is something, count it as content
                 hasRealContent = true;
             }
-
-            // Hide the widget if it only contained spacers (or was completely empty)
             widget->setVisible(hasRealContent);
         }
     }
 }
 
 void SettingsDialog::resizeEvent(QResizeEvent *event) {
+
+    // Original dialog resize event
     QDialog::resizeEvent(event);
 
-    // Loop through all tabs
-    for (int i = 0; i < ui->tabWidget->count(); ++i) {
+    // Switch layout based on current window width
+    bool useHorizontal = (width() >= 800);
 
-        // Get the contents of the tab
-        QWidget *tabContent = ui->tabWidget->widget(i);
-        if (!tabContent) continue;
+    // Dynamically find all widgets named starting with "responsive_"
+    QList<QWidget*> responsiveContainers = this->findChildren<QWidget*>(QRegularExpression("^responsive_.*"));
 
-        // Make sure tab has a width
-        if(tabContent->width() < 1) continue;
-
-        // Find the first QScrollArea
-        QScrollArea *scrollArea = nullptr;
-        for (QObject *child : tabContent->children()) {
-            if (child->isWidgetType() && qobject_cast<QScrollArea*>(child)) {
-                scrollArea = qobject_cast<QScrollArea*>(child);
-                break;
-            }
+    // Loop torugh all found containers
+    // TODO: fix this loop:
+    for (QWidget* container : responsiveContainers) {
+        // Only attempt to switch if the container has a layout assigned to it
+        if (container->layout()) {
+            switchContainerLayout(container, useHorizontal);
         }
-
-        // Make sure a scroll area was found
-        if (!scrollArea) {
-            continue;
-        }
-
-        // Switch layout based on current width
-        bool useHorizontal = (width() >= 800);
-        switchScrollAreaLayout(scrollArea, useHorizontal);
     }
 }

@@ -51,6 +51,6 @@ private:
     void showCustomResolutionDialog(QComboBox *sourceCombo);
     void addCustomResolution(int width, int height, QComboBox *sourceCombo);
 
-    void switchScrollAreaLayout(QScrollArea *scrollArea, bool useHorizontal);
+    void switchContainerLayout(QWidget *container, bool useHorizontal);
 
 };

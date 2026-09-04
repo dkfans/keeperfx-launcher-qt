@@ -1404,7 +1404,7 @@ height: 35px;
          <property name="widgetResizable">
           <bool>true</bool>
          </property>
-         <widget class="QWidget" name="scrollAreaContents">
+         <widget class="QWidget" name="responsive_scrollAreaContents">
           <property name="geometry">
            <rect>
             <x>0</x>
