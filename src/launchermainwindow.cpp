@@ -1245,6 +1245,7 @@ void LauncherMainWindow::checkForKfxUpdate(bool ignoreInterval, bool showMessage
 
 void LauncherMainWindow::verifyBinaryCertificates()
 {
+#ifdef Q_OS_WINDOWS
     // Check if we need to skip verification
     if (LauncherOptions::isSet("skip-verify") == true) {
         qDebug() << "Skipping certificate file verification (skip-verify)";
@@ -1293,6 +1294,9 @@ void LauncherMainWindow::verifyBinaryCertificates()
                                 "MessageBox Text")
                                  .arg(fileListString));
     }
+#else
+    qDebug() << "Not verifiying certificates because not on Windows";
+#endif
 }
 
 void LauncherMainWindow::startGame(Game::StartType startType, QVariant data1, QVariant data2, QVariant data3)
