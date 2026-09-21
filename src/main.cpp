@@ -22,6 +22,11 @@ using namespace Qt::StringLiterals;
 #include "translator.h"
 #include "version.h"
 
+// Add launcher version in ELF section on UNIX
+#ifdef Q_OS_UNIX
+const char keeperfx_launcher_version_string[] __attribute__((used, retain, section(".keeperfx-launcher.version"))) = LAUNCHER_VERSION;
+#endif
+
 void setDarkTheme()
 {
     // Set the app to the Fusion theme style
