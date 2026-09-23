@@ -21,6 +21,19 @@
     <normaloff>:/res/img/horny-face.png</normaloff>:/res/img/horny-face.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
+   <item row="1" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::RestoreDefaults|QDialogButtonBox::StandardButton::Save</set>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
@@ -314,7 +327,7 @@ height: 35px;
             <x>0</x>
             <y>0</y>
             <width>842</width>
-            <height>536</height>
+            <height>565</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -559,17 +572,17 @@ height: 35px;
                  <item row="2" column="1">
                   <widget class="QLineEdit" name="lineEditMaxFps"/>
                  </item>
-                 <item row="4" column="0">
+                 <item row="5" column="0">
                   <widget class="QLabel" name="labelResizeMovies">
                    <property name="text">
                     <string comment="Dropdown Title Label">Resize Movies</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="4" column="1">
+                 <item row="5" column="1">
                   <widget class="QComboBox" name="comboBoxResizeMovies"/>
                  </item>
-                 <item row="5" column="0" colspan="2">
+                 <item row="6" column="0" colspan="2">
                   <widget class="QCheckBox" name="checkBoxSmoothenVideo">
                    <property name="text">
                     <string comment="Checkbox Toggle">Smoothen edges</string>
@@ -592,6 +605,13 @@ height: 35px;
                  </item>
                  <item row="0" column="1">
                   <widget class="QComboBox" name="comboBoxRenderer"/>
+                 </item>
+                 <item row="4" column="0" colspan="2">
+                  <widget class="QCheckBox" name="checkBoxVSync">
+                   <property name="text">
+                    <string comment="Checkbox Toggle">Enable VSync</string>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </widget>
@@ -684,7 +704,7 @@ height: 35px;
                  <item row="5" column="0" colspan="2">
                   <widget class="QCheckBox" name="checkBoxParchmentMapFade">
                    <property name="text">
-                    <string>Enable map fade animation</string>
+                    <string comment="Checkbox Toggle">Enable map fade animation</string>
                    </property>
                   </widget>
                  </item>
@@ -1031,7 +1051,7 @@ height: 35px;
               <item row="7" column="1">
                <widget class="QComboBox" name="comboBoxRotateAroundMouse"/>
               </item>
-              <item row="8" column="0">
+              <item row="9" column="0">
                <spacer name="verticalSpacer_7">
                 <property name="orientation">
                  <enum>Qt::Orientation::Vertical</enum>
@@ -1054,7 +1074,7 @@ height: 35px;
               <item row="2" column="0" colspan="2">
                <widget class="QCheckBox" name="checkBoxAltInput">
                 <property name="text">
-                 <string comment="Checkbox Toggle" extracomment="&quot;Alternative Input&quot;">Unlock cursor from game window</string>
+                 <string comment="Checkbox Toggle" extracomment="&quot;Capture Cursor&quot;">Unlock cursor from game window</string>
                 </property>
                </widget>
               </item>
@@ -1109,7 +1129,7 @@ height: 35px;
               <property name="bottomMargin">
                <number>16</number>
               </property>
-              <item row="0" column="0">
+              <item row="1" column="0">
                <widget class="QLabel" name="labelTagMode">
                 <property name="text">
                  <string comment="Dropdown Title Label">Default tag mode</string>
@@ -1119,10 +1139,10 @@ height: 35px;
                 </property>
                </widget>
               </item>
-              <item row="0" column="1">
+              <item row="1" column="1">
                <widget class="QComboBox" name="comboBoxDefaultTagMode"/>
               </item>
-              <item row="2" column="0">
+              <item row="4" column="0">
                <spacer name="verticalSpacer_8">
                 <property name="orientation">
                  <enum>Qt::Orientation::Vertical</enum>
@@ -1135,10 +1155,25 @@ height: 35px;
                 </property>
                </spacer>
               </item>
-              <item row="1" column="0" colspan="2">
+              <item row="2" column="0" colspan="2">
                <widget class="QCheckBox" name="checkBoxEnableTagModeToggle">
                 <property name="text">
                  <string comment="Checkbox Toggle">Enable tag mode toggle (Right-click)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0" colspan="2">
+               <widget class="QCheckBox" name="checkBoxRelativeMouseMode">
+                <property name="toolTip">
+                 <string comment="Relative Mouse Mode Tooltip">Mouse locking method.
+
+- Enabled: Use SDL relative (&quot;raw&quot;) mode for 1:1 deltas
+- Disabled: Use older grab-and-warp scheme (confines and re-centers the cursor)
+
+Disable this if the mouse feels off.</string>
+                </property>
+                <property name="text">
+                 <string comment="Checkbox Toggle">Enable relative mouse mode</string>
                 </property>
                </widget>
               </item>
@@ -1769,19 +1804,6 @@ height: 35px;
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::RestoreDefaults|QDialogButtonBox::StandardButton::Save</set>
-     </property>
     </widget>
    </item>
   </layout>

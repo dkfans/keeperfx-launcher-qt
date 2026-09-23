@@ -207,6 +207,11 @@ target_link_libraries(keeperfx-launcher-qt PRIVATE
     bit7z
 )
 
+# Link crypt32 on Windows
+if(WIN32)
+    target_link_libraries(keeperfx-launcher-qt PRIVATE crypt32)
+endif()
+
 # Link Zlib
 #if (ZLIB_FOUND)
 #    target_link_libraries(keeperfx-launcher-qt PRIVATE ZLIB::ZLIB)
