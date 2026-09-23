@@ -18,13 +18,11 @@
 
 #include "apiclient.h"
 #include "campaign.h"
-#include "certificate.h"
 #include "clickablelabel.h"
 #include "copydkfilesdialog.h"
 #include "directconnectdialog.h"
 #include "dkfiles.h"
 #include "downloadmusicdialog.h"
-#include "enetservertestdialog.h"
 #include "fileremover.h"
 #include "fileremoverdialog.h"
 #include "game.h"
@@ -33,17 +31,20 @@
 #include "installkfxdialog.h"
 #include "kfxversion.h"
 #include "launcheroptions.h"
-#include "modmanager.h"
+//#include "modmanager.h"
 #include "modmanagerdialog.h"
 #include "newsarticlewidget.h"
 #include "runpacketfiledialog.h"
 #include "savefile.h"
-#include "scannetworkdialog.h"
 #include "settings.h"
 #include "settingsdialog.h"
 #include "updatedialog.h"
 #include "version.h"
 #include "workshopitemwidget.h"
+
+#ifdef Q_OS_WINDOWS
+    #include "certificate.h"
+#endif
 
 #define MAX_WORKSHOP_ITEMS_SHOWN 4
 #define MAX_NEWS_ARTICLES_SHOWN 3
