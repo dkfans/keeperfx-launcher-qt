@@ -154,6 +154,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->labelRotateAroundMouse->setDisabled(true);
     }
 
+    if (KfxVersion::hasFunctionality("relative_mouse_mode_toggle") == false) {
+        ui->checkBoxRelativeMouseMode->setDisabled(true);
+    }
+
     // Tag Mode
     if (KfxVersion::hasFunctionality("tag_mode") == true) {
         // Add default tag mode dropdown options
@@ -782,6 +786,8 @@ void SettingsDialog::loadSettings()
     ui->comboBoxZoomToMouse->setCurrentIndex(ui->comboBoxZoomToMouse->findData(Settings::getKfxSetting("ZOOM_TO_MOUSE").toString()));
     ui->comboBoxRotateAroundMouse->setCurrentIndex(ui->comboBoxRotateAroundMouse->findData(Settings::getKfxSetting("ROTATE_AROUND_MOUSE").toString()));
 
+    ui->checkBoxRelativeMouseMode->setChecked(Settings::getKfxSetting("RELATIVE_MOUSE_MODE") == true);
+
     ui->checkBoxEnableTagModeToggle->setChecked(Settings::getKfxSetting("TAG_MODE_TOGGLING") == true);
     ui->comboBoxDefaultTagMode->setCurrentIndex(ui->comboBoxDefaultTagMode->findData(Settings::getKfxSetting("DEFAULT_TAG_MODE").toString()));
 
@@ -1040,6 +1046,7 @@ void SettingsDialog::saveSettings()
     Settings::setKfxSetting("CURSOR_EDGE_CAMERA_PANNING", ui->checkBoxScreenEdgePanning->isChecked() == true);
     Settings::setKfxSetting("ZOOM_TO_MOUSE", ui->comboBoxZoomToMouse->currentData().toString());
     Settings::setKfxSetting("ROTATE_AROUND_MOUSE", ui->comboBoxRotateAroundMouse->currentData().toString());
+    Settings::setKfxSetting("RELATIVE_MOUSE_MODE", ui->checkBoxRelativeMouseMode->isChecked() == true);
 
     Settings::setKfxSetting("TAG_MODE_TOGGLING", ui->checkBoxEnableTagModeToggle->isChecked() == true);
     Settings::setKfxSetting("DEFAULT_TAG_MODE", ui->comboBoxDefaultTagMode->currentData().toString());
