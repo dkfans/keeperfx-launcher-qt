@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-04 15:20+0200\n"
-"PO-Revision-Date: 2026-06-11 22:43+0200\n"
+"POT-Creation-Date: 2026-09-18 13:25+0200\n"
+"PO-Revision-Date: 2026-09-19 18:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -113,14 +113,6 @@ msgstr "&Guardar"
 #: Qt default
 msgid "Restore Defaults"
 msgstr "Restaurar valores predeterminados"
-
-msgctxt "CDN|Download Server"
-msgid "KeeperFX.net (Default, Germany)"
-msgstr "KeeperFX.net (Por defecto, Alemania)"
-
-msgctxt "CDN|Download Server"
-msgid "Cloudflare CDN (Worldwide)"
-msgstr "CDN de Cloudflare (todo el mundo)"
 
 msgctxt "CopyDkFilesDialog|Window Title"
 msgid "Copy DK Files"
@@ -272,7 +264,7 @@ msgstr ""
 "Por favor, explique qué ocurrió y, si es posible, los pasos para reproducir "
 "este error."
 
-# Every time "Savegame" has been used I used "partifa guardada".
+# Every time "Savegame" has been used I used "partida guardada".
 # It sounds a bit more archaic than "Juego guardado" but it is the general correct term.
 # https://es.wikipedia.org/wiki/Partida_guardada
 msgctxt "CrashDialog|Input box title"
@@ -411,7 +403,7 @@ msgstr ""
 "si ha copiado los archivos de Dungeon Keeper desde el CD en lugar de usar "
 "una versión digital del juego.\n"
 "\n"
-"Puede permitir que el launcher los descargue automáticamente, ya que usted "
+"Puede permitir que el Launcher los descargue automáticamente, ya que usted "
 "ya ha demostrado ser propietario de los archivos originales del juego "
 "Dungeon Keeper.\n"
 "\n"
@@ -569,7 +561,7 @@ msgid ""
 "The KeeperFX launcher has found files that were left over after KeeperFX was "
 "updated. These files might cause issues and should be removed."
 msgstr ""
-"El launcher de KeeperFX ha detectado archivos que han quedado tras una "
+"El Launcher de KeeperFX ha detectado archivos que han quedado tras una "
 "actualización de KeeperFX. Estos archivos podrían causar problemas y "
 "deberían eliminarse."
 
@@ -651,7 +643,7 @@ msgstr ""
 
 msgctxt "InstallKfxDialog|Label"
 msgid "Release version:"
-msgstr "Versión de lanzador:"
+msgstr "Versión:"
 
 msgctxt "InstallKfxDialog|Button"
 msgid "Cancel"
@@ -841,7 +833,7 @@ msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
 "This launcher version is a prototype and should only be used for testing."
 msgstr ""
-"Esta versión del launcher es un prototipo y solo debe utilizarse para "
+"Esta versión del Launcher es un prototipo y solo debe utilizarse para "
 "pruebas."
 
 msgctxt "LauncherMainWindow|MessageBox Title"
@@ -856,7 +848,7 @@ msgid ""
 "\n"
 "KeeperFX should be installed in its own directory as it is a standalone game."
 msgstr ""
-"El launcher ha detectado que podría haberse instalado en el directorio "
+"El Launcher ha detectado que podría haberse instalado en el directorio "
 "original de Dungeon Keeper. Existe la posibilidad de que se produzcan "
 "errores y no pueda jugar al juego.\n"
 "\n"
@@ -873,7 +865,7 @@ msgid ""
 "\n"
 "Would you like to reinstall KeeperFX?"
 msgstr ""
-"El launcher no pudo determinar la versión de KeeperFX. Es posible que tu "
+"El Launcher no pudo determinar la versión de KeeperFX. Es posible que tu "
 "instalación esté dañada o desactualizada.\n"
 "\n"
 "¿Deseas reinstalar KeeperFX?"
@@ -899,14 +891,6 @@ msgid "Direct connect (MP)"
 msgstr "Conexión directa (Multijugador)"
 
 msgctxt "LauncherMainWindow|Menu"
-msgid "Scan local network (MP)"
-msgstr "Escanear red local (Multijugador)"
-
-msgctxt "LauncherMainWindow|Menu"
-msgid "Test internet lobby (MP)"
-msgstr "Probar sala en línea (Multijugador)"
-
-msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "Ejecutar archivo de repetición (Packetfile)"
 
@@ -917,7 +901,7 @@ msgstr "Jugar sin mods"
 # Could add (Heavylog) after the translation if that helps with troubleshooting
 msgctxt "LauncherMainWindow|Menu"
 msgid "Heavylog"
-msgstr "Registro detallado (Heavylog)"
+msgstr "Heavylog"
 
 msgctxt "LauncherMainWindow|Button text"
 msgid "Play (hvlog)"
@@ -933,7 +917,7 @@ msgid ""
 "\n"
 "Do you want to download and install KeeperFX?"
 msgstr ""
-"El launcher no puede encontrar 'keeperfx.exe'.\n"
+"El Launcher no puede encontrar 'keeperfx.exe'.\n"
 "\n"
 "¿Desea descargar e instalar KeeperFX?"
 
@@ -960,7 +944,7 @@ msgid ""
 "The launcher has to restart to change its language. Do you want to do that "
 "now?"
 msgstr ""
-"El launcher debe reiniciarse para aplicar el cambio de idioma. ¿Desea "
+"El Launcher debe reiniciarse para aplicar el cambio de idioma. ¿Desea "
 "hacerlo ahora?"
 
 msgctxt "LauncherMainWindow|MessageBox Title"
@@ -1127,21 +1111,42 @@ msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Game language"
 msgstr "Idioma del juego"
 
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Screenshot type"
+msgstr "Tipo de Screenshot"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Display splash screens"
+msgstr "Mostrar pantalla de inicio"
+
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display Intro"
 msgstr "Mostrar introducción"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Cheats"
-msgstr "Activar trucos"
+msgstr "Activar Cheats"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically enable imprison"
+msgstr "Activar aprisionar automaticamente"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically enable flee"
+msgstr "Activar huir automaticamente"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Censorship"
 msgstr "Censurar contenido"
 
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Screenshot type"
-msgstr "Tipo de captura de pantalla"
+# Is this commanding a character in game or it this commands like in console commands?
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Command character"
+msgstr "Prefijo para commandos"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Packetsave filename"
+msgstr "Nombre del archivo de repetición (Packetsave)"
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
@@ -1151,71 +1156,29 @@ msgstr ""
 "Ticks por segundo\n"
 "(predeterminado = 20)"
 
-# Is this commanding a character in game or it this commands like in console commands?
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Command character"
-msgstr "Prefijo para commandos"
+msgid "Game launch options"
+msgstr "Opciones de lanzamiento del juego"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Display splash screens"
-msgstr "Mostrar pantalla de inicio"
+msgid "Freeze game when not focused"
+msgstr "Pausar el juego en segundo plano"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable delta time"
 msgstr "Activar sincronización delta"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Freeze game when not focused"
-msgstr "Pausar el juego en segundo plano"
-
-msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Packetsave filename"
-msgstr "Nombre del archivo de repetición (Packetsave)"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Packetsave"
-msgstr "Activar grabación Packetsave"
+msgstr "Activar Packetsave"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Exit on LUA error"
 msgstr "Salir ante un error de LUA"
 
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Automatically enable flee"
-msgstr "Activar huir automaticamente"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Automatically enable imprison"
-msgstr "Activar aprisionar automaticamente"
-
-msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Game launch options"
-msgstr ""
-
 msgctxt "SettingsDialog|Tab Title"
 msgid "Graphics"
 msgstr "Gráficos"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Smoothen edges"
-msgstr "Suavizado de bordes"
-
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Resolution"
-msgstr "Resolución de imagen"
-
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Display mode"
-msgstr "Modo de pantalla"
-
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Display monitor"
-msgstr "Monitor"
-
-#. Should be kept very short
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "View 1"
-msgstr "Vista 1"
 
 #. Should be kept very short
 msgctxt "SettingsDialog|Dropdown Title Label"
@@ -1224,8 +1187,38 @@ msgstr "Vista 2"
 
 #. Should be kept very short
 msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "View 1"
+msgstr "Vista 1"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Display mode"
+msgstr "Modo de pantalla"
+
+#. Should be kept very short
+msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 3"
 msgstr "Vista 3"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Resolution"
+msgstr "Resolución de imagen"
+
+#. Should be kept very short
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Menu"
+msgstr "Menú"
+
+#. Should be kept very short
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Movies"
+msgstr "Vídeos"
+
+# "Opción de respaldo (en caso de fallo)"
+# Would be the optimal explicative translation but its too long
+#. Should be kept very short
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Failsafe"
+msgstr "Modo seguro"
 
 #. This is shown under the views configuration
 msgctxt "SettingsDialog|Information Label"
@@ -1235,8 +1228,28 @@ msgstr ""
 "<i>Cambie entre las vistas del juego pulsando <strong>Alt + R</strong></i>"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Display monitor"
+msgstr "Monitor"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Max. FPS (0 = unlimited)"
+msgstr "FPS máximos (0 = sin límite)"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resize Movies"
 msgstr "Ajuste de vídeos"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Smoothen edges"
+msgstr "Suavizado de bordes"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically determine max. FPS"
+msgstr "Determinar automáticamente los FPS máximos"
+
+msgctxt "SettingsDialog|"
+msgid "Rendering Backend"
+msgstr "Motor de renderizado"
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Creature flower size (px)"
@@ -1249,27 +1262,6 @@ msgstr "Tamaño de la mano (%)"
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Select box line size %"
 msgstr "Tamaño de la línea de selección (%)"
-
-#. Should be kept very short
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Menu"
-msgstr "Menú"
-
-# "Opción de respaldo (en caso de fallo)"
-# Would be the optimal explicative translation but its too long
-#. Should be kept very short
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Failsafe"
-msgstr "Modo seguro"
-
-#. Should be kept very short
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Movies"
-msgstr "Vídeos"
-
-msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Max. FPS (0 = unlimited)"
-msgstr "FPS máximos (0 = sin límite)"
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
@@ -1287,29 +1279,25 @@ msgstr ""
 "Velocidad de parpadeo neutral\n"
 "(predeterminado = 1)"
 
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Automatically determine max. FPS"
-msgstr "Determinar automáticamente los FPS máximos"
-
 msgctxt "SettingsDialog|Tab Title"
 msgid "Sound"
 msgstr "Sonido"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable sound"
-msgstr "Activar sonido"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Use CD music instead of local files"
-msgstr "Usar música del CD en lugar de archivos locales"
+msgid "Mute audio when game is not focused"
+msgstr "Silenciar el juego en segundo plano"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
 msgstr "Pausar la música cuando el juego esté en pausa"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable atmospheric sounds"
-msgstr "Activar sonidos ambientales"
+msgid "Use CD music instead of local files"
+msgstr "Usar música del CD en lugar de archivos locales"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable sound"
+msgstr "Activar sonido"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Frequency"
@@ -1320,20 +1308,28 @@ msgid "Volume"
 msgstr "Volumen"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Mute audio when game is not focused"
-msgstr "Silenciar el juego en segundo plano"
+msgid "Enable atmospheric sounds"
+msgstr "Activar sonidos ambientales"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Input"
 msgstr "Entrada"
 
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Lock cursor in possession"
-msgstr "Capturar el cursor durante la posesión"
+msgctxt "SettingsDialog|Slider Title Label"
+msgid "Mouse sensitivity"
+msgstr "Sensibilidad del ratón"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Zoom towards cursor"
+msgstr "Acercar hacia el cursor"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Rotate around cursor"
+msgstr "Girar alrededor del cursor"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Unlock cursor when game is paused"
-msgstr "Liberar el cursor cuando el juego esté en pausa"
+msgid "Raw mouse input"
+msgstr "Entrada directa del ratón"
 
 #. "Alternative Input"
 msgctxt "SettingsDialog|Checkbox Toggle"
@@ -1341,16 +1337,16 @@ msgid "Unlock cursor from game window"
 msgstr "Liberar el cursor de la ventana del juego"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Screen edge camera panning"
-msgstr "Desplazar cámara con el borde de pantalla"
-
-msgctxt "SettingsDialog|Slider Title Label"
-msgid "Mouse sensitivity"
-msgstr "Sensibilidad del ratón"
+msgid "Unlock cursor when game is paused"
+msgstr "Liberar el cursor cuando el juego esté en pausa"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Raw mouse input"
-msgstr "Entrada directa del ratón"
+msgid "Lock cursor in possession"
+msgstr "Capturar el cursor durante la posesión"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Screen edge camera panning"
+msgstr "Desplazar cámara con el borde de pantalla"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Default tag mode"
@@ -1372,46 +1368,33 @@ msgctxt "SettingsDialog|Tab Title"
 msgid "Launcher"
 msgstr "Launcher"
 
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Automatically check for KeeperFX updates"
-msgstr "Buscar actualizaciones de KeeperFX automáticamente"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable crash reporting"
-msgstr "Activar reporte de errores"
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Launcher language"
+msgstr "Idioma del Launcher"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "KeeperFX Release Channel"
-msgstr "Canal de versiones de KeeperFX"
+msgid "Play button theme"
+msgstr "Estilo del botón de jugar"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable website integration"
 msgstr "Activar la integración de sitio web"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable crash reporting"
+msgstr "Activar el envío de informes de errores"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Open on same screen as game"
 msgstr "Abrir en la misma pantalla que el juego"
 
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Launcher language"
-msgstr "Idioma del launcher"
-
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Update automatically"
-msgstr "Actualizar automáticamente"
-
-# Overflows
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Backup savefiles during update"
-msgstr "Crear copias de las partidas guardadas durante la actualización"
+msgid "Show directory name in window title"
+msgstr "Mostrar el nombre del directorio en el título de la ventana"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Play button theme"
-msgstr "Estilo del botón de jugar"
-
-msgctxt "SettingsDialog|Button"
-msgid "Show launcher command line options"
-msgstr "Mostrar las opciones de línea de comandos del launcher"
+msgid "KeeperFX Release Channel"
+msgstr "Canal de versiones de KeeperFX"
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
@@ -1421,17 +1404,30 @@ msgstr ""
 "Intervalo de comprobación de actualizaciones (en días)\n"
 "(0 = comprobar siempre)"
 
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Download Server"
+msgstr "Servidor de descarga"
+
+msgctxt "SettingsDialog|Button"
+msgid "Show launcher command line options"
+msgstr "Mostrar las opciones de línea de comandos del Launcher"
+
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Show directory name in window title"
-msgstr "Mostrar el nombre del directorio en el título de la ventana"
+msgid "Automatically check for KeeperFX updates"
+msgstr "Buscar actualizaciones de KeeperFX automáticamente"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Update automatically"
+msgstr "Actualizar automáticamente"
+
+# Overflows
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Backup savefiles during update"
+msgstr "Hacer Backup de las partidas guardadas durante la actualización"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically remove leftover files"
 msgstr "Eliminar automáticamente los archivos residuales"
-
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Download Server"
-msgstr "Servidor de descarga"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "API"
@@ -1453,9 +1449,45 @@ msgctxt "SettingsDialog|Dialog Button"
 msgid "Open config file"
 msgstr "Abrir archivo de configuración"
 
+msgctxt "SettingsDialog|Renderer Dropdown"
+msgid "Software"
+msgstr "Software"
+
+msgctxt "SettingsDialog|Renderer Dropdown"
+msgid "OpenGL"
+msgstr "OpenGL"
+
+msgctxt "SettingsDialog|Zoom To Cursor Dropdown"
+msgid "Never"
+msgstr "Nunca"
+
+msgctxt "SettingsDialog|Zoom To Cursor Dropdown"
+msgid "Mousewheel only"
+msgstr "Solo con la rueda del ratón"
+
+msgctxt "SettingsDialog|Zoom To Cursor Dropdown"
+msgid "Mousewheel & Keyboard"
+msgstr "Rueda del ratón y teclado"
+
+msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
+msgid "Never"
+msgstr "Nunca"
+
+msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
+msgid "Always"
+msgstr "Siempre"
+
+msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
+msgid "Movement Keys Only (While holding Ctrl)"
+msgstr "Solo teclas de movimiento (manteniendo Ctrl pulsado)"
+
+msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
+msgid "Rotation Keys Only"
+msgstr "Solo teclas de rotación"
+
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Single"
-msgstr "Singular"
+msgstr "Individual"
 
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Drag"
@@ -1554,7 +1586,7 @@ msgstr "KeeperFX Launcher v%1"
 
 msgctxt "SettingsDialog|About Label"
 msgid "Launcher Libraries:"
-msgstr "Bibliotecas del launcher:"
+msgstr "Bibliotecas del Launcher:"
 
 #, qt-format
 msgctxt "SettingsDialog|About Label"
@@ -1569,7 +1601,7 @@ msgstr "Colaboradores de KeeperFX: %1"
 #, qt-format
 msgctxt "SettingsDialog|Label Translator List"
 msgid "KeeperFX Launcher Translators: %1"
-msgstr "Traductores del launcher de KeeperFX: %1"
+msgstr "Traductores del Launcher de KeeperFX: %1"
 
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
@@ -1599,7 +1631,7 @@ msgstr ""
 
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "Launcher command line options"
-msgstr "Opciones de línea de comandos del launcher"
+msgstr "Opciones de línea de comandos del Launcher"
 
 msgctxt "SettingsDialog|Custom resoltuion dialog title"
 msgid "Custom resolution"
@@ -1805,6 +1837,22 @@ msgid ""
 msgstr ""
 "No se pudo determinar la versión de KeeperFX. Esto es necesario para enviar "
 "un reporte de error."
+
+#~ msgctxt "CDN|Download Server"
+#~ msgid "KeeperFX.net (Default, Germany)"
+#~ msgstr "KeeperFX.net (Por defecto, Alemania)"
+
+#~ msgctxt "CDN|Download Server"
+#~ msgid "Cloudflare CDN (Worldwide)"
+#~ msgstr "CDN de Cloudflare (todo el mundo)"
+
+#~ msgctxt "LauncherMainWindow|Menu"
+#~ msgid "Scan local network (MP)"
+#~ msgstr "Escanear red local (Multijugador)"
+
+#~ msgctxt "LauncherMainWindow|Menu"
+#~ msgid "Test internet lobby (MP)"
+#~ msgstr "Probar sala en línea (Multijugador)"
 
 #~ msgctxt "FileRemoverDialog|Window Title"
 #~ msgid "Remove unwanted files"
