@@ -1167,7 +1167,7 @@ height: 35px;
                 <property name="toolTip">
                  <string comment="Relative Mouse Mode Tooltip">Mouse locking method.
 
-- Enabled: Use SDL relative (&quot;raw&quot;;) mode for 1:1 deltas
+- Enabled: Use SDL relative (&quot;raw&quot;) mode for 1:1 deltas
 - Disabled: Use older grab-and-warp scheme (confines and re-centers the cursor)
 
 Disable this if the mouse feels off.</string>
