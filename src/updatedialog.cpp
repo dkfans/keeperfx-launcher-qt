@@ -195,6 +195,13 @@ void UpdateDialog::on_updateButton_clicked()
         ui->updateButton->setDisabled(false);
         return;
     }
+    // Make sure to close again
+    if(fileKfx.isOpen()){
+        fileKfx.close();
+    }
+    if(fileKfxHvlog.isOpen()){
+        fileKfxHvlog.close();
+    }
 
     // Check for locked legacy launcher binary on Windows
     QFile fileLegacyLauncher(QCoreApplication::applicationDirPath() + "/keeperfx-launcher-legacy.exe");
