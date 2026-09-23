@@ -40,6 +40,7 @@ const QMap<QString, QPair<QString, QString>> KfxVersion::versionFunctionaltyMap 
     {"vsync",                                   {"",      "1.4.0.5295"}},
     {"relative_mouse_mode_toggle",              {"",      "1.4.0.5300"}},
     {"matchmaking_server",                      {"",      "1.4.0.5339"}},
+    {"multiplayer_port",                        {"",      "1.4.0.5350"}},
     {"opengl_renderer",                         {"",      "1.4.0.5389"}},
     {"map_fade_animation",                      {"",      "1.4.0.5415"}},
 

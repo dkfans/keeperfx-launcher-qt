@@ -161,6 +161,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->checkBoxVSync->setDisabled(true);
     }
 
+    if (KfxVersion::hasFunctionality("multiplayer_port") == false) {
+        ui->labelMultiplayerPort->setDisabled(true);
+        ui->lineEditMultiplayerPort->setDisabled(true);
+    }
+
     if (KfxVersion::hasFunctionality("matchmaking_server") == false) {
         ui->checkBoxMatchmaking->setDisabled(true);
         ui->labelMatchmakingServer->setDisabled(true);
@@ -334,6 +339,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->lineEditGuiBlinkRate->setValidator(new QIntValidator(0, 65535, this));
     ui->lineEditNeutralFlashRate->setValidator(new QIntValidator(0, 65535, this));
     ui->lineEditUpdateInterval->setValidator(new QIntValidator(0, 365, this));
+    ui->lineEditMultiplayerPort->setValidator(new QIntValidator(0, 65535, this));
 
     // Set other input masks
     ui->lineEditCommandChar->setValidator(
@@ -834,6 +840,10 @@ void SettingsDialog::loadSettings()
         ui->anchorMatchmakingDefaultServer->setDisabled(matchmakingServer == "OFF");
     }
 
+    if (KfxVersion::hasFunctionality("multiplayer_port") == true) {
+        ui->lineEditMultiplayerPort->setText(Settings::getKfxSetting("MULTIPLAYER_PORT").toString());
+    }
+
     // =======================================================================
     // ================================ API ==================================
     // =======================================================================
@@ -881,6 +891,23 @@ void SettingsDialog::loadSettings()
 
 void SettingsDialog::saveSettings()
 {
+    QStringList errors;
+
+    // Make sure the multiplayer port and API port are not the same (if the API is enabled)
+    if(ui->checkBoxEnableAPI->isChecked() && ui->lineEditMultiplayerPort->text() == ui->lineEditApiPort->text()){
+        errors.append(tr("Multiplayer port and API port must be different when API is enabled", "MessageBox Text"));
+    }
+
+    // Stop saving and show messagebox if there are errors
+    if (!errors.isEmpty()) {
+        QMessageBox::warning(this,
+            tr("Invalid Settings", "MessageBox Title"),
+            tr("Cannot save settings due to the following errors:", "MessageBox Text") +
+                "\n\n- " +
+                errors.join("\n- ")
+        );
+        return;
+    }
 
     // ========================================================================
     // ================================ GAME ==================================
@@ -1100,6 +1127,10 @@ void SettingsDialog::saveSettings()
         Settings::setKfxSetting("MATCHMAKING_SERVER",
             ui->checkBoxMatchmaking->isChecked() ? ui->lineEditMatchmakingServer->text() : "OFF"
         );
+    }
+
+    if (KfxVersion::hasFunctionality("multiplayer_port") == true) {
+        Settings::setKfxSetting("MULTIPLAYER_PORT", ui->lineEditMultiplayerPort->text());
     }
 
     // =======================================================================
