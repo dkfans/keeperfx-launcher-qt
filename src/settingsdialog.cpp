@@ -158,6 +158,10 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->checkBoxRelativeMouseMode->setDisabled(true);
     }
 
+    if (KfxVersion::hasFunctionality("vsync") == false) {
+        ui->checkBoxVSync->setDisabled(true);
+    }
+
     // Tag Mode
     if (KfxVersion::hasFunctionality("tag_mode") == true) {
         // Add default tag mode dropdown options
@@ -728,6 +732,10 @@ void SettingsDialog::loadSettings()
         ui->checkBoxParchmentMapFade->setChecked(Settings::getLauncherSetting("PARCHMENT_MAP_FADE") == true);
     }
 
+    if (KfxVersion::hasFunctionality("vsync") == true) {
+        ui->checkBoxVSync->setChecked(Settings::getKfxSetting("VSYNC") == true);
+    }
+
     // =========================================================================
     // ================================ SOUND ==================================
     // =========================================================================
@@ -1016,6 +1024,10 @@ void SettingsDialog::saveSettings()
 
     if (KfxVersion::hasFunctionality("map_fade_animation") == true) {
         Settings::setKfxSetting("PARCHMENT_MAP_FADE", ui->checkBoxParchmentMapFade->isChecked());
+    }
+
+    if (KfxVersion::hasFunctionality("vsync") == true) {
+        Settings::setKfxSetting("VSYNC", ui->checkBoxVSync->isChecked());
     }
 
     // =========================================================================
