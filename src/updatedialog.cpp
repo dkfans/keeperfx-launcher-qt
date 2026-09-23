@@ -181,8 +181,8 @@ void UpdateDialog::on_updateButton_clicked()
     QFile fileKfx(QCoreApplication::applicationDirPath() + "/keeperfx.exe");
     QFile fileKfxHvlog(QCoreApplication::applicationDirPath() + "/keeperfx_hvlog.exe");
     if (
-        (fileKfx.exists() && fileKfx.open(QIODevice::WriteOnly) == false) ||
-        fileKfxHvlog.exists() && fileKfxHvlog.open(QIODevice::WriteOnly) == false
+        (fileKfx.exists() && fileKfx.open(QIODevice::ReadWrite) && fileKfx.isWritable() == false) ||
+        (fileKfxHvlog.exists() && fileKfxHvlog.open(QIODevice::ReadWrite) && fileKfxHvlog.isWritable() == false)
     ) {
         onAppendLog("KeeperFX binary seems to have a file lock");
         QMessageBox::warning(this,
