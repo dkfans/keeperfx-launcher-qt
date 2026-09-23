@@ -240,8 +240,8 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->comboBoxResizeMovies->addItem(tr("Stretch", "Resize Movies Dropdown"), "STRETCH");
     ui->comboBoxResizeMovies->addItem(tr("Crop", "Resize Movies Dropdown"), "CROP");
     ui->comboBoxResizeMovies->addItem(tr("Pixel perfect", "Resize Movies Dropdown"), "PIXELPERFECT");
-    ui->comboBoxResizeMovies->addItem("4BY3", "4BY3");
-    ui->comboBoxResizeMovies->addItem("4BY3PP", "4BY3PP");
+    ui->comboBoxResizeMovies->addItem("4:3", "4BY3");
+    ui->comboBoxResizeMovies->addItem("4:3 " + tr("Pixel perfect", "Resize Movies Dropdown"), "4BY3PP");
 
     // Map: Resolutions
     QMap<QString, QString> resolutionsMap = {
