@@ -553,12 +553,10 @@ void LauncherMainWindow::on_logFileButton_clicked()
 {
     // Use default text editor to open keeperfx.log file
     QString logFilePath = QCoreApplication::applicationDirPath() + "/keeperfx.log";
-    QFile logFile(logFilePath);
-    if (logFile.exists()) {
-        QDesktopServices::openUrl(QUrl::fromLocalFile(logFilePath));
-    } else {
-        qWarning() << "File does not exist: " << logFilePath;
-    }
+
+    qDebug() << "Trying to open logfile:" << logFilePath;
+
+    Helper::openLocalFileWithDefaultSystemHandler(logFilePath);
 }
 
 void LauncherMainWindow::on_workshopButton_clicked()
@@ -1385,9 +1383,11 @@ void LauncherMainWindow::refreshKfxVersionInGui()
 
 void LauncherMainWindow::on_openFolderButton_clicked()
 {
-    // Use default file browser to open Application Folder
-    QUrl url = QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + QDir::separator());
-    QDesktopServices::openUrl(url);
+    QString dirPath = QCoreApplication::applicationDirPath() + QDir::separator();
+
+    qDebug() << "Trying to open dir:" << dirPath;
+
+    Helper::openLocalFileWithDefaultSystemHandler(dirPath);
 }
 
 void LauncherMainWindow::on_unearthButton_clicked()

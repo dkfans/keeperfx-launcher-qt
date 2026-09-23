@@ -1399,12 +1399,11 @@ void SettingsDialog::sortLanguageComboBox(QComboBox *comboBox)
 
 void SettingsDialog::onOpenConfigButtonClicked()
 {
+    // Get the config file path and show it in the log
     QString configFilePath = Settings::getKfxConfigFile().fileName();
+    qDebug() << "Trying to open KeeperFX config file:" << configFilePath;
 
-    qDebug() << "Trying to open KeeperFX settings config file:" << configFilePath;
-
-    // Open file using OS functionality
-    QDesktopServices::openUrl(QUrl::fromLocalFile(configFilePath));
+    Helper::openLocalFileWithDefaultSystemHandler(configFilePath);
 }
 
 void SettingsDialog::on_pushButtonShowLauncherParams_clicked()

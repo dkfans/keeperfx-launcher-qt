@@ -10,6 +10,7 @@
 #include <QUuid>
 #include <QComboBox>
 #include <QWheelEvent>
+#include <QDesktopServices>
 
 #ifdef Q_OS_WINDOWS
     #include <windows.h>
@@ -313,5 +314,47 @@ public:
         for (QComboBox* combo : parentWidget->findChildren<QComboBox*>()) {
             disableComboBoxScroll(combo);
         }
+    }
+
+    static bool openLocalFileWithDefaultSystemHandler(QString filePath)
+    {
+        // Make sure the config file exists
+        if (!QFileInfo::exists(filePath)) {
+            qWarning() << "File does not exist:" << filePath;
+            return false;
+        }
+
+#ifdef Q_OS_UNIX
+        // Check if we are running inside a Flatpak (like Qt Creator's environment)
+        if (qEnvironmentVariableIsSet("FLATPAK_ID")) {
+            qInfo() << "Flatpak detected: Opening file via 'xdg-open' on host:" << filePath;
+            // Escape the sandbox and ask the host OS to open the file
+            if(QProcess::startDetached("flatpak-spawn", {"--host", "xdg-open", filePath})){
+                return true;
+            }
+        }
+
+        qInfo() << "Opening file via 'xdg-open' with clean environment:" << filePath;
+
+        // Create process that will delete its object later
+        QProcess *process = new QProcess();
+        QObject::connect(process, &QProcess::finished, process, &QObject::deleteLater);
+
+        // Create clean environment
+        QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+        env.remove("LD_LIBRARY_PATH");
+        process->setProcessEnvironment(env);
+
+        // Start xdg-open with clean environment
+        process->setProgram("xdg-open");
+        process->setArguments({filePath});
+        if(process->startDetached()){
+            return true;
+        }
+#endif
+
+        // Open file using QT's default OS functionality
+        qInfo() << "Opening file via QDesktopServices::openUrl:" << filePath;
+        return QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
     }
 };
