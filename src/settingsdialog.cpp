@@ -729,7 +729,7 @@ void SettingsDialog::loadSettings()
     }
 
     if (KfxVersion::hasFunctionality("map_fade_animation") == true) {
-        ui->checkBoxParchmentMapFade->setChecked(Settings::getLauncherSetting("PARCHMENT_MAP_FADE") == true);
+        ui->checkBoxParchmentMapFade->setChecked(Settings::getKfxSetting("PARCHMENT_MAP_FADE") == true);
     }
 
     if (KfxVersion::hasFunctionality("vsync") == true) {
