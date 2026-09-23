@@ -609,7 +609,7 @@ height: 35px;
                  <item row="4" column="0" colspan="2">
                   <widget class="QCheckBox" name="checkBoxVSync">
                    <property name="text">
-                    <string>Enable VSync</string>
+                    <string comment="Checkbox Toggle">Enable VSync</string>
                    </property>
                   </widget>
                  </item>
@@ -704,7 +704,7 @@ height: 35px;
                  <item row="5" column="0" colspan="2">
                   <widget class="QCheckBox" name="checkBoxParchmentMapFade">
                    <property name="text">
-                    <string>Enable map fade animation</string>
+                    <string comment="Checkbox Toggle">Enable map fade animation</string>
                    </property>
                   </widget>
                  </item>
@@ -1074,7 +1074,7 @@ height: 35px;
               <item row="2" column="0" colspan="2">
                <widget class="QCheckBox" name="checkBoxAltInput">
                 <property name="text">
-                 <string comment="Checkbox Toggle" extracomment="&quot;Alternative Input&quot;">Unlock cursor from game window</string>
+                 <string comment="Checkbox Toggle" extracomment="&quot;Capture Cursor&quot;">Unlock cursor from game window</string>
                 </property>
                </widget>
               </item>
@@ -1173,7 +1173,7 @@ height: 35px;
 Disable this if the mouse feels off.</string>
                 </property>
                 <property name="text">
-                 <string>Enable relative mouse mode</string>
+                 <string comment="Checkbox Toggle">Enable relative mouse mode</string>
                 </property>
                </widget>
               </item>
