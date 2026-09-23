@@ -100,6 +100,7 @@ QStringList Settings::forceStringKfxSettings =
     "RESIZE_MOVIES",
     "ZOOM_TO_MOUSE",
     "ROTATE_AROUND_MOUSE",
+    "MATCHMAKING_SERVER",
 };
 
 QVariant Settings::getKfxSetting(QAnyStringView key)

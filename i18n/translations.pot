@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 09:45+0200\n"
+"POT-Creation-Date: 2026-09-23 17:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1229,7 +1229,11 @@ msgid "Multiplayer"
 msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Masterserver"
+msgid "Matchmaking server"
+msgstr ""
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable matchmaking"
 msgstr ""
 
 msgctxt "SettingsDialog|Tab Title"
@@ -1436,6 +1440,10 @@ msgstr ""
 
 msgctxt "SettingsDialog|Game Release Channel"
 msgid "Alpha"
+msgstr ""
+
+msgctxt "SettingsDialog|Link"
+msgid "Set to default server"
 msgstr ""
 
 #, qt-format

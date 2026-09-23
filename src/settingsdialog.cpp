@@ -18,14 +18,13 @@
 #include <QPushButton>
 #include <QScreen>
 
+#define MATCHMAKING_DEFAULT_SERVER "matchmaking.keeperfx.workers.dev"
+
 SettingsDialog::SettingsDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::SettingsDialog)
 {
     ui->setupUi(this);
-
-    // Hide 'Multiplayer' tab until a future update requires it
-    ui->tabWidget->tabBar()->setTabVisible(4, false);
 
     // Reset setting has changed variable
     settingHasChanged = false;
@@ -160,6 +159,13 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     if (KfxVersion::hasFunctionality("vsync") == false) {
         ui->checkBoxVSync->setDisabled(true);
+    }
+
+    if (KfxVersion::hasFunctionality("matchmaking_server") == false) {
+        ui->checkBoxMatchmaking->setDisabled(true);
+        ui->labelMatchmakingServer->setDisabled(true);
+        ui->lineEditMatchmakingServer->setDisabled(true);
+        ui->anchorMatchmakingDefaultServer->setDisabled(true);
     }
 
     // Tag Mode
@@ -358,6 +364,14 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->lineEditApiPort->setDisabled(!isChecked);
     });
 
+    // Connect the matchmaking enabled checkbox
+    connect(ui->checkBoxMatchmaking, &QCheckBox::checkStateChanged, this, [this]() {
+        bool isChecked = ui->checkBoxMatchmaking->isChecked();
+        ui->labelMatchmakingServer->setDisabled(!isChecked);
+        ui->lineEditMatchmakingServer->setDisabled(!isChecked);
+        ui->anchorMatchmakingDefaultServer->setDisabled(!isChecked);
+    });
+
     // Connect the game update checkbox
     connect(ui->checkBoxCheckForUpdates, &QCheckBox::checkStateChanged, this, [this]() {
         bool isChecked = ui->checkBoxCheckForUpdates->isChecked();
@@ -388,6 +402,14 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         bool isChecked = ui->checkBoxAltInput->isChecked();
         ui->checkBoxUnlockCursorWhenPaused->setEnabled(!isChecked); // When capture cursor is ENABLED
         ui->checkBoxLockCursorPossession->setEnabled(isChecked); // When capture cursor is DISBLED
+    });
+
+    // Connect the 'Set to default server' anchor
+    ui->anchorMatchmakingDefaultServer->setText("<a href='#' style='color: #AAA'>" + tr("Set to default server", "Link") + "</a>");
+    connect(ui->anchorMatchmakingDefaultServer, &QLabel::linkActivated, this, [this]() {
+        if (ui->anchorMatchmakingDefaultServer->isEnabled()) {
+            ui->lineEditMatchmakingServer->setText(MATCHMAKING_DEFAULT_SERVER);
+        }
     });
 
     // Add handler to remember when a setting has changed
@@ -803,7 +825,14 @@ void SettingsDialog::loadSettings()
     // ================================ MULTIPLAYER ==================================
     // ===============================================================================
 
-    //ui->lineEditMasterServer->setText(Settings::getKfxSetting("MASTERSERVER_HOST").toString());
+    if (KfxVersion::hasFunctionality("matchmaking_server") == true) {
+        QString matchmakingServer = Settings::getKfxSetting("MATCHMAKING_SERVER").toString();
+        ui->checkBoxMatchmaking->setChecked(matchmakingServer != "OFF");
+        ui->labelMatchmakingServer->setDisabled(matchmakingServer == "OFF");
+        ui->lineEditMatchmakingServer->setDisabled(matchmakingServer == "OFF");
+        ui->lineEditMatchmakingServer->setText(matchmakingServer != "OFF" ? matchmakingServer : "");
+        ui->anchorMatchmakingDefaultServer->setDisabled(matchmakingServer == "OFF");
+    }
 
     // =======================================================================
     // ================================ API ==================================
@@ -1067,7 +1096,11 @@ void SettingsDialog::saveSettings()
     // ================================ MULTIPLAYER ==================================
     // ===============================================================================
 
-    //Settings::setKfxSetting("MASTERSERVER_HOST", ui->lineEditMasterServer->text());
+    if (KfxVersion::hasFunctionality("matchmaking_server") == true) {
+        Settings::setKfxSetting("MATCHMAKING_SERVER",
+            ui->checkBoxMatchmaking->isChecked() ? ui->lineEditMatchmakingServer->text() : "OFF"
+        );
+    }
 
     // =======================================================================
     // ================================ API ==================================
