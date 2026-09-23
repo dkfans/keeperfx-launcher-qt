@@ -901,7 +901,7 @@ void LauncherMainWindow::checkForNewLauncher()
     if (newAppBin.exists()) {
 
         // Get the version of the new launcher
-        QString newLauncherVersion = KfxVersion::getVersionString(newAppBin);
+        QString newLauncherVersion = KfxVersion::getVersionString(newAppBinString);
         if(newLauncherVersion.isEmpty()){
 
             qDebug() << "A new launcher binary was found but we failed to grab its version";

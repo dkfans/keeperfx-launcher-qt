@@ -61,80 +61,84 @@ const QMap<QString, QPair<QString, QString>> KfxVersion::versionFunctionaltyMap 
 
 KfxVersion::VersionInfo KfxVersion::currentVersion;
 
-QString KfxVersion::getVersionString(const QFile& binary){
+/**
+ * Get the ProductVersion string of a Windows binary.
+ *
+ * @brief KfxVersion::getVersionString
+ * @param filePath
+ * @author Yani, Gemini
+ * @return
+ */
+QString KfxVersion::getVersionString(const QString& filePath){
 
-    // Make sure this binary file exists
-    if(binary.exists() == false){
+    QFile file(filePath);
+
+    // Make sure the file exists
+    if(file.exists() == false){
+        qWarning() << "Trying to get product version of nonexistent file:" << filePath;
         return QString();
     }
 
     // Get filepath
-    QString filePath = binary.fileName();
-    qDebug() << "Checking app version for file:" << filePath;
+    qDebug() << "Grabbing product version of file:" << filePath;
 
-    // Parse the PE file using LIEF
-    // We use a library here instead of Windows calls to be consistent accross platforms
-    // TODO: When we release a unix version of KeeperFX we should parse ELF data instead
-    //       But for now we use the Windows binary with Wine so we should just read the PE data
-    std::unique_ptr<LIEF::PE::Binary> peFile = LIEF::PE::Parser::parse(filePath.toStdString());
-
-    // Check if PE file parser is made
-    if (!peFile) {
-        qDebug() << "Error: Unable to parse PE file:" << filePath;
-        return QString();
+    // Try to open the file
+    if (!file.open(QIODevice::ReadOnly)) {
+        return {};
     }
 
-    // Check if the PE file has resources
-    if (!peFile->has_resources()) {
-        qDebug() << "Error: No resources found in the PE file.";
-        return QString();
+    // Read the whole binary into memory
+    // It should be fine because it's unloaded after the check anyways
+    QByteArray data = file.readAll();
+
+    // Construct the UTF-16 Little-Endian search key for "ProductVersion\0"
+    QString keyString = "ProductVersion";
+    QByteArray searchKey;
+    for (QChar c : keyString) {
+        searchKey.append(static_cast<char>(c.unicode() & 0xFF));
+        searchKey.append(static_cast<char>((c.unicode() >> 8) & 0xFF));
+    }
+    // Append the UTF-16 null terminator (0x0000) that follows the key in the struct
+    searchKey.append('\0');
+    searchKey.append('\0');
+
+    // Locate the key in the binary data
+    int index = data.indexOf(searchKey);
+    if (index == -1) {
+        return {}; // Key not found
     }
 
-    // Get the resource manager
-    auto manager = peFile->resources_manager();
-    if(!manager){
-        qDebug() << "Error: Failed to get PE file resource manager.";
-        return QString();
+    // Move the index past the search key
+    index += searchKey.size();
+
+    // Skip 32-bit alignment padding
+    // The PE format aligns the next struct member (the value) to a 32-bit boundary.
+    // This usually manifests as two zero-bytes padding if the string wasn't naturally aligned.
+    while (index + 1 < data.size() && data.at(index) == '\0' && data.at(index + 1) == '\0') {
+        index += 2;
     }
 
-    // Get the versions
-    auto versions = manager->version();
-    if (versions.empty()) {
-        qDebug() << "Error: No version information found in resources.";
-        return QString();
+    // Read the target value string
+    QString productVersion;
+    while (index + 1 < data.size()) {
+        // Reconstruct the 16-bit character from Little-Endian bytes
+        ushort c = (static_cast<uchar>(data.at(index + 1)) << 8) | static_cast<uchar>(data.at(index));
+
+        if (c == 0) {
+            break; // We hit the null terminator of the value string
+        }
+
+        productVersion.append(QChar(c));
+        index += 2;
     }
 
-    // Capture the first version entry (assuming there's at least one)
-    std::ostringstream oss;
-    oss << versions.front(); // Get the first ResourceVersion
-
-    // Get as string
-    QString resourcesInfo = QString::fromStdString(oss.str());
-
-    // Make sure string is not empty
-    if(resourcesInfo.isEmpty()){
-        return QString();
-    }
-
-    // Define regex pattern to match 'ProductVersion'
-    QRegularExpression regex (R"(ProductVersion:\s*(.+?)\s*?[\\\n])");
-    QRegularExpressionMatch match = regex.match(resourcesInfo);
-
-    // Get regex match
-    if (match.hasMatch()) {
-        qDebug() << "Grabbed ProductVersion" << match.captured(1) << "from" << filePath;
-        return match.captured(1);
-    } else {
-        qWarning() << "Error: Version not found in PE file";
-    }
-
-    return QString();
+    return productVersion.trimmed();
 }
 
 QString KfxVersion::getVersionStringFromAppDir()
 {
     return KfxVersion::getVersionString(
-        QFile(QCoreApplication::applicationDirPath() + "/keeperfx.exe")
+        QCoreApplication::applicationDirPath() + "/keeperfx.exe"
     );
 }
 
