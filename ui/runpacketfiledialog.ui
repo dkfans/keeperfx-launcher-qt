@@ -89,6 +89,9 @@ color: #fff;
 margin-top: 5px;
 }</string>
      </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+     </property>
      <property name="showDropIndicator" stdset="0">
       <bool>false</bool>
      </property>
