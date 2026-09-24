@@ -35,10 +35,10 @@ const QMap<QString, QPair<QString, QString>> KfxVersion::versionFunctionaltyMap 
     {"mouse_sensitivity_no_multiplier",         {"1.4.0", "1.3.2.5120"}},
 
     // 1.5 (build >= 5127)
-    {"zoom_towards_mouse",                      {"",      "1.4.0.4323"}},
-    {"rotate_around_mouse",                     {"",      "1.4.0.4323"}},
+    {"zoom_towards_mouse",                      {"",      "1.3.2.5134"}},
     {"vsync",                                   {"",      "1.4.0.5295"}},
     {"relative_mouse_mode_toggle",              {"",      "1.4.0.5300"}},
+    {"rotate_around_mouse",                     {"",      "1.4.0.5323"}},
     {"capture_cursor_config_option",            {"",      "1.4.0.5332"}},
     {"matchmaking_server",                      {"",      "1.4.0.5339"}},
     {"multiplayer_port",                        {"",      "1.4.0.5350"}},
