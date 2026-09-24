@@ -812,6 +812,7 @@ void SettingsDialog::loadSettings()
     }
 
     ui->checkBoxAltInput->setChecked(Settings::getKfxSetting("CAPTURE_CURSOR") == false);
+
     ui->checkBoxUnlockCursorWhenPaused->setChecked(Settings::getKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED") == true);
     ui->checkBoxLockCursorPossession->setChecked(Settings::getKfxSetting("LOCK_CURSOR_IN_POSSESSION") == true);
     ui->checkBoxScreenEdgePanning->setChecked(Settings::getKfxSetting("CURSOR_EDGE_CAMERA_PANNING") == true);
@@ -819,13 +820,22 @@ void SettingsDialog::loadSettings()
     ui->checkBoxUnlockCursorWhenPaused->setEnabled(ui->checkBoxAltInput->isChecked() == false); // When capture cursor is ENABLED
     ui->checkBoxLockCursorPossession->setEnabled(ui->checkBoxAltInput->isChecked() == true); // When capture cursor is DISABLED
 
-    ui->comboBoxZoomToMouse->setCurrentIndex(ui->comboBoxZoomToMouse->findData(Settings::getKfxSetting("ZOOM_TO_MOUSE").toString()));
-    ui->comboBoxRotateAroundMouse->setCurrentIndex(ui->comboBoxRotateAroundMouse->findData(Settings::getKfxSetting("ROTATE_AROUND_MOUSE").toString()));
+    if (KfxVersion::hasFunctionality("zoom_towards_mouse") == true) {
+        ui->comboBoxZoomToMouse->setCurrentIndex(ui->comboBoxZoomToMouse->findData(Settings::getKfxSetting("ZOOM_TO_MOUSE").toString()));
+    }
 
-    ui->checkBoxRelativeMouseMode->setChecked(Settings::getKfxSetting("RELATIVE_MOUSE_MODE") == true);
+    if (KfxVersion::hasFunctionality("rotate_around_mouse") == true) {
+        ui->comboBoxRotateAroundMouse->setCurrentIndex(ui->comboBoxRotateAroundMouse->findData(Settings::getKfxSetting("ROTATE_AROUND_MOUSE").toString()));
+    }
 
-    ui->checkBoxEnableTagModeToggle->setChecked(Settings::getKfxSetting("TAG_MODE_TOGGLING") == true);
-    ui->comboBoxDefaultTagMode->setCurrentIndex(ui->comboBoxDefaultTagMode->findData(Settings::getKfxSetting("DEFAULT_TAG_MODE").toString()));
+    if (KfxVersion::hasFunctionality("relative_mouse_mode_toggle") == true) {
+        ui->checkBoxRelativeMouseMode->setChecked(Settings::getKfxSetting("RELATIVE_MOUSE_MODE") == true);
+    }
+
+    if (KfxVersion::hasFunctionality("tag_mode") == true) {
+        ui->checkBoxEnableTagModeToggle->setChecked(Settings::getKfxSetting("TAG_MODE_TOGGLING") == true);
+        ui->comboBoxDefaultTagMode->setCurrentIndex(ui->comboBoxDefaultTagMode->findData(Settings::getKfxSetting("DEFAULT_TAG_MODE").toString()));
+    }
 
     // ===============================================================================
     // ================================ MULTIPLAYER ==================================
@@ -1109,15 +1119,27 @@ void SettingsDialog::saveSettings()
     }
 
     Settings::setKfxSetting("CAPTURE_CURSOR", ui->checkBoxAltInput->isChecked() == false);
+
     Settings::setKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED", ui->checkBoxUnlockCursorWhenPaused->isChecked() == true);
     Settings::setKfxSetting("LOCK_CURSOR_IN_POSSESSION", ui->checkBoxLockCursorPossession->isChecked() == true);
     Settings::setKfxSetting("CURSOR_EDGE_CAMERA_PANNING", ui->checkBoxScreenEdgePanning->isChecked() == true);
-    Settings::setKfxSetting("ZOOM_TO_MOUSE", ui->comboBoxZoomToMouse->currentData().toString());
-    Settings::setKfxSetting("ROTATE_AROUND_MOUSE", ui->comboBoxRotateAroundMouse->currentData().toString());
-    Settings::setKfxSetting("RELATIVE_MOUSE_MODE", ui->checkBoxRelativeMouseMode->isChecked() == true);
 
-    Settings::setKfxSetting("TAG_MODE_TOGGLING", ui->checkBoxEnableTagModeToggle->isChecked() == true);
-    Settings::setKfxSetting("DEFAULT_TAG_MODE", ui->comboBoxDefaultTagMode->currentData().toString());
+    if (KfxVersion::hasFunctionality("zoom_towards_mouse") == true) {
+        Settings::setKfxSetting("ZOOM_TO_MOUSE", ui->comboBoxZoomToMouse->currentData().toString());
+    }
+
+    if (KfxVersion::hasFunctionality("rotate_around_mouse") == true) {
+        Settings::setKfxSetting("ROTATE_AROUND_MOUSE", ui->comboBoxRotateAroundMouse->currentData().toString());
+    }
+
+    if (KfxVersion::hasFunctionality("relative_mouse_mode_toggle") == true) {
+        Settings::setKfxSetting("RELATIVE_MOUSE_MODE", ui->checkBoxRelativeMouseMode->isChecked() == true);
+    }
+
+    if (KfxVersion::hasFunctionality("tag_mode") == true) {
+        Settings::setKfxSetting("TAG_MODE_TOGGLING", ui->checkBoxEnableTagModeToggle->isChecked() == true);
+        Settings::setKfxSetting("DEFAULT_TAG_MODE", ui->comboBoxDefaultTagMode->currentData().toString());
+    }
 
     // ===============================================================================
     // ================================ MULTIPLAYER ==================================
