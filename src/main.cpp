@@ -175,6 +175,40 @@ int main(int argc, char *argv[])
         }
     }
 
+    // Handle new 7z DLLs
+    QFile new7zDll(QCoreApplication::applicationDirPath() + "/7z-new.dll");
+    QFile old7zDll(QCoreApplication::applicationDirPath() + "/7z.dll");
+    if(new7zDll.exists()){
+        bool failedToRemoveOld7z = false;
+        if(old7zDll.exists()){
+            if(old7zDll.remove() == false){
+                qWarning() << "Failed to remove:" << old7zDll.fileName();
+                failedToRemoveOld7z = true;
+            }
+        }
+        if(failedToRemoveOld7z == false){
+            if(new7zDll.rename("7z.dll") == false) {
+                qWarning() << "Failed to rename:" << new7zDll.fileName();
+            }
+        }
+    }
+    QFile new7zaDll(QCoreApplication::applicationDirPath() + "/7za-new.dll");
+    QFile old7zaDll(QCoreApplication::applicationDirPath() + "/7za.dll");
+    if(new7zaDll.exists()){
+        bool failedToRemoveOld7za = false;
+        if(old7zaDll.exists()){
+            if(old7zaDll.remove() == false){
+                qWarning() << "Failed to remove:" << old7zaDll.fileName();
+                failedToRemoveOld7za = true;
+            }
+        }
+        if(failedToRemoveOld7za == false){
+            if(new7zaDll.rename("7za.dll") == false) {
+                qWarning() << "Failed to rename:" << new7zaDll.fileName();
+            }
+        }
+    }
+
     // Detect if we need to switch from wayland to xcb (on UNIX)
     // We prefer xcb because wayland is missing a few features we'd like:
     // - position our window in the middle of the screen
