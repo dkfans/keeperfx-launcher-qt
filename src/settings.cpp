@@ -58,7 +58,7 @@ QMap<QString, QString> Settings::gameSettingsParameterMap = {
     {"GAME_PARAM_USE_CD_MUSIC", "-cd"},
     {"GAME_PARAM_ALEX", "-alex"},
     {"GAME_PARAM_VID_SMOOTH", "-vidsmooth"},
-    {"GAME_PARAM_ALT_INPUT", "-altinput"},
+    // {"GAME_PARAM_ALT_INPUT", "-altinput"}, // Hardcoded
     // {"GAME_PARAM_FPS", "-fps %d"}, // Hardcoded
     // {"GAME_PARAM_HUMAN_PLAYER", "-human %d"}, // Hardcoded
     // {"GAME_PARAM_PACKET_SAVE_FILE_NAME", "-packetsave %s"}, // Hardcoded
@@ -332,6 +332,13 @@ QStringList Settings::getGameSettingsParameters()
         QString packetSaveFileName = Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME").toString();
         if (packetSaveFileName.isEmpty() == false) {
             paramList << "-packetsave" << packetSaveFileName;
+        }
+    }
+
+    // Add old -altinput
+    if (KfxVersion::hasFunctionality("capture_cursor_config_option") == false) {
+        if (Settings::getLauncherSetting("GAME_PARAM_ALT_INPUT").toBool() == true) {
+            paramList << "-altinput";
         }
     }
 

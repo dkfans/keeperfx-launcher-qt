@@ -811,7 +811,11 @@ void SettingsDialog::loadSettings()
         ui->labelMouseSensPercentage->setText(QString::number(mouseSens) + "%");
     }
 
-    ui->checkBoxAltInput->setChecked(Settings::getKfxSetting("CAPTURE_CURSOR") == false);
+    if (KfxVersion::hasFunctionality("capture_cursor_config_option") == true) {
+        ui->checkBoxAltInput->setChecked(Settings::getKfxSetting("CAPTURE_CURSOR") == false);
+    } else {
+        ui->checkBoxAltInput->setChecked(Settings::getLauncherSetting("GAME_PARAM_ALT_INPUT") == true);
+    }
 
     ui->checkBoxUnlockCursorWhenPaused->setChecked(Settings::getKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED") == true);
     ui->checkBoxLockCursorPossession->setChecked(Settings::getKfxSetting("LOCK_CURSOR_IN_POSSESSION") == true);
@@ -1118,7 +1122,11 @@ void SettingsDialog::saveSettings()
         Settings::setKfxSetting("POINTER_SENSITIVITY", ui->horizontalSliderMouseSens->value());
     }
 
-    Settings::setKfxSetting("CAPTURE_CURSOR", ui->checkBoxAltInput->isChecked() == false);
+    if (KfxVersion::hasFunctionality("capture_cursor_config_option") == true) {
+        Settings::setKfxSetting("CAPTURE_CURSOR", ui->checkBoxAltInput->isChecked() == false);
+    } else {
+        Settings::setLauncherSetting("GAME_PARAM_ALT_INPUT", ui->checkBoxAltInput->isChecked() == true);
+    }
 
     Settings::setKfxSetting("UNLOCK_CURSOR_WHEN_GAME_PAUSED", ui->checkBoxUnlockCursorWhenPaused->isChecked() == true);
     Settings::setKfxSetting("LOCK_CURSOR_IN_POSSESSION", ui->checkBoxLockCursorPossession->isChecked() == true);
