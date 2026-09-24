@@ -362,6 +362,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->labelMouseSensPercentage->setText(isChecked ? "" : QString("%1%").arg(ui->horizontalSliderMouseSens->value()));
     });
 
+    // Connect the max zoom slider to update the label when moved
+    connect(ui->horizontalSliderMaxZoom, &QSlider::valueChanged, this, [this](int value) {
+        ui->labelMaxZoomNumber->setText(QString::number(value));
+    });
+
     // Connect the mouse sensitivity slider to update the label when moved
     connect(ui->horizontalSliderMouseSens, &QSlider::valueChanged, this, [this](int value) {
         if (!ui->checkBoxRawMouseInput->isChecked()) {
@@ -588,6 +593,10 @@ void SettingsDialog::loadSettings()
     ui->checkBoxAutoEnableImprison->setChecked(Settings::getKfxSetting("IMPRISON_BUTTON_DEFAULT") == true);
 
     ui->lineEditLaunchOptions->setText(Settings::getLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS").toString());
+
+    int maxZoomDistance = Settings::getKfxSetting("MAX_ZOOM_DISTANCE").toInt();
+    ui->horizontalSliderMaxZoom->setValue(maxZoomDistance);
+    ui->labelMaxZoomNumber->setText(QString::number(maxZoomDistance));
 
     // ============================================================================
     // ================================ GRAPHICS ==================================
@@ -1001,6 +1010,8 @@ void SettingsDialog::saveSettings()
     }
 
     Settings::setLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS", ui->lineEditLaunchOptions->text());
+
+    Settings::setKfxSetting("MAX_ZOOM_DISTANCE", ui->horizontalSliderMaxZoom->value());
 
     // ============================================================================
     // ================================ GRAPHICS ==================================
