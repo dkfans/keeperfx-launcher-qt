@@ -582,7 +582,8 @@ height: 35px;
                  <item row="2" column="0">
                   <widget class="QLabel" name="labelMaxFps">
                    <property name="text">
-                    <string comment="Textinput Title Label">Max. FPS (0 = unlimited)</string>
+                    <string comment="Textinput Title Label">Max. FPS
+(0 = unlimited)</string>
                    </property>
                   </widget>
                  </item>
