@@ -178,6 +178,15 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->lineEditPacketSaveMaxFilesize->setDisabled(true);
     }
 
+    if (KfxVersion::hasFunctionality("viewport_mode") == true) {
+        ui->comboBoxViewportMode->addItem(tr("Original", "Viewport Mode Dropdown"), "ORIGINAL");
+        ui->comboBoxViewportMode->addItem(tr("Full", "Viewport Mode Dropdown"), "FULL");
+        ui->comboBoxViewportMode->addItem(tr("Full (Letterbox)", "Viewport Mode Dropdown"), "FULL_LETTERBOX");
+    } else {
+        ui->comboBoxViewportMode->setDisabled(true);
+        ui->labelViewportMode->setDisabled(true);
+    }
+
     // Tag Mode
     if (KfxVersion::hasFunctionality("tag_mode") == true) {
         // Add default tag mode dropdown options
@@ -878,6 +887,10 @@ void SettingsDialog::loadSettings()
         ui->checkBoxVSync->setChecked(Settings::getKfxSetting("VSYNC") == true);
     }
 
+    if (KfxVersion::hasFunctionality("viewport_mode") == true) {
+        ui->comboBoxViewportMode->setCurrentIndex(ui->comboBoxViewportMode->findData(Settings::getKfxSetting("VIEWPORT_MODE").toString()));
+    }
+
     // =========================================================================
     // ================================ SOUND ==================================
     // =========================================================================
@@ -1218,6 +1231,10 @@ void SettingsDialog::saveSettings()
 
     if (KfxVersion::hasFunctionality("vsync") == true) {
         Settings::setKfxSetting("VSYNC", ui->checkBoxVSync->isChecked());
+    }
+
+    if (KfxVersion::hasFunctionality("viewport_mode") == true) {
+        Settings::setKfxSetting("VIEWPORT_MODE", ui->comboBoxViewportMode->currentData().toString());
     }
 
     // =========================================================================

@@ -430,7 +430,7 @@ Note: This is not a percentage</string>
             <x>0</x>
             <y>0</y>
             <width>842</width>
-            <height>574</height>
+            <height>589</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -703,7 +703,7 @@ Note: This is not a percentage</string>
                  <item row="0" column="0">
                   <widget class="QLabel" name="labelRenderer">
                    <property name="text">
-                    <string>Rendering Backend</string>
+                    <string comment="Dropdown Title Label">Rendering Backend</string>
                    </property>
                   </widget>
                  </item>
@@ -747,14 +747,14 @@ Note: This is not a percentage</string>
                  <property name="bottomMargin">
                   <number>16</number>
                  </property>
-                 <item row="0" column="0">
+                 <item row="1" column="0">
                   <widget class="QLabel" name="labelCreatureFlowerSize">
                    <property name="text">
                     <string comment="Textinput Title Label">Creature flower size</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="1">
+                 <item row="1" column="1">
                   <widget class="QWidget" name="widget_3" native="true">
                    <layout class="QHBoxLayout" name="horizontalLayout_11">
                     <property name="leftMargin">
@@ -782,14 +782,14 @@ Note: This is not a percentage</string>
                    </layout>
                   </widget>
                  </item>
-                 <item row="1" column="0">
+                 <item row="2" column="0">
                   <widget class="QLabel" name="labelHandSize">
                    <property name="text">
                     <string comment="Textinput Title Label">Hand size</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="1" column="1">
+                 <item row="2" column="1">
                   <widget class="QWidget" name="widget_4" native="true">
                    <layout class="QHBoxLayout" name="horizontalLayout_12">
                     <property name="leftMargin">
@@ -817,14 +817,14 @@ Note: This is not a percentage</string>
                    </layout>
                   </widget>
                  </item>
-                 <item row="2" column="0">
+                 <item row="3" column="0">
                   <widget class="QLabel" name="labelLineBoxSize">
                    <property name="text">
                     <string comment="Textinput Title Label">Select box line size</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="2" column="1">
+                 <item row="3" column="1">
                   <widget class="QWidget" name="widget_5" native="true">
                    <layout class="QHBoxLayout" name="horizontalLayout_13">
                     <property name="leftMargin">
@@ -852,7 +852,7 @@ Note: This is not a percentage</string>
                    </layout>
                   </widget>
                  </item>
-                 <item row="3" column="0">
+                 <item row="4" column="0">
                   <widget class="QLabel" name="labelGuiBlinkRate">
                    <property name="text">
                     <string comment="Textinput Title Label">GUI blink rate
@@ -863,10 +863,10 @@ Note: This is not a percentage</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="3" column="1">
+                 <item row="4" column="1">
                   <widget class="QLineEdit" name="lineEditGuiBlinkRate"/>
                  </item>
-                 <item row="4" column="0">
+                 <item row="5" column="0">
                   <widget class="QLabel" name="labelNeutralFlashRate">
                    <property name="text">
                     <string comment="Textinput Title Label">Neutral flash rate
@@ -877,15 +877,32 @@ Note: This is not a percentage</string>
                    </property>
                   </widget>
                  </item>
-                 <item row="4" column="1">
+                 <item row="5" column="1">
                   <widget class="QLineEdit" name="lineEditNeutralFlashRate"/>
                  </item>
-                 <item row="5" column="0" colspan="2">
+                 <item row="6" column="0" colspan="2">
                   <widget class="QCheckBox" name="checkBoxParchmentMapFade">
                    <property name="text">
                     <string comment="Checkbox Toggle">Enable map fade animation</string>
                    </property>
                   </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <widget class="QLabel" name="labelViewportMode">
+                   <property name="toolTip">
+                    <string comment="Viewport Mode Tooltip">How the in-game view shares the screen with the sidebar, in every view.
+
+Original = the view stops at the sidebar
+Full = the view spans the screen and the sidebar is drawn over it
+Full (Letterbox) = same as 'Full' but with black under the sidebar</string>
+                   </property>
+                   <property name="text">
+                    <string comment="Dropdown Title Label">Viewport mode</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="0" column="1">
+                  <widget class="QComboBox" name="comboBoxViewportMode"/>
                  </item>
                 </layout>
                </widget>

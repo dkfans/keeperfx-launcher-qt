@@ -44,6 +44,7 @@ const QMap<QString, QPair<QString, QString>> KfxVersion::versionFunctionaltyMap 
     {"matchmaking_server",                      {"",      "1.4.0.5339"}},
     {"multiplayer_port",                        {"",      "1.4.0.5350"}},
     {"opengl_renderer",                         {"",      "1.4.0.5389"}},
+    {"viewport_mode",                           {"",      "1.4.0.5391"}},
     {"map_fade_animation",                      {"",      "1.4.0.5415"}},
     {"packetsave_max_filesize",                 {"",      "1.4.0.5416"}},
 
