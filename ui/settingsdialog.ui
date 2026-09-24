@@ -71,8 +71,8 @@ height: 35px;
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>856</width>
-            <height>522</height>
+            <width>842</width>
+            <height>533</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,1">
@@ -234,7 +234,7 @@ height: 35px;
               <item row="4" column="1">
                <widget class="QLineEdit" name="lineEditPackSaveFileName"/>
               </item>
-              <item row="6" column="0">
+              <item row="7" column="0">
                <widget class="QLabel" name="labelGameturns">
                 <property name="text">
                  <string comment="Textinput Title Label">Gameturns per second
@@ -245,27 +245,27 @@ height: 35px;
                 </property>
                </widget>
               </item>
-              <item row="6" column="1">
+              <item row="7" column="1">
                <widget class="QLineEdit" name="lineEditGameturns"/>
               </item>
-              <item row="7" column="0">
+              <item row="8" column="0">
                <widget class="QLabel" name="labelLaunchOptions">
                 <property name="text">
                  <string comment="Textinput Title Label">Game launch options</string>
                 </property>
                </widget>
               </item>
-              <item row="7" column="1">
+              <item row="8" column="1">
                <widget class="QLineEdit" name="lineEditLaunchOptions"/>
               </item>
-              <item row="8" column="0">
+              <item row="9" column="0">
                <spacer name="verticalSpacer_4">
                 <property name="orientation">
                  <enum>Qt::Orientation::Vertical</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>1</width>
+                  <width>0</width>
                   <height>0</height>
                  </size>
                 </property>
@@ -292,12 +292,29 @@ height: 35px;
                 </property>
                </widget>
               </item>
-              <item row="5" column="0" colspan="2">
+              <item row="6" column="0" colspan="2">
                <widget class="QCheckBox" name="checkBoxExitOnLuaError">
                 <property name="text">
                  <string comment="Checkbox Toggle">Exit on LUA error</string>
                 </property>
                </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="labelPacketSaveMaxFilesize">
+                <property name="styleSheet">
+                 <string notr="true">margin-left: 28px;</string>
+                </property>
+                <property name="text">
+                 <string comment="Textinput Title Label">Packetsave max. filesize
+(0 = unlimited)</string>
+                </property>
+                <property name="wordWrap">
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="1">
+               <widget class="QLineEdit" name="lineEditPacketSaveMaxFilesize"/>
               </item>
              </layout>
             </widget>

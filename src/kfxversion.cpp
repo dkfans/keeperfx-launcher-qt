@@ -45,6 +45,7 @@ const QMap<QString, QPair<QString, QString>> KfxVersion::versionFunctionaltyMap 
     {"multiplayer_port",                        {"",      "1.4.0.5350"}},
     {"opengl_renderer",                         {"",      "1.4.0.5389"}},
     {"map_fade_animation",                      {"",      "1.4.0.5415"}},
+    {"packetsave_max_filesize",                 {"",      "1.4.0.5416"}},
 
 
 

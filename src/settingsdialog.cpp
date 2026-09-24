@@ -173,6 +173,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         ui->anchorMatchmakingDefaultServer->setDisabled(true);
     }
 
+    if(KfxVersion::hasFunctionality("packetsave_max_filesize") == false){
+        ui->labelPacketSaveMaxFilesize->setDisabled(true);
+        ui->lineEditPacketSaveMaxFilesize->setDisabled(true);
+    }
+
     // Tag Mode
     if (KfxVersion::hasFunctionality("tag_mode") == true) {
         // Add default tag mode dropdown options
@@ -340,6 +345,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     ui->lineEditNeutralFlashRate->setValidator(new QIntValidator(0, 65535, this));
     ui->lineEditUpdateInterval->setValidator(new QIntValidator(0, 365, this));
     ui->lineEditMultiplayerPort->setValidator(new QIntValidator(0, 65535, this));
+    ui->lineEditPacketSaveMaxFilesize->setValidator(new QIntValidator(0, INT_MAX, this));
 
     // Set other input masks
     ui->lineEditCommandChar->setValidator(
@@ -401,6 +407,11 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         bool isChecked = ui->checkBoxPacketSaveEnabled->isChecked();
         ui->labelPacketSaveFileName->setDisabled(!isChecked);
         ui->lineEditPackSaveFileName->setDisabled(!isChecked);
+
+        if(KfxVersion::hasFunctionality("packetsave_max_filesize") == true){
+            ui->labelPacketSaveMaxFilesize->setDisabled(!isChecked);
+            ui->lineEditPacketSaveMaxFilesize->setDisabled(!isChecked);
+        }
     });
 
     // Connect 'Unlock cursor from game window' checkbox (used to be altinput but is not 'CAPTURE_CURSOR')
@@ -564,6 +575,12 @@ void SettingsDialog::loadSettings()
     ui->labelPacketSaveFileName->setDisabled(!isPacketSaveEnabled);
     ui->lineEditPackSaveFileName->setDisabled(!isPacketSaveEnabled);
     ui->lineEditPackSaveFileName->setText(Settings::getLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME").toString());
+
+    if(KfxVersion::hasFunctionality("packetsave_max_filesize") == true){
+        ui->lineEditPacketSaveMaxFilesize->setText(Settings::getKfxSetting("PACKETSAVE_MAX_SIZE").toString());
+        ui->labelPacketSaveMaxFilesize->setDisabled(!isPacketSaveEnabled);
+        ui->lineEditPacketSaveMaxFilesize->setDisabled(!isPacketSaveEnabled);
+    }
 
     ui->checkBoxExitOnLuaError->setChecked(Settings::getKfxSetting("EXIT_ON_LUA_ERROR") == true);
 
@@ -978,6 +995,10 @@ void SettingsDialog::saveSettings()
         packetSaveFileName = packetSaveFileName + ".pck";
     }
     Settings::setLauncherSetting("GAME_PARAM_PACKET_SAVE_FILE_NAME", packetSaveFileName);
+
+    if(KfxVersion::hasFunctionality("packetsave_max_filesize") == true){
+        Settings::setKfxSetting("PACKETSAVE_MAX_SIZE", ui->lineEditPacketSaveMaxFilesize->text());
+    }
 
     Settings::setLauncherSetting("EXTRA_GAME_LAUNCH_OPTIONS", ui->lineEditLaunchOptions->text());
 
