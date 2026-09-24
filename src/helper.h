@@ -357,4 +357,52 @@ public:
         qInfo() << "Opening file via QDesktopServices::openUrl:" << filePath;
         return QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
     }
+
+    bool isFileLocked(const QString &filePath) {
+
+        // Make sure the file exists
+        QFile file(filePath);
+        if (!file.exists()) {
+            return false;
+        }
+
+#ifdef Q_OS_WIN
+
+        // Convert path to Windows native format and wide string
+        std::wstring wPath = QDir::toNativeSeparators(filePath).toStdWString();
+
+        // Try to open the file with write access
+        HANDLE hFile = CreateFileW(
+            wPath.c_str(),
+            GENERIC_WRITE,
+            0,                      // No sharing (requires exclusive write access)
+            nullptr,
+            OPEN_EXISTING,          // Do not create, only open existing
+            FILE_ATTRIBUTE_NORMAL,
+            nullptr
+            );
+
+        // Check if we failed to get a handle
+        if (hFile == INVALID_HANDLE_VALUE) {
+
+            DWORD errorCode = GetLastError();
+            // 32: ERROR_SHARING_VIOLATION (file is open in another program)
+            // 1224: ERROR_USER_MAPPED_FILE (executable is currently running)
+            if (errorCode == ERROR_SHARING_VIOLATION || errorCode == ERROR_USER_MAPPED_FILE) {
+                return true;
+            }
+
+            // Failed due to permissions and not a lock
+            return false;
+        }
+
+        // File was succesfully opened for writing so let's close the handle again
+        CloseHandle(hFile);
+        return false;
+#else
+        // Fallback for non-Windows platforms using pure Qt
+        // Append flag should guarantee the file won't be truncated
+        return !file.open(QIODevice::Append);
+#endif
+    }
 };
