@@ -530,6 +530,94 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Disable the scrolling of comboboxes when hovering over them and scrolling
     Helper::disableAllComboBoxScrolls(this);
+
+    // Show an information icon for tooltips
+    // Loop trough all widgets we want to handle the tooltip for
+    QList<QWidget*> widgets = this->findChildren<QWidget*>();
+    for (QWidget* widget : std::as_const(widgets)) {
+
+        // Make sure widget is either a QLabel or QCheckbox
+        if (qobject_cast<QLabel*>(widget) == nullptr && qobject_cast<QCheckBox*>(widget) == nullptr)
+            continue;
+
+        // Make sure widget has a tooltip
+        QString tooltip = widget->toolTip();
+        if (tooltip.isEmpty() || widget->property("tooltipAdded").toBool()) {
+            continue;
+        }
+
+        // Find the specific layout managing this widget
+        QLayout* parentLayout = widget->parentWidget() ? widget->parentWidget()->layout() : nullptr;
+        if (!parentLayout) continue;
+
+        // Create the container
+        QWidget* container = new QWidget(widget->parentWidget());
+        container->setSizePolicy(widget->sizePolicy());
+
+        // Create the layout
+        QHBoxLayout* layout = new QHBoxLayout(container);
+        layout->setContentsMargins(0, 0, 0, 0);
+        layout->setSpacing(4);
+
+        // Create a Rich Text icon label
+        QLabel* iconLabel = new QLabel(container);
+        iconLabel->setText("<span style='color: #00AAFF; font-size: 13px;'>ⓘ</span>");
+        iconLabel->setTextFormat(Qt::RichText);
+        iconLabel->setContentsMargins(0, 0, 0, 0);
+        iconLabel->setMargin(0);
+        iconLabel->setCursor(Qt::WhatsThisCursor);
+        iconLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+        // Move the tooltip from the original widget to the icon label
+        iconLabel->setToolTip(tooltip);
+        widget->setToolTip("");
+        widget->setProperty("tooltipAdded", true);
+
+        // Safely swap the original widget with the container
+        // This preserves spans and roles
+        if (QFormLayout* formLayout = qobject_cast<QFormLayout*>(parentLayout)) {
+            int row = -1;
+            QFormLayout::ItemRole role;
+            formLayout->getWidgetPosition(widget, &row, &role);
+            if (row != -1) {
+                formLayout->removeWidget(widget);
+                formLayout->setWidget(row, role, container);
+            }
+        }
+        else if (QGridLayout* gridLayout = qobject_cast<QGridLayout*>(parentLayout)) {
+            int row = -1, col = -1, rowSpan = -1, colSpan = -1;
+            int idx = gridLayout->indexOf(widget);
+            if (idx != -1) {
+                gridLayout->getItemPosition(idx, &row, &col, &rowSpan, &colSpan);
+                gridLayout->removeWidget(widget);
+                gridLayout->addWidget(container, row, col, rowSpan, colSpan);
+            }
+        }
+        else if (QBoxLayout* boxLayout = qobject_cast<QBoxLayout*>(parentLayout)) {
+            int idx = boxLayout->indexOf(widget);
+            if (idx != -1) {
+                boxLayout->removeWidget(widget);
+                boxLayout->insertWidget(idx, container);
+            }
+        }
+        else {
+            // Fallback for generic/unsupported layouts
+            QLayoutItem* oldItem = parentLayout->replaceWidget(widget, container);
+            if (oldItem) delete oldItem;
+        }
+
+        // Add the original widget to the new layout
+        layout->addWidget(widget);
+
+        // Add the icon label to the new layout
+        // Qt::AlignTop ensures the icon stays at the top line if the label wraps/has newlines
+        layout->addWidget(iconLabel, 0, Qt::AlignTop);
+
+        // Pushes the widget and icon to the left
+        // Allows the container to fill the cell normally
+        layout->addStretch(1);
+    }
+
 }
 
 SettingsDialog::~SettingsDialog()
