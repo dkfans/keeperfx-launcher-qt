@@ -358,7 +358,7 @@ public:
         return QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
     }
 
-    bool isFileLocked(const QString &filePath) {
+    static bool isFileLocked(const QString &filePath) {
 
         // Make sure the file exists
         QFile file(filePath);
