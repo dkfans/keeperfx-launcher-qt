@@ -9,6 +9,7 @@
 
 #define MIN_VERSION_NEW_CONFIG
 
+// Structure: {"<functionality name>", {"<stable version>", "<alpha version>"}}
 const QMap<QString, QPair<QString, QString>> KfxVersion::versionFunctionaltyMap = {
 
     // 1.1
