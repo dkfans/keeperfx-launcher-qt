@@ -39,7 +39,7 @@ hold out on adding them until the game also supports the language.
 | Dutch                 | NL       | 100%      | 369/369        | [Yani](https://github.com/yani)
 | Italian               | IT       | 94.3%     | 348/369        | [kammerer](https://github.com/Kammerer001)
 | French                | FR       | 94%       | 347/369        | AncientWay, [Thorgal](https://github.com/Thorgal93)
-| Spanish               | ES       | 98.9%     | 365/369        | [Alniarez](https://github.com/alniarez)
+| Spanish               | ES       | 100%      | 369/369        | [Alniarez](https://github.com/alniarez)
 | German                | DE       | 79.1%     | 292/369        | Aqua, Dofi
 | Polish                | PL       | 84.8%     | 313/369        | [Rusty](https://github.com/rustyspoonz)
 | Swedish               | SV       |           |                | 
