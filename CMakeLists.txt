@@ -57,16 +57,33 @@ endif()
 include("cmake/CPM.cmake")
 
 # Library: zlib
-CPMFindPackage(
-    NAME zlib
-    VERSION 1.3.2
-    GITHUB_REPOSITORY madler/zlib
-    GIT_TAG v1.3.2
-    OPTIONS
-        "BUILD_SHARED_LIBS OFF"
-        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS} -w"
-        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS} -w"
-)
+set(ZLIB_USE_STATIC_LIBS ON)
+find_package(ZLIB)
+if(ZLIB_FOUND)
+    message(STATUS "Found host OS ZLIB package.")
+else()
+    message(STATUS "Host OS ZLIB not found. Downloading and building from source via CPM...")
+
+    CPMAddPackage(
+        NAME zlib
+        VERSION 1.3.2
+        GITHUB_REPOSITORY madler/zlib
+        GIT_TAG v1.3.2
+        OPTIONS
+            "BUILD_SHARED_LIBS OFF"
+            "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS} -w"
+            "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS} -w"
+    )
+
+    # Bridge the target naming gap:
+    # System ZLIB provides "ZLIB::ZLIB", but the source build provides "zlibstatic".
+    # This alias allows the rest of our CMake script to always link against ZLIB::ZLIB.
+    if(TARGET zlibstatic)
+        add_library(ZLIB::ZLIB ALIAS zlibstatic)
+    elseif(TARGET zlib)
+        add_library(ZLIB::ZLIB ALIAS zlib)
+    endif()
+endif()
 
 # Library: bit7z
 CPMFindPackage(
@@ -133,7 +150,7 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/ui)
 
 # Find packages
 find_package(Qt6 REQUIRED COMPONENTS Widgets Network Gui)
-find_package(ZLIB REQUIRED)
+#find_package(ZLIB REQUIRED)
 find_package(LIEF REQUIRED COMPONENTS STATIC)
 find_package(bit7z REQUIRED)
 

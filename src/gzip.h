@@ -3,11 +3,7 @@
 #include <QByteArray>
 #include <QDebug>
 
-#ifdef USE_QT_ZLIB
-    #include <QtZlib/zlib.h>
-#else
-    #include <zlib.h>
-#endif
+#include <zlib.h>
 
 namespace GZip {
 
