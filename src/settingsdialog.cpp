@@ -8,6 +8,7 @@
 #include "launcheroptions.h"
 #include "cdn.h"
 #include "helper.h"
+#include "tooltipclickfilter.h"
 
 #include <QDesktopServices>
 #include <QEvent>
@@ -542,6 +543,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
 
     // Show an information icon for tooltips
     // Loop trough all widgets we want to handle the tooltip for
+    TooltipClickFilter* clickFilter = new TooltipClickFilter(this);
     QList<QWidget*> widgets = this->findChildren<QWidget*>();
     for (QWidget* widget : std::as_const(widgets)) {
 
@@ -576,6 +578,9 @@ SettingsDialog::SettingsDialog(QWidget *parent)
         iconLabel->setMargin(0);
         iconLabel->setCursor(Qt::WhatsThisCursor);
         iconLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+
+        // Event filter to show the tooltip on click
+        iconLabel->installEventFilter(clickFilter);
 
         // Move the tooltip from the original widget to the icon label
         iconLabel->setToolTip(tooltip);
