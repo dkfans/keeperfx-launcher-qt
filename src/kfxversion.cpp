@@ -5,8 +5,6 @@
 #include <QRegularExpression>
 #include <QJsonObject>
 
-#include <LIEF/PE.hpp>
-
 #define MIN_VERSION_NEW_CONFIG
 
 // Structure: {"<functionality name>", {"<stable version>", "<alpha version>"}}

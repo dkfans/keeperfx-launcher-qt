@@ -1,8 +1,6 @@
 #include "archiver.h"
 
-#ifdef WIN32
-#include "helper.h" // For 64bit check on lib dll
-#endif
+#include "helper.h"
 
 #include <QCoreApplication>
 #include <QFileInfo>
@@ -23,28 +21,37 @@ void Archiver::loadBit7zLib()
         return;
     }
 
-#ifdef WIN32
-    bit7z::tstring libPath;
+    QString libPath;
+
+    // Get the 7z library file (.dll/.so)
+#ifdef Q_OS_WINDOWS
     if (QFile(QCoreApplication::applicationDirPath() + "/7za.dll").exists()) {
-        libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString()
-                               + "/7za.dll");
+        libPath = QCoreApplication::applicationDirPath() + "/7za.dll";
     } else if (QFile(QCoreApplication::applicationDirPath() + "/7z.dll").exists()) {
-        libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString() + "/7z.dll");
+        libPath = QCoreApplication::applicationDirPath() + "/7z.dll";
     } else {
         qWarning() << "Failed to find 7zip lib to load";
         return;
     }
+#else
+    libPath = QCoreApplication::applicationDirPath() + "/7z.so";
+#endif
 
-    if (!Helper::is64BitDLL(libPath)) {
-        qWarning() << "Not a 64 bit dll:" << libPath;
+    // Make sure this library's architecture matches our own binary architecture
+#if QT_POINTER_SIZE == 8
+    if (!Helper::is64BitBinary(libPath)) {
+        qWarning() << "Not a 64 bit library:" << libPath;
     }
 #else
-    bit7z::tstring libPath = BIT7Z_STRING(QCoreApplication::applicationDirPath().toStdString()
-                                          + "/7z.so");
+    if (Helper::is64BitBinary(libPath)) {
+        qWarning() << "Trying to load 64 bit library in non 64 bit executably:" << libPath;
+    }
 #endif
 
     qDebug() << "7z lib path:" << libPath;
-    lib.emplace(libPath); // Initialize the static library
+
+    // Initialize the static library
+    lib.emplace(BIT7Z_STRING(libPath.toStdString()));
 
     // Make sure lib is loaded now
     if (!Archiver::lib) {

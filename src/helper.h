@@ -11,13 +11,11 @@
 #include <QComboBox>
 #include <QWheelEvent>
 #include <QDesktopServices>
+#include <QtEndian>
 
 #ifdef Q_OS_WINDOWS
     #include <windows.h>
 #endif
-
-#include <LIEF/PE.hpp>
-#include <LIEF/logging.hpp>
 
 class Helper
 {
@@ -62,56 +60,107 @@ public:
 
     static bool isBinaryFile(const QString &filePath)
     {
-        // Make sure file exists before continueing
         QFile file(filePath);
-        if(file.exists() == false){
+
+        // open() implicitly checks if the file exists and is readable
+        if (!file.open(QIODevice::ReadOnly)) {
             return false;
         }
 
-        // Save current logging state
-        const auto previousLevel = LIEF::logging::get_level();
-
-        // Disable logging temporarily (only if not already disabled)
-        const bool wasEnabled = (previousLevel != LIEF::logging::LEVEL::OFF);
-        if (wasEnabled) {
-            LIEF::logging::disable();
+        // Read the first 1024 bytes. This is usually more than enough
+        // to catch both the ELF magic and the PE header offset.
+        const QByteArray header = file.read(1024);
+        if (header.size() < 4) {
+            return false; // File too small to be a valid binary
         }
 
-        try {
-            std::unique_ptr<LIEF::Binary> bin{
-                LIEF::Parser::parse(filePath.toStdString())
-            };
-
-            // Restore logging
-            if (wasEnabled) {
-                LIEF::logging::set_level(previousLevel);
-            }
-
-            return bin != nullptr;
-        } catch (...) {
-
-            // Restore logging
-            if (wasEnabled) {
-                LIEF::logging::set_level(previousLevel);
-            }
-
-            return false;
+        // Check for Linux/Unix ELF
+        // Magic bytes: 0x7F, 'E', 'L', 'F'
+        if (header[0] == 0x7F && header[1] == 'E' && header[2] == 'L' && header[3] == 'F') {
+            return true;
         }
+
+        // Check for Windows PE (Portable Executable)
+        // Must start with 'M' 'Z' (DOS header)
+        if (header[0] == 'M' && header[1] == 'Z') {
+
+            // To ensure it's a modern Windows PE and not a 40-year-old MS-DOS executable,
+            // we read the 32-bit pointer at offset 0x3C (60), which points to the real PE header.
+            if (header.size() >= 64) {
+
+                quint32 peOffset = qFromLittleEndian<quint32>(header.constData() + 0x3C);
+
+                // Is the PE signature within the chunk we already read?
+                if (peOffset > 0 && peOffset + 4 <= static_cast<quint32>(header.size())) {
+                    if (header[peOffset] == 'P' && header[peOffset + 1] == 'E' &&
+                        header[peOffset + 2] == '\0' && header[peOffset + 3] == '\0') {
+                        return true;
+                    }
+                }
+
+                // In rare cases, the DOS stub is unusually large and falls outside our 1024-byte read
+                else if (peOffset > 0) {
+                    if (file.seek(peOffset)) {
+                        QByteArray peSignature = file.read(4);
+                        if (peSignature.size() == 4 &&
+                            peSignature[0] == 'P' && peSignature[1] == 'E' &&
+                            peSignature[2] == '\0' && peSignature[3] == '\0') {
+                            return true;
+                        }
+                    }
+                }
+            }
+
+            // If we need to return true for ANY Windows/DOS executable (even ancient 16-bit
+            // .exe files) uncomment the following line:
+            // return true;
+        }
+
+        return false;
     }
 
-    static bool is64BitDLL(const std::string &dllPath)
+    static bool is64BitBinary(const QString &binaryPath)
     {
-        try {
-            auto pe = LIEF::PE::Parser::parse(dllPath);
-            return LIEF::PE::Header::x86_64(pe->header().machine());
-        } catch (const std::exception &e) {
-            qWarning() << "LIEF error: " << e.what();
-            return false; // Assume 32-bit or invalid file if parsing fails
+        QFile file(binaryPath);
+        if (!file.open(QIODevice::ReadOnly)) {
+            qWarning() << "is64BitBinary: Failed to open file:" << binaryPath;
+            return false;
         }
-    }
 
-    static bool is64BitDll(QString dllPath) {
-        return Helper::is64BitDLL(dllPath.toStdString());
+        // Read the first 64 bytes to cover ELF magic and PE header offset
+        QByteArray header = file.read(64);
+        if (header.size() < 64) {
+            return false;
+        }
+
+        // Check for Linux ELF
+        if (header[0] == 0x7F && header[1] == 'E' && header[2] == 'L' && header[3] == 'F') {
+            // The 5th byte (offset 0x04) in ELF header specifies the class
+            // 0x01 = 32-bit, 0x02 = 64-bit
+            return header[4] == 0x02;
+        }
+
+        // Check for Windows PE (.exe or .dll)
+        if (header[0] == 'M' && header[1] == 'Z') {
+            quint32 peOffset = qFromLittleEndian<quint32>(header.constData() + 0x3C);
+
+            if (file.seek(peOffset)) {
+                QByteArray peHeader = file.read(6);
+                if (peHeader.size() == 6 &&
+                    peHeader[0] == 'P' && peHeader[1] == 'E' &&
+                    peHeader[2] == '\0' && peHeader[3] == '\0') {
+
+                    // Machine type is stored right after the "PE\0\0" signature
+                    quint16 machineType = qFromLittleEndian<quint16>(peHeader.constData() + 4);
+
+                    // 0x8664 is x86_64 (AMD64)
+                    // (You can also add `|| machineType == 0xAA64` here for ARM64 support)
+                    return machineType == 0x8664;
+                }
+            }
+        }
+
+        return false; // Not a recognized 64-bit PE/ELF binary file
     }
 
     static bool checkForWritePermissionInDir(const QDir dir) {

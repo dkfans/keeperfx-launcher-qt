@@ -99,28 +99,35 @@ CPMFindPackage(
         "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS} -w"
 )
 
+# Suppress the SFINAE incomplete warning specifically for bit7z
+if(TARGET bit7z)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+        target_compile_options(bit7z PRIVATE -Wno-sfinae-incomplete)
+    endif()
+endif()
+
 # Library: libLIEF
-CPMAddPackage(
-    NAME LIEF
-    GITHUB_REPOSITORY lief-project/LIEF
-    GIT_TAG 1.0.0
-    OPTIONS
-        "BUILD_SHARED_LIBS OFF"
-        "LIEF_DOC OFF"
-        "LIEF_PYTHON_API OFF"
-        "LIEF_EXAMPLES OFF"
-        "LIEF_TESTS OFF"
-        "LIEF_VERSION_BUMP OFF" # stop dynamic version regeneration
-        "LIEF_PE ON" # Portable Executable format, required for Windows binaries
-        "LIEF_ELF OFF" # Executable and Linkable Format, required for Unix binaries
-        "LIEF_COFF ON" # Common Object File Format, required for PE
-        "LIEF_MACHO OFF" # Mach-O, Mach-object, required for macOS binaries
-        "LIEF_DEX OFF" # Dalvid Executable format (Android)
-        "LIEF_ART OFF"
-        "LIEF_USE_MELKOR OFF" # ELF File Format Fuzzer
-        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS} -w"
-        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS} -w"
-)
+#CPMAddPackage(
+#    NAME LIEF
+#    GITHUB_REPOSITORY lief-project/LIEF
+#    GIT_TAG 1.0.0
+#    OPTIONS
+#        "BUILD_SHARED_LIBS OFF"
+#        "LIEF_DOC OFF"
+#        "LIEF_PYTHON_API OFF"
+#        "LIEF_EXAMPLES OFF"
+#        "LIEF_TESTS OFF"
+#        "LIEF_VERSION_BUMP OFF" # stop dynamic version regeneration
+#        "LIEF_PE ON" # Portable Executable format, required for Windows binaries
+#        "LIEF_ELF OFF" # Executable and Linkable Format, required for Unix binaries
+#        "LIEF_COFF ON" # Common Object File Format, required for PE
+#        "LIEF_MACHO OFF" # Mach-O, Mach-object, required for macOS binaries
+#        "LIEF_DEX OFF" # Dalvid Executable format (Android)
+#        "LIEF_ART OFF"
+#        "LIEF_USE_MELKOR OFF" # ELF File Format Fuzzer
+#        "CMAKE_CXX_FLAGS ${DEP_CMAKE_CXX_FLAGS} -w"
+#        "CMAKE_C_FLAGS ${DEP_CMAKE_C_FLAGS} -w"
+#)
 
 # Set custom UI directory
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/ui)
@@ -151,7 +158,7 @@ set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_SOURCE_DIR}/ui)
 # Find packages
 find_package(Qt6 REQUIRED COMPONENTS Widgets Network Gui)
 #find_package(ZLIB REQUIRED)
-find_package(LIEF REQUIRED COMPONENTS STATIC)
+#find_package(LIEF REQUIRED COMPONENTS STATIC)
 find_package(bit7z REQUIRED)
 
 # Add Zlib
@@ -220,7 +227,7 @@ target_link_libraries(keeperfx-launcher-qt PRIVATE
     Qt6::Network
     Qt6::Gui
     ZLIB::ZLIB
-    LIEF::LIEF
+    #LIEF::LIEF
     bit7z
 )
 

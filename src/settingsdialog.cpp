@@ -453,7 +453,7 @@ SettingsDialog::SettingsDialog(QWidget *parent)
     // The second string is the URL of the project and is used for when the user clicks the link
     QList<QPair<QString, QString>> aboutLibrariesMap = {
         { QStringLiteral("Qt6 (" QT_VERSION_STR ")"), "https://www.qt.io/product/qt6" },
-        { QStringLiteral("libLIEF"), "https://github.com/lief-project/LIEF" },
+        // { QStringLiteral("libLIEF"), "https://github.com/lief-project/LIEF" }, // Removed
         { QStringLiteral("bit7z"), "https://github.com/rikyoz/bit7z" },
         { QStringLiteral("7z"), "https://www.7-zip.org/" },
         { QStringLiteral("zlib"), "https://www.zlib.net/" }
