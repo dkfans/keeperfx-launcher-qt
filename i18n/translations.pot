@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-23 17:07+0200\n"
+"POT-Creation-Date: 2026-09-25 15:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -994,12 +994,51 @@ msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Censorship"
 msgstr ""
 
+msgctxt "SettingsDialog|Max. Zoom Distance Tooltip"
+msgid ""
+"The maximum distance you can zoom out the camera [0 - 100].\n"
+"\n"
+"0 = original Dungeon Keeper maximum distance\n"
+"60 = KeeperFX default distance\n"
+"100 = KeeperFX maximum distance\n"
+"\n"
+"Note: This is not a percentage"
+msgstr ""
+
+msgctxt "SettingsDialog|"
+msgid ""
+"Max. zoom distance\n"
+"(default = 60)"
+msgstr ""
+
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Command character"
 msgstr ""
 
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable delta time"
+msgstr ""
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Freeze game when not focused"
+msgstr ""
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable Packetsave"
+msgstr ""
+
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Packetsave filename"
+msgstr ""
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid ""
+"Packetsave max. filesize\n"
+"(0 = unlimited)"
+msgstr ""
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Exit on LUA error"
 msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
@@ -1010,22 +1049,6 @@ msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Game launch options"
-msgstr ""
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Freeze game when not focused"
-msgstr ""
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable delta time"
-msgstr ""
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable Packetsave"
-msgstr ""
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Exit on LUA error"
 msgstr ""
 
 msgctxt "SettingsDialog|Tab Title"
@@ -1081,7 +1104,9 @@ msgid "Display monitor"
 msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Max. FPS (0 = unlimited)"
+msgid ""
+"Max. FPS\n"
+"(0 = unlimited)"
 msgstr ""
 
 msgctxt "SettingsDialog|Dropdown Title Label"
@@ -1096,7 +1121,7 @@ msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically determine max. FPS"
 msgstr ""
 
-msgctxt "SettingsDialog|"
+msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Rendering Backend"
 msgstr ""
 
@@ -1105,15 +1130,15 @@ msgid "Enable VSync"
 msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Creature flower size (px)"
+msgid "Creature flower size"
 msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Hand size %"
+msgid "Hand size"
 msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Select box line size %"
+msgid "Select box line size"
 msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
@@ -1130,6 +1155,19 @@ msgstr ""
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable map fade animation"
+msgstr ""
+
+msgctxt "SettingsDialog|Viewport Mode Tooltip"
+msgid ""
+"How the in-game view shares the screen with the sidebar, in every view.\n"
+"\n"
+"Original = the view stops at the sidebar\n"
+"Full = the view spans the screen and the sidebar is drawn over it\n"
+"Full (Letterbox) = same as 'Full' but with black under the sidebar"
+msgstr ""
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Viewport mode"
 msgstr ""
 
 msgctxt "SettingsDialog|Tab Title"
@@ -1230,6 +1268,10 @@ msgstr ""
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Matchmaking server"
+msgstr ""
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Multiplayer port"
 msgstr ""
 
 msgctxt "SettingsDialog|Checkbox Toggle"
@@ -1354,6 +1396,18 @@ msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
 msgid "Rotation Keys Only"
 msgstr ""
 
+msgctxt "SettingsDialog|Viewport Mode Dropdown"
+msgid "Original"
+msgstr ""
+
+msgctxt "SettingsDialog|Viewport Mode Dropdown"
+msgid "Full"
+msgstr ""
+
+msgctxt "SettingsDialog|Viewport Mode Dropdown"
+msgid "Full (Letterbox)"
+msgstr ""
+
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Single"
 msgstr ""
@@ -1473,6 +1527,18 @@ msgstr ""
 #, qt-format
 msgctxt "SettingsDialog|Label Translator List"
 msgid "KeeperFX Launcher Translators: %1"
+msgstr ""
+
+msgctxt "SettingsDialog|MessageBox Text"
+msgid "Multiplayer port and API port must be different when API is enabled"
+msgstr ""
+
+msgctxt "SettingsDialog|MessageBox Title"
+msgid "Invalid Settings"
+msgstr ""
+
+msgctxt "SettingsDialog|MessageBox Text"
+msgid "Cannot save settings due to the following errors:"
 msgstr ""
 
 msgctxt "SettingsDialog|MessageBox Title"
