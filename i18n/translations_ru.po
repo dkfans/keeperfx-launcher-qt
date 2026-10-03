@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-04 15:20+0200\n"
-"PO-Revision-Date: 2026-06-12 12:32+0200\n"
+"POT-Creation-Date: 2026-09-28 10:39+0200\n"
+"PO-Revision-Date: 2026-10-03 13:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -117,14 +117,6 @@ msgstr "&Сохранить"
 #: Qt default
 msgid "Restore Defaults"
 msgstr "Восстановить настройки по умолчанию"
-
-msgctxt "CDN|Download Server"
-msgid "KeeperFX.net (Default, Germany)"
-msgstr "KeeperFX.net (Германия, станд.)"
-
-msgctxt "CDN|Download Server"
-msgid "Cloudflare CDN (Worldwide)"
-msgstr "Cloudflare CDN (Глобальный)"
 
 msgctxt "CopyDkFilesDialog|Window Title"
 msgid "Copy DK Files"
@@ -631,9 +623,8 @@ msgid ""
 msgstr ""
 "Выберите релизную ветку, и эта утилита сама загрузит и установит KeeperFX.\n"
 "\n"
-"Стабильная ветка предлагает более стабильную и надежную версию движка; "
-"переключитесь на альфа-ветку, если хотите участвовать в тестировании "
-"актуальной версии."
+"Стабильная ветка предлагает более стабильную и надежную версию движка; альфа-"
+"ветка предназначена для тестирования актуальной версии."
 
 msgctxt "InstallKfxDialog|Label"
 msgid "Release version:"
@@ -649,7 +640,7 @@ msgstr "Установить"
 
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Stable (Default)"
-msgstr "Стабил. (по умолч.)"
+msgstr "Стабильная (по умолч.)"
 
 msgctxt "InstallKfxDialog|Game Release Build"
 msgid "Alpha"
@@ -879,14 +870,6 @@ msgid "Direct connect (MP)"
 msgstr "Прямое подключение (МП)"
 
 msgctxt "LauncherMainWindow|Menu"
-msgid "Scan local network (MP)"
-msgstr "Сканирование локальной сети (МП)"
-
-msgctxt "LauncherMainWindow|Menu"
-msgid "Test internet lobby (MP)"
-msgstr "Проверка интернет-лобби (МП)"
-
-msgctxt "LauncherMainWindow|Menu"
 msgid "Run packetfile"
 msgstr "Просмотр реплеев"
 
@@ -948,7 +931,7 @@ msgstr "Обновление KeeperFX"
 
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid "You are already on the latest version!"
-msgstr "Вы уже используете актуальную версию."
+msgstr "У вас уже установлена актуальная версия игры."
 
 msgctxt "LauncherMainWindow|MessageBox Text"
 msgid ""
@@ -958,7 +941,7 @@ msgid ""
 msgstr ""
 "Не удалось скачать актуальную версию KeeperFX. Попробуйте позже.\n"
 "\n"
-"Если проблема не устранена, проверьте настройки сети и брандмауэра."
+"Если проблема повторяется, проверьте настройки сети и брандмауэра."
 
 msgctxt "LauncherMainWindow|MessageBox Title"
 msgid "KeeperFX Verification Error"
@@ -1102,6 +1085,14 @@ msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Game language"
 msgstr "Язык игры"
 
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Screenshot type"
+msgstr "Формат скриншотов"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Display splash screens"
+msgstr "Отображать загрузочные экраны"
+
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Display Intro"
 msgstr "Показывать начальную заставку"
@@ -1111,12 +1102,75 @@ msgid "Enable Cheats"
 msgstr "Включить читы"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically enable imprison"
+msgstr "Автоматически включать «Заключать в тюрьму»"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically enable flee"
+msgstr "Автоматически включать «Спасаться бегством»"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable Censorship"
 msgstr "Включить цензуру"
 
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Screenshot type"
-msgstr "Формат скриншотов"
+msgctxt "SettingsDialog|Max. Zoom Distance Tooltip"
+msgid ""
+"The maximum distance you can zoom out the camera [0 - 100].\n"
+"\n"
+"0 = original Dungeon Keeper maximum distance\n"
+"60 = KeeperFX default distance\n"
+"100 = KeeperFX maximum distance\n"
+"\n"
+"Note: This is not a percentage"
+msgstr ""
+"Максимальная высота, на которую можно поднять камеру [0–100].\n"
+"\n"
+"- 0 – как в оригинальной Dungeon Keeper;\n"
+"- 60 – высота KeeperFX по умолчанию;\n"
+"- 100 – максимально возможная в KeeperFX высота камеры.\n"
+"\n"
+"Значение указывается в игровых единицах."
+
+msgctxt "SettingsDialog|"
+msgid ""
+"Max. zoom distance\n"
+"(default = 60)"
+msgstr ""
+"Макс. отдаление камеры\n"
+"(по умолчанию – 60)"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable delta time"
+msgstr "Включить дельту времени"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Freeze game when not focused"
+msgstr "Включать паузу, если окно игры не активно"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable Packetsave"
+msgstr "Включить запись реплеев"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Packetsave filename"
+msgstr "Имя файла реплея"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid ""
+"Packetsave max. filesize\n"
+"(0 = unlimited)"
+msgstr ""
+"Макс. размер файла реплея\n"
+"(0 – без ограничений)"
+
+#. Shorthand for 'kibibyte'
+msgctxt "SettingsDialog|Measurement Unit Label"
+msgid "KiB"
+msgstr "КиБ"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Exit on LUA error"
+msgstr "Выход при ошибке LUA"
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
@@ -1127,69 +1181,12 @@ msgstr ""
 "(по умолчанию – 20)"
 
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Command character"
-msgstr "Клавиша вызова консоли"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Display splash screens"
-msgstr "Отображать загрузочные экраны"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable delta time"
-msgstr "Включить дельту времени"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Freeze game when not focused"
-msgstr "Включать паузу, если окно игры не активно"
-
-msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Packetsave filename"
-msgstr "Имя файла реплея"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable Packetsave"
-msgstr "Включить запись реплеев"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Exit on LUA error"
-msgstr "Выход при ошибке LUA"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Automatically enable flee"
-msgstr "Автоматически включать «Спасаться бегством»"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Automatically enable imprison"
-msgstr "Автоматически включать «Заключать в тюрьму»"
-
-msgctxt "SettingsDialog|Textinput Title Label"
 msgid "Game launch options"
 msgstr "Опции запуска игры"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Graphics"
 msgstr "Графика"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Smoothen edges"
-msgstr "Билинейное сглаживание"
-
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Resolution"
-msgstr "Разрешение"
-
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Display mode"
-msgstr "Режим отображения"
-
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Display monitor"
-msgstr "Выбор монитора"
-
-#. Should be kept very short
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "View 1"
-msgstr "Режим 1"
 
 #. Should be kept very short
 msgctxt "SettingsDialog|Dropdown Title Label"
@@ -1198,8 +1195,36 @@ msgstr "Режим 2"
 
 #. Should be kept very short
 msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "View 1"
+msgstr "Режим 1"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Display mode"
+msgstr "Режим отображения"
+
+#. Should be kept very short
+msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "View 3"
 msgstr "Режим 3"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Resolution"
+msgstr "Разрешение"
+
+#. Should be kept very short
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Menu"
+msgstr "Меню"
+
+#. Should be kept very short
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Movies"
+msgstr "Ролики"
+
+#. Should be kept very short
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Failsafe"
+msgstr "Безопасное"
 
 #. This is shown under the views configuration
 msgctxt "SettingsDialog|Information Label"
@@ -1210,46 +1235,65 @@ msgstr ""
 "R</strong>.</i>"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Display monitor"
+msgstr "Выбор монитора"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid ""
+"Max. FPS\n"
+"(0 = unlimited)"
+msgstr ""
+"Ограничение кадровой частоты\n"
+"(0 – без ограничений)"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Resize Movies"
 msgstr "Отображение заставок"
 
-msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Creature flower size (px)"
-msgstr "Размер цветка здоровья (пикс.)"
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Smoothen edges"
+msgstr "Билинейное сглаживание"
 
-msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Hand size %"
-msgstr "Размер Руки зла (%)"
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically determine max. FPS"
+msgstr "Автоматически задавать предел кадровой частоты"
 
-msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Select box line size %"
-msgstr "Толщина линии блока выбора (%)"
-
-#. Should be kept very short
 msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Menu"
-msgstr "Меню"
+msgid "Rendering Backend"
+msgstr "Рендеринг"
 
-#. Should be kept very short
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Failsafe"
-msgstr "Безопасное"
-
-#. Should be kept very short
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Movies"
-msgstr "Ролики"
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable VSync"
+msgstr "Включить вертикальную синхронизацию"
 
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Max. FPS (0 = unlimited)"
-msgstr "Ограничение кадровой частоты (0 – без огранич.)"
+msgid "Creature flower size"
+msgstr "Размер цветка здоровья"
+
+#. Shorthand for 'pixel(s)'
+msgctxt "SettingsDialog|Measurement Unit Label"
+msgid "px"
+msgstr "пикс."
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Hand size"
+msgstr "Размер Руки зла"
+
+#. Shorthand for 'percent'
+msgctxt "SettingsDialog|Measurement Unit Label"
+msgid "%"
+msgstr "%"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Select box line size"
+msgstr "Толщина линии блока выбора"
 
 msgctxt "SettingsDialog|Textinput Title Label"
 msgid ""
 "GUI blink rate\n"
 "(default = 1)"
 msgstr ""
-"Скор. мерцания интерфейса\n"
+"Скорость мерцания интерфейса\n"
 "(по умолчанию – 1)"
 
 msgctxt "SettingsDialog|Textinput Title Label"
@@ -1257,73 +1301,101 @@ msgid ""
 "Neutral flash rate\n"
 "(default = 1)"
 msgstr ""
-"Част. мерцания нейтр. тайлов\n"
+"Частота мерцания нейтр. тайлов\n"
 "(по умолчанию – 1)"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Automatically determine max. FPS"
-msgstr "Автоматически задавать предел кадровой частоты"
+msgid "Enable map fade animation"
+msgstr "Эффект угасания карты"
+
+msgctxt "SettingsDialog|Viewport Mode Tooltip"
+msgid ""
+"How the in-game view shares the screen with the sidebar, in every view.\n"
+"\n"
+"Original = the view stops at the sidebar\n"
+"Full = the view spans the screen and the sidebar is drawn over it\n"
+"Full (Letterbox) = same as 'Full' but with black under the sidebar"
+msgstr ""
+"Определяет, как отрисовывается панель команд.\n"
+"\n"
+"- Оригинал – Панель команд находится сбоку от игрового поля;\n"
+"- На весь экран – Игровое поле занимает весь экран. Панель команд "
+"накладывается поверх него;\n"
+"- Леттербоксинг – Аналогично режиму «На весь экран», но место под панелью "
+"команд закрашивается черным."
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Viewport mode"
+msgstr "Игровое поле"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Sound"
 msgstr "Звук"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable sound"
-msgstr "Включить звук"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Use CD music instead of local files"
-msgstr "Проигрывать треки с CD-диска вместо локальных файлов"
+msgid "Mute audio when game is not focused"
+msgstr "Отключать звук, когда окно игры не активно"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Pause music when game is paused"
 msgstr "Приостанавливать музыку в режиме паузы"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable atmospheric sounds"
-msgstr "Включить атмосферные фоновые звуки"
+msgid "Use CD music instead of local files"
+msgstr "Проигрывать треки с CD-диска вместо локальных файлов"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable sound"
+msgstr "Включить звук"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Frequency"
-msgstr "Частота воспроизв."
+msgstr "Частота воспроизведения"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Volume"
 msgstr "Громкость"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Mute audio when game is not focused"
-msgstr "Отключать звук, когда окно игры не активно"
+msgid "Enable atmospheric sounds"
+msgstr "Включить атмосферные фоновые звуки"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Input"
 msgstr "Устройства ввода"
+
+msgctxt "SettingsDialog|Slider Title Label"
+msgid "Mouse sensitivity"
+msgstr "Чувствительность мыши"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Zoom towards cursor"
+msgstr "Масштабир. отн. курсора"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Rotate around cursor"
+msgstr "Вращение вокруг курсора"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Raw mouse input"
+msgstr "Прямой ввод с мыши"
+
+#. "Capture Cursor"
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Unlock cursor from game window"
+msgstr "Не привязывать положение курсора к окну игры"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Unlock cursor when game is paused"
+msgstr "Разблокировать курсор в режиме паузы"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Lock cursor in possession"
 msgstr "Захват курсора при вселении в создание"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Unlock cursor when game is paused"
-msgstr "Разблокировать курсор в режиме паузы"
-
-#. "Alternative Input"
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Unlock cursor from game window"
-msgstr "Не привязывать положение курсора к окну игры"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Screen edge camera panning"
 msgstr "Панорамирование камеры по краю экрана"
-
-msgctxt "SettingsDialog|Slider Title Label"
-msgid "Mouse sensitivity"
-msgstr "Чувствительность мыши"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Raw mouse input"
-msgstr "Прямой ввод с мыши"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
 msgid "Default tag mode"
@@ -1333,41 +1405,95 @@ msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable tag mode toggle (Right-click)"
 msgstr "Включить переключение режима выделения (ПКМ)"
 
+msgctxt "SettingsDialog|Relative Mouse Mode Tooltip"
+msgid ""
+"Mouse locking method.\n"
+"\n"
+"- Enabled: Use SDL relative (\"raw\") mode for 1:1 deltas\n"
+"- Disabled: Use older grab-and-warp scheme (confines and re-centers the "
+"cursor)\n"
+"\n"
+"Disable this if the mouse feels off."
+msgstr ""
+"Способ захвата событий мыши.\n"
+"\n"
+"- Вкл.: Относительный («сырой») режим SDL для дельт 1:1.\n"
+"- Выкл.: Устаревшая схема «захват и перемещение» (ограничивает положение "
+"курсора площадью окна и центрирует курсор).\n"
+"\n"
+"Отключите эту опцию, если курсор мыши ведет себя некорректно."
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable relative mouse mode"
+msgstr "Включить относительный режим мыши"
+
 msgctxt "SettingsDialog|Tab Title"
 msgid "Multiplayer"
 msgstr "Многопользовательский режим"
 
 msgctxt "SettingsDialog|Textinput Title Label"
-msgid "Masterserver"
-msgstr "Мастер-сервер"
+msgid "Matchmaking server"
+msgstr "Сервер подбора игроков"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid "Multiplayer port"
+msgstr "Сетевой порт"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable matchmaking"
+msgstr "Включить матчмейкинг"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "Launcher"
 msgstr "Центр управления"
 
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Automatically check for KeeperFX updates"
-msgstr "Автоматически проверять обновления KeeperFX"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Enable crash reporting"
-msgstr "Включить отправку отчетов об ошибках"
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Launcher language"
+msgstr "Язык Центра управления"
 
 msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "KeeperFX Release Channel"
-msgstr "Релизная ветка KeeperFX"
+msgid "Play button theme"
+msgstr "Тема кнопки «Запуск»"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Enable website integration"
 msgstr "Включить интеграцию с веб-сайтом"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Enable crash reporting"
+msgstr "Включить отправку отчетов об ошибках"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Open on same screen as game"
 msgstr "Открывать на том же экране, что и игру"
 
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Show directory name in window title"
+msgstr "Отображать директорию игры в заголовке окна"
+
 msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Launcher language"
-msgstr "Язык Центра управления"
+msgid "KeeperFX Release Channel"
+msgstr "Релизная ветка KeeperFX"
+
+msgctxt "SettingsDialog|Textinput Title Label"
+msgid ""
+"Update check interval in days\n"
+"(0 = always check)"
+msgstr ""
+"Частота проверки (дн.)\n"
+"(0 – всегда проверять)"
+
+msgctxt "SettingsDialog|Dropdown Title Label"
+msgid "Download Server"
+msgstr "Сервер загрузки"
+
+msgctxt "SettingsDialog|Button"
+msgid "Show launcher command line options"
+msgstr "Показать опции командной строки Центра управления"
+
+msgctxt "SettingsDialog|Checkbox Toggle"
+msgid "Automatically check for KeeperFX updates"
+msgstr "Автоматически проверять обновления KeeperFX"
 
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Update automatically"
@@ -1377,33 +1503,9 @@ msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Backup savefiles during update"
 msgstr "Резервное копирование файлов сохранений при обновлении"
 
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Play button theme"
-msgstr "Тема кнопки «Запуск»"
-
-msgctxt "SettingsDialog|Button"
-msgid "Show launcher command line options"
-msgstr "Показать опции командной строки Центра управления"
-
-msgctxt "SettingsDialog|Textinput Title Label"
-msgid ""
-"Update check interval in days\n"
-"(0 = always check)"
-msgstr ""
-"Частота проверки обновлений (дн.)\n"
-"(0 – всегда проверять)"
-
-msgctxt "SettingsDialog|Checkbox Toggle"
-msgid "Show directory name in window title"
-msgstr "Отображать полный путь в заголовке окна"
-
 msgctxt "SettingsDialog|Checkbox Toggle"
 msgid "Automatically remove leftover files"
 msgstr "Автоматически удалять оставшиеся файлы"
-
-msgctxt "SettingsDialog|Dropdown Title Label"
-msgid "Download Server"
-msgstr "Сервер загрузки"
 
 msgctxt "SettingsDialog|Tab Title"
 msgid "API"
@@ -1425,6 +1527,54 @@ msgctxt "SettingsDialog|Dialog Button"
 msgid "Open config file"
 msgstr "Открыть файл настроек"
 
+msgctxt "SettingsDialog|Renderer Dropdown"
+msgid "Software"
+msgstr "Программный"
+
+msgctxt "SettingsDialog|Renderer Dropdown"
+msgid "OpenGL"
+msgstr "OpenGL"
+
+msgctxt "SettingsDialog|Zoom To Cursor Dropdown"
+msgid "Never"
+msgstr "Никогда"
+
+msgctxt "SettingsDialog|Zoom To Cursor Dropdown"
+msgid "Mousewheel only"
+msgstr "Только колесом прокрутки"
+
+msgctxt "SettingsDialog|Zoom To Cursor Dropdown"
+msgid "Mousewheel & Keyboard"
+msgstr "Колесом прокрутки и клавишами"
+
+msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
+msgid "Never"
+msgstr "Никогда"
+
+msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
+msgid "Always"
+msgstr "Всегда"
+
+msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
+msgid "Movement Keys Only (While holding Ctrl)"
+msgstr "Клав. перем. камеры (с Ctrl)"
+
+msgctxt "SettingsDialog|Rotate Around Cursor Dropdown"
+msgid "Rotation Keys Only"
+msgstr "Клав. вращения камеры"
+
+msgctxt "SettingsDialog|Viewport Mode Dropdown"
+msgid "Original"
+msgstr "Оригинал"
+
+msgctxt "SettingsDialog|Viewport Mode Dropdown"
+msgid "Full"
+msgstr "На весь экран"
+
+msgctxt "SettingsDialog|Viewport Mode Dropdown"
+msgid "Full (Letterbox)"
+msgstr "Леттербоксинг"
+
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Single"
 msgstr "По одному"
@@ -1435,7 +1585,7 @@ msgstr "Удержанием"
 
 msgctxt "SettingsDialog|Default Tag Mode Dropdown"
 msgid "Remember Last"
-msgstr "Запоминать послед."
+msgstr "Запоминать последний режим"
 
 msgctxt "SettingsDialog|Play Button Theme Dropdown"
 msgid "Qt Fusion Dark"
@@ -1475,7 +1625,7 @@ msgstr "Пользовательское"
 
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Fullscreen"
-msgstr "Полный экран"
+msgstr "Полноэкранный"
 
 msgctxt "SettingsDialog|Display Mode Dropdown"
 msgid "Windowed"
@@ -1507,11 +1657,20 @@ msgstr "Высокая"
 
 msgctxt "SettingsDialog|Game Release Channel"
 msgid "Stable (Default)"
-msgstr "Стабил. (по умолч.)"
+msgstr "Стабильная (по умолч.)"
 
 msgctxt "SettingsDialog|Game Release Channel"
 msgid "Alpha"
 msgstr "Альфа"
+
+#, qt-format
+msgctxt "SettingsDialog|Mouse Sensitivity Slider Percentage Label"
+msgid "%1%"
+msgstr "%1%"
+
+msgctxt "SettingsDialog|Link"
+msgid "Set to default server"
+msgstr "Вернуть сервер по умолчанию"
 
 #, qt-format
 msgctxt "SettingsDialog|About Label"
@@ -1541,6 +1700,19 @@ msgstr "Разработчики KeeperFX: %1"
 msgctxt "SettingsDialog|Label Translator List"
 msgid "KeeperFX Launcher Translators: %1"
 msgstr "Переводчики Центра управления: %1"
+
+msgctxt "SettingsDialog|MessageBox Text"
+msgid "Multiplayer port and API port must be different when API is enabled"
+msgstr "Сетевой порт и порт API не должны совпадать."
+
+msgctxt "SettingsDialog|MessageBox Title"
+msgid "Invalid Settings"
+msgstr "Некорректные настройки"
+
+msgctxt "SettingsDialog|MessageBox Text"
+msgid "Cannot save settings due to the following errors:"
+msgstr ""
+"Не удалось сохранить настройки. Конфигурация содержит следующие ошибки:"
 
 msgctxt "SettingsDialog|MessageBox Title"
 msgid "KeeperFX Settings"
@@ -1651,8 +1823,8 @@ msgstr ""
 "\n"
 "Закройте KeeperFX и повторите попытку.\n"
 "\n"
-"Если ошибка будет повторяться, перезагрузите систему и попробуйте обновить "
-"игру еще раз."
+"Если ошибка повторяется, перезагрузите систему и попробуйте обновить игру "
+"еще раз."
 
 msgctxt "UpdateDialog|Failure Message"
 msgid ""
@@ -1666,8 +1838,8 @@ msgstr ""
 "\n"
 "Закройте его и повторите попытку.\n"
 "\n"
-"Если ошибка будет повторяться, перезагрузите систему и попробуйте обновить "
-"игру еще раз."
+"Если ошибка повторяется, перезагрузите систему и попробуйте обновить игру "
+"еще раз."
 
 msgctxt "UpdateDialog|Failure Message"
 msgid ""
@@ -1774,3 +1946,23 @@ msgid ""
 msgstr ""
 "Не удалось определить версию KeeperFX. Отправка сообщения об ошибке "
 "невозможна."
+
+#~ msgctxt "SettingsDialog|Textinput Title Label"
+#~ msgid "Command character"
+#~ msgstr "Клавиша вызова консоли"
+
+#~ msgctxt "CDN|Download Server"
+#~ msgid "KeeperFX.net (Default, Germany)"
+#~ msgstr "KeeperFX.net (Германия, станд.)"
+
+#~ msgctxt "CDN|Download Server"
+#~ msgid "Cloudflare CDN (Worldwide)"
+#~ msgstr "Cloudflare CDN (Глобальный)"
+
+#~ msgctxt "LauncherMainWindow|Menu"
+#~ msgid "Scan local network (MP)"
+#~ msgstr "Сканирование локальной сети (МП)"
+
+#~ msgctxt "LauncherMainWindow|Menu"
+#~ msgid "Test internet lobby (MP)"
+#~ msgstr "Проверка интернет-лобби (МП)"
