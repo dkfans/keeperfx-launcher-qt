@@ -625,6 +625,10 @@ void UpdateDialog::onFileDownloadProgress()
         // Define rename rules
         QMap<QString, QString> renameRules = {
             {"/keeperfx.cfg", "/_keeperfx.cfg"},
+            {"/7z.dll", "/7z-new.dll"},
+            {"/7za.dll", "/7za-new.dll"},
+            {"/7z.so", "/7z-new.so"},
+            {"/7za.so", "/7za-new.so"},
             {"/keeperfx-launcher-qt.exe", "/keeperfx-launcher-qt-new.exe"},
             {"/keeperfx-launcher-qt", "/keeperfx-launcher-qt-new"},
         };
