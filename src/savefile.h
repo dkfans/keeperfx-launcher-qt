@@ -25,4 +25,8 @@ public:
 
     static bool backupAll();
     static bool backupAll(QList<SaveFile *> saveFiles);
+
+private:
+    // KFXS saves (KeeperFX 1.4+): reads the title record using the schema stored in the file
+    bool readKfxsTitle(const QByteArray &data);
 };
