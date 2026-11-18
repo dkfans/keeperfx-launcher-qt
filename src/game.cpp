@@ -108,6 +108,7 @@ bool Game::start(StartType startType, QVariant data1, QVariant data2, QVariant d
     }
 
     // Start the process
+    this->startTime = QDateTime::currentDateTime();
     #ifdef Q_OS_WINDOWS
         qInfo() << "Starting game (Windows)";
         process->start(keeperfxBin, params);
@@ -169,6 +170,9 @@ void Game::onProcessFinished(int exitCode, QProcess::ExitStatus exitStatus)
                     qDebug() << "Process StdError:" << stdErrorString;
                     crashDialog.setStdErrorString(stdErrorString);
                 }
+
+                // Add the exit code and this run's crash dump (if the game wrote one)
+                crashDialog.setGameRun(exitCode, this->startTime);
 
                 // Open the crash dialog
                 crashDialog.exec();

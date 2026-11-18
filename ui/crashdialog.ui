@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>674</width>
-    <height>584</height>
+    <height>650</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -224,6 +224,32 @@
        <widget class="QComboBox" name="saveFileComboBox">
         <property name="placeholderText">
          <string comment="Dropdown Placeholder Text">If you have a game save that could provide us with more information. You can add it here.</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="crashDumpWidget" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_attachments">
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>20</number>
+      </property>
+      <item>
+       <widget class="QCheckBox" name="replayCheckBox">
+        <property name="text">
+         <string comment="Checkbox">Include a replay of the game up to the crash</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="crashDumpCheckBox">
+        <property name="text">
+         <string comment="Checkbox">Include crash dump (helps us find the cause, but can contain your Windows username or file paths)</string>
         </property>
        </widget>
       </item>

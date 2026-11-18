@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QDateTime>
 #include <QVariant>
 #include <QString>
 #include <QObject>
@@ -42,4 +43,5 @@ private:
     QWidget *parentWidget;
     QProcess *process;
     QString errorString;
+    QDateTime startTime; // Used to tell this run's crash dump apart from older ones
 };
